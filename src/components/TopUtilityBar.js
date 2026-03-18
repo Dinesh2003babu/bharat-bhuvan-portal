@@ -3,7 +3,7 @@ export default function TopUtilityBar() {
     <div style={styles.utilityBar}>
       <div style={styles.container}>
         <div style={styles.left}>
-          <span>भारत सरकार की तर्ज पर प्रमाणित संस्था | An Official Record Affirming Entity</span>
+          <span>Certified Institution as per Government of India | An Official Record Affirming Entity</span>
         </div>
         <div style={styles.right}>
           <button style={styles.btn}>Skip to Main Content</button>
@@ -13,8 +13,8 @@ export default function TopUtilityBar() {
           <button style={styles.btn}>A+</button>
           <div style={styles.divider}>|</div>
           <select style={styles.langSelect}>
-            <option>English</option>
-            <option>हिन्दी</option>
+            <option style={styles.option}>English</option>
+            <option style={styles.option}>தமிழ்</option>
           </select>
         </div>
       </div>
@@ -60,10 +60,14 @@ const styles = {
   langSelect: {
     background: 'transparent',
     color: 'var(--color-white)',
-    border: '1px solid rgba(255,255,255,0.4)',
+    border: '1px solid rgba(255, 255, 255, 1)',
     padding: '2px 4px',
     fontSize: '12px',
     borderRadius: '2px',
     outline: 'none',
+  },
+  option: {
+    color: 'var(--text-main)',
+    backgroundColor: 'var(--color-white)',
   }
 };

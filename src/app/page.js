@@ -9,7 +9,7 @@ export default function Home() {
         <div style={styles.heroOverlay}></div>
         <div style={styles.heroContent}>
           <h1 style={styles.heroTitle}>
-            CHRONICLING INDIA'S<br/>
+            CHRONICLING INDIA'S<br />
             GREATEST ACHIEVEMENTS
           </h1>
           <p style={styles.heroSubtitle}>
@@ -22,6 +22,32 @@ export default function Home() {
             <Link href="/records" style={styles.secondaryBtn}>
               Search the Database
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* MISSION & VISION SECTION */}
+      <section style={styles.missionVisionSection}>
+        <div style={styles.container}>
+          <div style={styles.mvGrid}>
+            <div style={styles.mvCard}>
+              <div style={styles.mvIconSaffron}>
+                <Award size={32} color="#fff" />
+              </div>
+              <h2 style={styles.mvTitle}>Our Mission</h2>
+              <p style={styles.mvText}>
+                To systematically identify, authenticate, and chronicle the extraordinary achievements of Indians worldwide, providing a definitive platform that celebrates excellence, dedication, and the indomitable spirit of our nation.
+              </p>
+            </div>
+            <div style={styles.mvCard}>
+              <div style={styles.mvIconGreen}>
+                <ShieldCheck size={32} color="#fff" />
+              </div>
+              <h2 style={styles.mvTitle}>Our Vision</h2>
+              <p style={styles.mvText}>
+                To be the most trusted and universally recognized authority on Indian records, inspiring future generations to push boundaries, innovate relentlessly, and elevate the global standing of India through unparalleled accomplishments.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -56,7 +82,7 @@ export default function Home() {
             <h2 style={styles.sectionTitle}>Recently Authenticated Records</h2>
             <div style={styles.titleUnderline}></div>
           </div>
-          
+
           <div style={styles.recordsGrid}>
             {/* Record 1 */}
             <div style={styles.recordCard}>
@@ -214,13 +240,64 @@ const styles = {
     border: '2px solid var(--color-navy)',
     transition: 'background-color 0.2s',
   },
+  missionVisionSection: {
+    padding: '20px 0 20px',
+    backgroundColor: 'var(--bg-color)',
+  },
+  mvGrid: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+    gap: '40px',
+  },
+  mvCard: {
+    backgroundColor: '#fff',
+    padding: '40px',
+    borderRadius: '8px',
+    border: '1px solid var(--border-color)',
+    boxShadow: '0 4px 15px rgba(0,0,0,0.03)',
+    textAlign: 'center',
+    position: 'relative',
+    overflow: 'hidden',
+  },
+  mvIconSaffron: {
+    width: '64px',
+    height: '64px',
+    backgroundColor: 'var(--color-saffron)',
+    borderRadius: '50%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    margin: '0 auto 20px',
+    boxShadow: '0 4px 10px rgba(255,153,51,0.3)',
+  },
+  mvIconGreen: {
+    width: '64px',
+    height: '64px',
+    backgroundColor: 'var(--color-green)',
+    borderRadius: '50%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    margin: '0 auto 20px',
+    boxShadow: '0 4px 10px rgba(19,136,8,0.3)',
+  },
+  mvTitle: {
+    fontSize: '24px',
+    fontWeight: '700',
+    color: 'var(--color-navy)',
+    marginBottom: '15px',
+  },
+  mvText: {
+    fontSize: '16px',
+    color: 'var(--text-muted)',
+    lineHeight: '1.6',
+  },
   statsSection: {
     padding: '60px 0',
     backgroundColor: 'var(--color-white)',
     boxShadow: '0 4px 20px rgba(0,0,0,0.03)',
     position: 'relative',
     zIndex: 2,
-    marginTop: '-40px',
   },
   statsGrid: {
     display: 'grid',

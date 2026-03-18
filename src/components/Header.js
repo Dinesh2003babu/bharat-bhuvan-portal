@@ -1,6 +1,15 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function Header() {
+  const pathname = usePathname();
+
+  const getLinkClass = (path) => {
+    return pathname === path ? "nav-link active" : "nav-link";
+  };
+
   return (
     <header style={styles.header}>
       <div style={styles.topOrnament}></div>
@@ -11,17 +20,18 @@ export default function Header() {
             <div style={styles.innerCircle}></div>
           </div>
           <div style={styles.titleArea}>
-            <h1 style={styles.hindiTitle}>भारत भुवन बुक ऑफ रिकॉर्ड्स</h1>
-            <h2 style={styles.englishTitle}>BHARAT BHUVAN BOOK OF RECORDS</h2>
+            <h1 style={styles.englishTitle}>BHARAT BHUVAN BOOK OF RECORDS</h1>
             <p style={styles.subtitle}>Recognizing Extraordinary Indian Excellence</p>
           </div>
         </div>
-        
+
         <nav style={styles.nav}>
-          <Link href="/" style={styles.navLink}>Home</Link>
-          <Link href="/records" style={styles.navLink}>Search Records</Link>
-          <Link href="/apply" style={styles.navLinkApply}>Apply Now</Link>
-          <Link href="/verify" style={styles.navLink}>Verify Certificate</Link>
+          <Link href="/" className={getLinkClass("/")}>Home</Link>
+          <Link href="/about" className={getLinkClass("/about")}>About us</Link>
+          <Link href="/records" className={getLinkClass("/records")}>Search Records</Link>
+          <Link href="/upcoming" className={getLinkClass("/upcoming")}>Upcoming</Link>
+          <Link href="/verify" className={getLinkClass("/verify")}>Verify Certificate</Link>
+          <Link href="/apply" className="nav-link-apply">Apply Now</Link>
         </nav>
       </div>
     </header>
@@ -103,24 +113,5 @@ const styles = {
     display: 'flex',
     gap: '5px',
     alignItems: 'center',
-  },
-  navLink: {
-    padding: '10px 15px',
-    fontSize: '14px',
-    fontWeight: '600',
-    color: 'var(--color-navy)',
-    borderRadius: '4px',
-    transition: 'all 0.2s ease',
-  },
-  navLinkApply: {
-    padding: '10px 20px',
-    fontSize: '14px',
-    fontWeight: '700',
-    backgroundColor: 'var(--color-saffron)',
-    color: 'var(--color-white)',
-    borderRadius: '4px',
-    boxShadow: '0 2px 4px rgba(255,153,51,0.3)',
-    marginLeft: '5px',
-    transition: 'all 0.2s ease',
   }
 };
