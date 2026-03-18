@@ -40,18 +40,18 @@ export default function ApplyPage() {
       {/* Header Banner */}
       <div style={styles.header}>
         <div style={styles.container}>
-          <h1 style={styles.title}>Official Application for Record Certification</h1>
+          <h1 style={styles.title} className="form-header-title">Official Application for Record Certification</h1>
           <p style={styles.subtitle}>
             Please fill out this formal declaration accurately. Any discrepancies may lead to immediate rejection of the application.
           </p>
         </div>
       </div>
 
-      <div style={styles.container}>
+      <div style={styles.container} className="form-container">
         <div style={styles.layout}>
 
           {/* Sidebar Steps */}
-          <div style={styles.sidebar}>
+          <div style={styles.sidebar} className="sidebar-hide-mobile">
             <div style={styles.stepsBox}>
               <h3 style={styles.stepsTitle}>Application Process</h3>
 
@@ -130,14 +130,14 @@ export default function ApplyPage() {
                   <div style={styles.row}>
                     <div style={styles.fieldGroup}>
                       <label style={styles.label}>Full Name / Organization Name <span style={styles.req}>*</span></label>
-                      <input type="text" style={styles.input} placeholder="As per official documents" value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} />
+                      <input type="text" style={styles.input} placeholder="As per official documents" value={formData.name} onChange={e => setFormData({ ...formData, name: e.target.value })} />
                     </div>
                   </div>
 
                   <div style={styles.row}>
                     <div style={styles.fieldGroup}>
                       <label style={styles.label}>Email Address <span style={styles.req}>*</span></label>
-                      <input type="email" style={styles.input} placeholder="official@example.com" value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} />
+                      <input type="email" style={styles.input} placeholder="official@example.com" value={formData.email} onChange={e => setFormData({ ...formData, email: e.target.value })} />
                     </div>
                     <div style={styles.fieldGroup}>
                       <label style={styles.label}>Mobile Number <span style={styles.req}>*</span></label>
@@ -149,7 +149,7 @@ export default function ApplyPage() {
                             </option>
                           ))}
                         </select>
-                        <input type="tel" style={styles.phoneInput} placeholder="1234567890" value={formData.phone} onChange={e => setFormData({...formData, phone: e.target.value})} />
+                        <input type="tel" style={styles.phoneInput} placeholder="1234567890" value={formData.phone} onChange={e => setFormData({ ...formData, phone: e.target.value })} />
                       </div>
                     </div>
                   </div>
@@ -157,7 +157,7 @@ export default function ApplyPage() {
                   <div style={styles.row}>
                     <div style={styles.fieldGroup}>
                       <label style={styles.label}>Complete Postal Address <span style={styles.req}>*</span></label>
-                      <textarea style={styles.textarea} rows={3} placeholder="Include City, State, and PIN Code" value={formData.address} onChange={e => setFormData({...formData, address: e.target.value})}></textarea>
+                      <textarea style={styles.textarea} rows={3} placeholder="Include City, State, and PIN Code" value={formData.address} onChange={e => setFormData({ ...formData, address: e.target.value })}></textarea>
                     </div>
                   </div>
                 </div>
@@ -182,25 +182,25 @@ export default function ApplyPage() {
                   <div style={styles.row}>
                     <div style={styles.fieldGroup}>
                       <label style={styles.label}>Proposed Record Title <span style={styles.req}>*</span></label>
-                      <input type="text" style={styles.input} placeholder="e.g. Largest gathering of..." value={formData.title} onChange={e => setFormData({...formData, title: e.target.value})} />
+                      <input type="text" style={styles.input} placeholder="e.g. Largest gathering of..." value={formData.title} onChange={e => setFormData({ ...formData, title: e.target.value })} />
                     </div>
                   </div>
 
                   <div style={styles.row}>
                     <div style={styles.fieldGroup}>
                       <label style={styles.label}>Date of Attempt <span style={styles.req}>*</span></label>
-                      <input type="date" style={styles.input} value={formData.date} onChange={e => setFormData({...formData, date: e.target.value})} />
+                      <input type="date" style={styles.input} value={formData.date} onChange={e => setFormData({ ...formData, date: e.target.value })} />
                     </div>
                     <div style={styles.fieldGroup}>
                       <label style={styles.label}>Venue / Location <span style={styles.req}>*</span></label>
-                      <input type="text" style={styles.input} placeholder="City, State" value={formData.venue} onChange={e => setFormData({...formData, venue: e.target.value})} />
+                      <input type="text" style={styles.input} placeholder="City, State" value={formData.venue} onChange={e => setFormData({ ...formData, venue: e.target.value })} />
                     </div>
                   </div>
 
                   <div style={styles.row}>
                     <div style={styles.fieldGroup}>
                       <label style={styles.label}>Detailed Description of the Attempt <span style={styles.req}>*</span></label>
-                      <textarea style={styles.textarea} rows={4} placeholder="Describe the rules followed, the measurements, and the exact achievement." value={formData.description} onChange={e => setFormData({...formData, description: e.target.value})}></textarea>
+                      <textarea style={styles.textarea} rows={4} placeholder="Describe the rules followed, the measurements, and the exact achievement." value={formData.description} onChange={e => setFormData({ ...formData, description: e.target.value })}></textarea>
                     </div>
                   </div>
                 </div>
@@ -213,22 +213,22 @@ export default function ApplyPage() {
                     <Upload size={32} color="var(--color-navy)" style={{ marginBottom: 10 }} />
                     <h4 style={{ marginBottom: 5 }}>Upload Evidence Package</h4>
                     <p style={{ fontSize: 12, color: 'var(--text-muted)' }}>Upload a single ZIP file containing videos, high-res photos, and logbooks. (Max: 50MB)</p>
-                    
+
                     <label htmlFor="evidence-upload" style={styles.uploadBtn}>
                       {fileName ? "Change File" : "Select File"}
                     </label>
-                    <input 
-                      id="evidence-upload" 
-                      type="file" 
-                      accept=".zip,.rar" 
-                      style={{display: 'none'}} 
+                    <input
+                      id="evidence-upload"
+                      type="file"
+                      accept=".zip,.rar"
+                      style={{ display: 'none' }}
                       onChange={(e) => {
                         if (e.target.files && e.target.files.length > 0) {
                           setFileName(e.target.files[0].name);
                         }
                       }}
                     />
-                    
+
                     {fileName && (
                       <div style={styles.fileSuccessBadge}>
                         ✓ Selected: {fileName}
@@ -242,7 +242,7 @@ export default function ApplyPage() {
                       I hereby declare that all information provided in this application is true and correct to the best of my knowledge. I understand that the Bharat Bhuvan Book of Records holds the final authority to reject or adjudicate this claim.
                     </p>
                     <label style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 13, fontWeight: 600 }}>
-                      <input type="checkbox" style={{ width: 16, height: 16 }} checked={formData.declaration} onChange={e => setFormData({...formData, declaration: e.target.checked})} />
+                      <input type="checkbox" style={{ width: 16, height: 16 }} checked={formData.declaration} onChange={e => setFormData({ ...formData, declaration: e.target.checked })} />
                       I accept the terms and conditions and affirm this declaration.
                     </label>
                   </div>

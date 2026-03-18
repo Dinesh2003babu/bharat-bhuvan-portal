@@ -14,7 +14,7 @@ export default function NewsTicker() {
   return (
     <div style={styles.tickerWrapper}>
       <div style={styles.container}>
-        <div style={styles.label}>
+        <div style={styles.label} className="ticker-label">
           LATEST UPDATES
         </div>
         <div style={styles.marqueeContainer}>
@@ -25,7 +25,7 @@ export default function NewsTicker() {
             <span style={styles.item}>★ Read the updated Guidelines V2.1 before applying for state-level records.</span>
           </div>
         </div>
-        <div style={styles.date}>
+        <div style={styles.date} className="ticker-date">
           {dateStr}
         </div>
       </div>

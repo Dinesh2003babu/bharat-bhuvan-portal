@@ -30,7 +30,7 @@ export default function Records() {
       
       <div style={styles.header}>
         <div style={styles.container}>
-          <h1 style={styles.title}>Official Record Directory</h1>
+          <h1 style={styles.title} className="about-title-res">Official Record Directory</h1>
           <p style={styles.subtitle}>
             Search and verify officially authenticated records by the Bharat Bhuvan Book of Records.
           </p>
@@ -39,8 +39,8 @@ export default function Records() {
 
       <div style={styles.container}>
         {/* Controls */}
-        <div style={styles.controls}>
-          <div style={styles.searchBox}>
+        <div style={styles.controls} className="records-controls-res">
+          <div style={styles.searchBox} className="records-search-res">
             <Search size={20} color="var(--text-muted)" style={styles.searchIcon} />
             <input 
               type="text" 
@@ -50,7 +50,7 @@ export default function Records() {
               onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
-          <div style={styles.filters}>
+          <div style={styles.filters} className="records-filters-res">
             <div style={styles.filterBox}>
               <Filter size={18} color="var(--color-navy)" />
               <select 

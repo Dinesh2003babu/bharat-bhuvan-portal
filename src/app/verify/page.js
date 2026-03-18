@@ -26,11 +26,11 @@ export default function VerifyPage() {
 
   return (
     <div style={styles.page}>
-      
+
       {/* Header Banner */}
       <div style={styles.header}>
         <div style={styles.container}>
-          <h1 style={styles.title}>Certificate Verification Portal</h1>
+          <h1 style={styles.title} className="form-header-title">Certificate Verification Portal</h1>
           <p style={styles.subtitle}>
             Authenticity check for all Bharat Bhuvan Book of Records certificates. Enter your Certificate Number to verify.
           </p>
@@ -39,21 +39,21 @@ export default function VerifyPage() {
 
       <div style={styles.container}>
         <div style={styles.layout}>
-          
+
           <div style={styles.mainBox}>
             <div style={styles.verifyCard}>
               <h2 style={styles.cardTitle}>Verify Document Authenticity</h2>
               <p style={styles.cardDesc}>
                 The system checks real-time databanks to ensure the certificate in question was officially issued by the Secretariat and has not been revoked.
               </p>
-              
+
               <form onSubmit={handleVerify} style={styles.form}>
                 <div style={styles.inputWrapper}>
                   <label style={styles.label}>Certificate Number / ID</label>
                   <div style={styles.inputGroup}>
-                    <input 
-                      type="text" 
-                      placeholder="e.g., BBR-2025-XXXXX" 
+                    <input
+                      type="text"
+                      placeholder="e.g., BBR-2025-XXXXX"
                       style={styles.input}
                       value={certId}
                       onChange={(e) => setCertId(e.target.value)}
@@ -70,9 +70,9 @@ export default function VerifyPage() {
                 <div style={styles.resultSuccess}>
                   <div style={styles.resultHeaderSuccess}>
                     <ShieldCheck size={32} color="var(--color-green)" />
-                    <h3 style={{color: 'var(--color-green)'}}>CERTIFICATE VERIFIED</h3>
+                    <h3 style={{ color: 'var(--color-green)' }}>CERTIFICATE VERIFIED</h3>
                   </div>
-                  <div style={styles.dataGrid}>
+                  <div style={styles.dataGrid} className="verify-data-grid">
                     <div style={styles.dataItem}>
                       <span style={styles.dataLabel}>Record Status</span>
                       <span style={styles.dataValue}>Active & Authorized</span>
@@ -99,10 +99,10 @@ export default function VerifyPage() {
                 <div style={styles.resultError}>
                   <div style={styles.resultHeaderError}>
                     <ShieldAlert size={32} color="red" />
-                    <h3 style={{color: 'red'}}>VERIFICATION FAILED</h3>
+                    <h3 style={{ color: 'red' }}>VERIFICATION FAILED</h3>
                   </div>
-                  <p style={{color: '#666', fontSize: '14px', lineHeight: 1.5}}>
-                    The certificate number <strong>{certId}</strong> could not be found in our official registry. 
+                  <p style={{ color: '#666', fontSize: '14px', lineHeight: 1.5 }}>
+                    The certificate number <strong>{certId}</strong> could not be found in our official registry.
                     Ensure the number is typed correctly including the exact prefixes. If you believe this is an error, contact the Secretariat immediately.
                   </p>
                 </div>
@@ -110,7 +110,7 @@ export default function VerifyPage() {
             </div>
           </div>
 
-          <div style={styles.sideBox}>
+          <div style={styles.sideBox} className="sidebar-hide-mobile">
             <div style={styles.guidelineCard}>
               <h3 style={styles.guidelineTitle}>How to Verify</h3>
               <ul style={styles.list}>
@@ -122,7 +122,7 @@ export default function VerifyPage() {
             </div>
             <div style={styles.warningCard}>
               <h3 style={styles.warningTitle}>Warning against Forgery</h3>
-              <p style={{fontSize: 13, lineHeight: 1.5}}>
+              <p style={{ fontSize: 13, lineHeight: 1.5 }}>
                 Generating, possessing, or distributing counterfeit Bharat Bhuvan Book of Records certificates is a punishable offense under forgery laws. All genuine certificates feature a holographic seal and a distinct entry in this public database.
               </p>
             </div>

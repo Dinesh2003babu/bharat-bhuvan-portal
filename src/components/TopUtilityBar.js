@@ -1,8 +1,8 @@
 export default function TopUtilityBar() {
   return (
     <div style={styles.utilityBar}>
-      <div style={styles.container}>
-        <div style={styles.left}>
+      <div style={styles.container} className="utility-bar-container">
+        <div style={styles.left} className="mobile-hide">
           <span>Certified Institution as per Government of India | An Official Record Affirming Entity</span>
         </div>
         <div style={styles.right}>

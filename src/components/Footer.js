@@ -5,15 +5,15 @@ export default function Footer() {
     <footer style={styles.footer}>
       <div style={styles.tricolorBorder}></div>
       <div style={styles.container}>
-        <div style={styles.grid}>
-          <div style={styles.column}>
-            <h3 style={styles.heading}>Bharat Bhuvan Book of Records</h3>
+        <div style={styles.grid} className="footer-grid">
+          <div style={styles.column} className="footer-column">
+            <h3 style={styles.heading} className="footer-heading">Bharat Bhuvan Book of Records</h3>
             <p style={styles.text}>
               The premier authority on validating and chronicling extraordinary achievements across the Indian subcontinent.
             </p>
           </div>
-          <div style={styles.column}>
-            <h3 style={styles.heading}>Quick Links</h3>
+          <div style={styles.column} className="footer-column">
+            <h3 style={styles.heading} className="footer-heading">Quick Links</h3>
             <ul style={styles.list}>
               <li><Link href="/records" style={styles.link}>Record Database</Link></li>
               <li><Link href="/apply" style={styles.link}>Apply for a Record</Link></li>
@@ -21,8 +21,8 @@ export default function Footer() {
               <li><Link href="/guidelines" style={styles.link}>Official Guidelines</Link></li>
             </ul>
           </div>
-          <div style={styles.column}>
-            <h3 style={styles.heading}>Contact Secretariat</h3>
+          <div style={styles.column} className="footer-column">
+            <h3 style={styles.heading} className="footer-heading">Contact Secretariat</h3>
             <p style={styles.text}>
               <strong>Email:</strong> official@bharatbhuvanrecords.in<br />
               <strong>Phone:</strong> +91 (11) 2345-6789<br />

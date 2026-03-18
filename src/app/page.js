@@ -1,5 +1,44 @@
+"use client";
+
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { Award, ShieldCheck, Users } from "lucide-react";
+import { Award, ShieldCheck, Users, Palette, Landmark, Globe, Calendar, MapPin } from "lucide-react";
+
+const AnimatedCounter = ({ end, suffix = "", prefix = "", duration = 2000 }) => {
+  const [count, setCount] = useState(0);
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const countRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !hasAnimated) {
+          setHasAnimated(true);
+          let startRef = null;
+          const step = (timestamp) => {
+            if (!startRef) startRef = timestamp;
+            const progress = Math.min((timestamp - startRef) / duration, 1);
+            // Ease out quad for smoother slow down
+            const easeOutProgress = progress * (2 - progress);
+            setCount(Math.floor(easeOutProgress * end));
+            if (progress < 1) {
+              window.requestAnimationFrame(step);
+            } else {
+              setCount(end);
+            }
+          };
+          window.requestAnimationFrame(step);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (countRef.current) observer.observe(countRef.current);
+    return () => observer.disconnect();
+  }, [end, duration, hasAnimated]);
+
+  return <span ref={countRef}>{prefix}{count.toLocaleString()}{suffix}</span>;
+};
 
 export default function Home() {
   return (
@@ -7,21 +46,27 @@ export default function Home() {
       {/* HERO SECTION */}
       <section style={styles.hero}>
         <div style={styles.heroOverlay}></div>
-        <div style={styles.heroContent}>
-          <h1 style={styles.heroTitle}>
-            CHRONICLING INDIA'S<br />
-            GREATEST ACHIEVEMENTS
-          </h1>
-          <p style={styles.heroSubtitle}>
-            The official repository of extraordinary national records and historic milestones.
-          </p>
-          <div style={styles.heroActions}>
-            <Link href="/apply" style={styles.primaryBtn}>
-              Apply for a New Record
-            </Link>
-            <Link href="/records" style={styles.secondaryBtn}>
-              Search the Database
-            </Link>
+        <div style={styles.heroContainer}>
+          {/* Image Left */}
+          <div style={styles.heroLeft}>
+            <img src="/1_53.jpg" alt="Bharat Bhuvan Hero" style={styles.heroImage} />
+          </div>
+          {/* Text Right */}
+          <div style={styles.heroRight}>
+            <h1 style={styles.heroTitle}>
+              PROMOTING <br /> BHARATIYA ARTS <br /> TO THE GLOBAL STAGE
+            </h1>
+            <p style={styles.heroSubtitle}>
+              <b>National Recognition Platform for Indian Arts and Cultural Heritage</b>
+            </p>
+            <div style={styles.heroActions}>
+              <Link href="/apply" style={styles.primaryBtn}>
+                Apply for a New Record
+              </Link>
+              <Link href="/records" style={styles.secondaryBtn}>
+                Search the Database
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -36,7 +81,7 @@ export default function Home() {
               </div>
               <h2 style={styles.mvTitle}>Our Mission</h2>
               <p style={styles.mvText}>
-                To systematically identify, authenticate, and chronicle the extraordinary achievements of Indians worldwide, providing a definitive platform that celebrates excellence, dedication, and the indomitable spirit of our nation.
+                To promote, preserve, and elevate Indian arts and cultural heritage worldwide by creating meaningful platforms for record-setting achievements in the arts. We are committed to recognizing artistic excellence, encouraging large-scale cultural participation, and ensuring that the spirit of Indian traditions reaches a global audience.
               </p>
             </div>
             <div style={styles.mvCard}>
@@ -45,9 +90,89 @@ export default function Home() {
               </div>
               <h2 style={styles.mvTitle}>Our Vision</h2>
               <p style={styles.mvText}>
-                To be the most trusted and universally recognized authority on Indian records, inspiring future generations to push boundaries, innovate relentlessly, and elevate the global standing of India through unparalleled accomplishments.
+                To take the richness of Indian arts and cultural heritage to every corner of the world, establishing Bharat as a global symbol of artistic excellence. We strive to build a cultural movement where Indian art forms inspire, unite, and connect people across nations.
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* OUR UNIQUENESS SECTION */}
+      <section style={styles.uniquenessSection}>
+        <div style={styles.container}>
+          <div style={styles.sectionHeaderUniqueness}>
+            <h2 style={styles.uniquenessTitle}>Our Uniqueness</h2>
+            <p style={styles.uniquenessSubtitle}>
+              Bharat Bhuvan Book of Records is uniquely dedicated to Indian arts and cultural heritage. Unlike general record platforms, we focus exclusively on Bharatiya art forms and traditions, ensuring authenticity and global promotion of Indian culture.
+            </p>
+          </div>
+          <div style={styles.uniquenessGrid}>
+            <div style={styles.uniquenessCard}>
+              <div style={styles.mvIconSaffron}>
+                <Palette size={32} color="#fff" />
+              </div>
+              <h3 style={styles.uniquenessCardTitle}>Focused on Indian Arts</h3>
+            </div>
+            <div style={styles.uniquenessCard}>
+              <div style={styles.mvIconNavy}>
+                <Landmark size={32} color="#fff" />
+              </div>
+              <h3 style={styles.uniquenessCardTitle}>Rooted in Cultural Heritage</h3>
+            </div>
+            <div style={styles.uniquenessCard}>
+              <div style={styles.mvIconGreen}>
+                <Globe size={32} color="#fff" />
+              </div>
+              <h3 style={styles.uniquenessCardTitle}>Promoting Bharat to the World</h3>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* UPCOMING EVENT SECTION */}
+      <section style={styles.upcomingSection}>
+        <div style={styles.container}>
+          <h2 style={styles.upcomingMainTitle}>Upcoming Event</h2>
+          <div style={styles.upcomingFlex}>
+            <div style={styles.upcomingImageWrapper}>
+              <img src="/sarvam_shabdam.png" alt="Sarvam Shabdam" style={styles.upcomingImage} />
+            </div>
+            <div style={styles.upcomingContent}>
+              <h3 style={styles.upcomingEventTitle}>SARVAM SHABDAM</h3>
+
+              <div style={styles.upcomingDetails}>
+                <div style={styles.detailItem}>
+                  <Calendar size={20} color="var(--color-saffron)" />
+                  <span>October 25, 2025</span>
+                </div>
+                <div style={styles.detailItem}>
+                  <MapPin size={20} color="var(--color-green)" />
+                  <span>Indira Gandhi Indoor Stadium, New Delhi</span>
+                </div>
+              </div>
+
+              <p style={styles.upcomingEventDesc}>
+                A grand cultural record event celebrating Bharatiya arts through large-scale participation and artistic excellence.
+              </p>
+              <Link href="/upcoming" style={styles.upcomingBtn}>
+                View Details
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* BE A PART OF HISTORY SECTION */}
+      <section style={styles.historySection}>
+        <div style={styles.container}>
+          <div style={styles.historyCard}>
+            <h2 style={styles.historyTitle}>Be a Part of History</h2>
+            <p style={styles.historySubtitle}>
+              Showcase your talent. Set a record. Represent Bharat globally.
+            </p>
+            <Link href="/apply" style={styles.historyBtn}>
+              Apply Now
+            </Link>
           </div>
         </div>
       </section>
@@ -58,17 +183,17 @@ export default function Home() {
           <div style={styles.statsGrid}>
             <div style={styles.statCard}>
               <Award size={40} color="var(--color-saffron)" style={styles.statIcon} />
-              <h2 style={styles.statNumber}>12,450+</h2>
+              <h2 style={styles.statNumber}><AnimatedCounter end={12450} suffix="+" /></h2>
               <p style={styles.statLabel}>Official Records</p>
             </div>
             <div style={styles.statCard}>
               <Users size={40} color="var(--color-navy)" style={styles.statIcon} />
-              <h2 style={styles.statNumber}>8,900+</h2>
+              <h2 style={styles.statNumber}><AnimatedCounter end={8900} suffix="+" /></h2>
               <p style={styles.statLabel}>Record Holders</p>
             </div>
             <div style={styles.statCard}>
               <ShieldCheck size={40} color="var(--color-green)" style={styles.statIcon} />
-              <h2 style={styles.statNumber}>100%</h2>
+              <h2 style={styles.statNumber}><AnimatedCounter end={100} suffix="%" /></h2>
               <p style={styles.statLabel}>Verified Certificates</p>
             </div>
           </div>
@@ -176,13 +301,14 @@ const styles = {
   },
   hero: {
     position: 'relative',
-    height: '500px',
+    padding: '60px 20px',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     background: 'var(--gradient-tricolor-subtle)',
     borderBottom: '1px solid var(--border-color)',
     overflow: 'hidden',
+    minHeight: '500px',
   },
   heroOverlay: {
     position: 'absolute',
@@ -192,15 +318,38 @@ const styles = {
     bottom: 0,
     backgroundImage: 'radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.02) 100%)',
   },
-  heroContent: {
+  heroContainer: {
     position: 'relative',
     zIndex: 1,
+    maxWidth: '1200px',
+    width: '100%',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '50px',
+    flexWrap: 'wrap',
+  },
+  heroLeft: {
+    flex: '1 1 400px',
+    display: 'flex',
+    justifyContent: 'center',
+  },
+  heroImage: {
+    width: '100%',
+    maxHeight: '400px',
+    maxWidth: '400px',
+    borderRadius: '12px',
+    boxShadow: '0 8px 24px rgba(0,0,0,0.1)',
+    objectFit: 'cover',
+  },
+  heroRight: {
+    flex: '1 1 500px',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
     textAlign: 'center',
-    maxWidth: '800px',
-    padding: '0 20px',
   },
   heroTitle: {
-    fontSize: '52px',
+    fontSize: '50px',
     lineHeight: '1.2',
     color: 'var(--color-navy)',
     fontWeight: '900',
@@ -209,6 +358,7 @@ const styles = {
     textShadow: '0 2px 4px rgba(0,0,0,0.05)',
   },
   heroSubtitle: {
+    fontFamily: 'Serif',
     fontSize: '20px',
     color: 'var(--text-main)',
     marginBottom: '40px',
@@ -218,6 +368,8 @@ const styles = {
     display: 'flex',
     gap: '20px',
     justifyContent: 'center',
+    width: '100%',
+    flexWrap: 'wrap',
   },
   primaryBtn: {
     backgroundColor: 'var(--color-saffron)',
@@ -281,6 +433,17 @@ const styles = {
     margin: '0 auto 20px',
     boxShadow: '0 4px 10px rgba(19,136,8,0.3)',
   },
+  mvIconNavy: {
+    width: '64px',
+    height: '64px',
+    backgroundColor: 'var(--color-navy)',
+    borderRadius: '50%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    margin: '0 auto 20px',
+    boxShadow: '0 4px 10px rgba(0,0,128,0.2)',
+  },
   mvTitle: {
     fontSize: '24px',
     fontWeight: '700',
@@ -292,9 +455,170 @@ const styles = {
     color: 'var(--text-muted)',
     lineHeight: '1.6',
   },
+  uniquenessSection: {
+    padding: '30px 0 30px',
+    backgroundColor: 'var(--color-white)',
+  },
+  sectionHeaderUniqueness: {
+    textAlign: 'center',
+    marginBottom: '40px',
+  },
+  uniquenessTitle: {
+    fontSize: '30px',
+    fontWeight: '800',
+    color: 'var(--color-navy)',
+    marginBottom: '20px',
+  },
+  uniquenessSubtitle: {
+    fontSize: '16px',
+    color: 'var(--text-main)',
+    maxWidth: '960px',
+    margin: '0 auto',
+    lineHeight: '1.6',
+  },
+  uniquenessGrid: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+    gap: '30px',
+  },
+  uniquenessCard: {
+    backgroundColor: '#fff',
+    padding: '40px 20px',
+    borderRadius: '12px',
+    border: '1px solid var(--border-color)',
+    boxShadow: '0 4px 15px rgba(0,0,0,0.05)',
+    textAlign: 'center',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    transition: 'transform 0.3s ease',
+  },
+  uniquenessCardTitle: {
+    fontSize: '17px',
+    fontWeight: '400',
+    color: 'var(--text-main)',
+  },
+  upcomingSection: {
+    padding: '60px 0',
+    backgroundColor: 'var(--bg-color)',
+  },
+  upcomingMainTitle: {
+    fontSize: '30px',
+    fontWeight: '800',
+    color: 'var(--color-navy)',
+    textAlign: 'center',
+    marginBottom: '50px',
+  },
+  upcomingFlex: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '60px',
+    flexWrap: 'wrap',
+  },
+  upcomingImageWrapper: {
+    flex: '1 1 450px',
+    overflow: 'hidden',
+    width: '100%',
+    maxHeight: '400px',
+    maxWidth: '400px',
+    borderRadius: '16px',
+    boxShadow: '0 8px 24px rgba(0,0,0,0.1)',
+    objectFit: 'cover',
+  },
+  upcomingImage: {
+    width: '100%',
+    display: 'block',
+    transition: 'transform 0.5s ease',
+  },
+  upcomingContent: {
+    flex: '1 1 500px',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    textAlign: 'center',
+  },
+  upcomingEventTitle: {
+    fontSize: '36px',
+    fontWeight: '900',
+    color: 'var(--color-navy)',
+    marginBottom: '20px',
+    letterSpacing: '1px',
+    borderLeft: '5px solid var(--color-saffron)',
+    paddingLeft: '15px',
+  },
+  upcomingDetails: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '12px',
+    marginBottom: '25px',
+  },
+  detailItem: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '10px',
+    fontSize: '16px',
+    fontWeight: '600',
+    color: 'var(--text-main)',
+  },
+  upcomingEventDesc: {
+    fontSize: '18px',
+    color: '#555',
+    lineHeight: '1.6',
+    marginBottom: '35px',
+    textAlign: 'center',
+  },
+  upcomingBtn: {
+    display: 'inline-block',
+    backgroundColor: 'var(--color-saffron)',
+    color: '#fff',
+    padding: '14px 40px',
+    borderRadius: '50px',
+    fontSize: '16px',
+    fontWeight: '700',
+    textDecoration: 'none',
+    boxShadow: '0 4px 15px rgba(255,153,51,0.3)',
+    transition: 'all 0.3s ease',
+  },
+  historySection: {
+    padding: '40px 0 80px',
+    backgroundColor: 'var(--color-white)',
+  },
+  historyCard: {
+    backgroundColor: 'var(--color-white)',
+    padding: '60px 40px',
+    borderRadius: '16px',
+    textAlign: 'center',
+    boxShadow: '0 10px 40px rgba(0,0,0,0.05)',
+    border: '1px solid var(--border-color)',
+    background: 'linear-gradient(to bottom, var(--color-white), #f9fafb)',
+  },
+  historyTitle: {
+    fontSize: '32px',
+    fontWeight: '800',
+    color: 'var(--color-navy)',
+    marginBottom: '15px',
+  },
+  historySubtitle: {
+    fontSize: '18px',
+    color: 'var(--text-muted)',
+    marginBottom: '35px',
+  },
+  historyBtn: {
+    display: 'inline-block',
+    backgroundColor: 'var(--color-saffron)',
+    color: 'var(--color-white)',
+    padding: '16px 45px',
+    borderRadius: '50px',
+    fontSize: '18px',
+    fontWeight: '700',
+    textDecoration: 'none',
+    boxShadow: '0 6px 20px rgba(255,153,51,0.3)',
+    transition: 'all 0.3s ease',
+  },
   statsSection: {
     padding: '60px 0',
-    backgroundColor: 'var(--color-white)',
+    backgroundColor: 'var(--bg-color)',
     boxShadow: '0 4px 20px rgba(0,0,0,0.03)',
     position: 'relative',
     zIndex: 2,
