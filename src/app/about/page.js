@@ -34,7 +34,7 @@ export default function AboutPage() {
                 Unlike general record organizations, BBBR focuses exclusively on Indian arts and cultural excellence, maintaining authenticity and integrity in every recognition.
                 Our platfor provides opportunities for artists, institutions, and cultural communities to showcase their talent and promote Indian culture globally.<br />
                 <br />
-                <strong>At BBBR, every record is not just an achievement — it is a legacy.</strong>
+                <strong>At BBBR, every record is not just an achievement - it is a legacy.</strong>
               </p>
 
             </section>
@@ -76,78 +76,75 @@ export default function AboutPage() {
                 <h2 style={styles.sectionTitle}>Record Categories</h2>
               </div>
 
-              <div style={styles.catList}>
+              <div style={styles.catGrid}>
 
-                <div style={styles.catItem}>
-                  <div style={styles.catTop}>
-                    <span style={styles.catIcon}>🎭</span>
-                    <strong style={styles.catTitle}>Performing Arts</strong>
+                <div style={styles.catCard}>
+                  <div style={styles.catCardIconWrap}>
+                    <span style={styles.catCardIcon}>🎭</span>
                   </div>
-                  <p style={styles.catDesc}>Dance, music, theatre, classical and folk performances rooted in Indian traditions.</p>
+                  <h4 style={styles.catCardTitle}>Performing Arts</h4>
+                  <p style={styles.catCardDesc}>Dance, music, theatre, classical and folk performances rooted in Indian traditions.</p>
                 </div>
 
-                <div style={styles.catItem}>
-                  <div style={styles.catTop}>
-                    <span style={styles.catIcon}>🎨</span>
-                    <strong style={styles.catTitle}>Art, Craft &amp; Handicrafts</strong>
+                <div style={styles.catCard}>
+                  <div style={styles.catCardIconWrap}>
+                    <span style={styles.catCardIcon}>🎨</span>
                   </div>
-                  <p style={styles.catDesc}>Traditional crafts, handmade creations, artisan skills and cultural art forms.</p>
+                  <h4 style={styles.catCardTitle}>Art, Craft &amp; Handicrafts</h4>
+                  <p style={styles.catCardDesc}>Traditional crafts, handmade creations, artisan skills and cultural art forms.</p>
                 </div>
 
-                <div style={styles.catItem}>
-                  <div style={styles.catTop}>
-                    <span style={styles.catIcon}>🏛️</span>
-                    <strong style={styles.catTitle}>Cultural Heritage &amp; Traditions</strong>
+                <div style={styles.catCard}>
+                  <div style={styles.catCardIconWrap}>
+                    <span style={styles.catCardIcon}>🏛️</span>
                   </div>
-                  <p style={styles.catDesc}>Temple arts, rituals, folk traditions and heritage preservation.</p>
+                  <h4 style={styles.catCardTitle}>Cultural Heritage &amp; Traditions</h4>
+                  <p style={styles.catCardDesc}>Temple arts, rituals, folk traditions and heritage preservation.</p>
                 </div>
 
-                <div style={styles.catItem}>
-                  <div style={styles.catTop}>
-                    <span style={styles.catIcon}>📚</span>
-                    <strong style={styles.catTitle}>Education &amp; Skill Development</strong>
+                <div style={styles.catCard}>
+                  <div style={styles.catCardIconWrap}>
+                    <span style={styles.catCardIcon}>📚</span>
                   </div>
-                  <p style={styles.catDesc}>Workshops, training programs and cultural education initiatives.</p>
+                  <h4 style={styles.catCardTitle}>Education &amp; Skill Development</h4>
+                  <p style={styles.catCardDesc}>Workshops, training programs and cultural education initiatives.</p>
                 </div>
 
-                <div style={styles.catItem}>
-                  <div style={styles.catTop}>
-                    <span style={styles.catIcon}>👥</span>
-                    <strong style={styles.catTitle}>Mass Participation &amp; Gatherings</strong>
+                <div style={styles.catCard}>
+                  <div style={styles.catCardIconWrap}>
+                    <span style={styles.catCardIcon}>👥</span>
                   </div>
-                  <p style={styles.catDesc}>Large-scale cultural events, group performances and mass gatherings.</p>
+                  <h4 style={styles.catCardTitle}>Mass Participation &amp; Gatherings</h4>
+                  <p style={styles.catCardDesc}>Large-scale cultural events, group performances and mass gatherings.</p>
                 </div>
 
-                <div style={styles.catItem}>
-                  <div style={styles.catTop}>
-                    <span style={styles.catIcon}>🌏</span>
-                    <strong style={styles.catTitle}>Social &amp; Cultural Initiatives</strong>
+                <div style={styles.catCard}>
+                  <div style={styles.catCardIconWrap}>
+                    <span style={styles.catCardIcon}>🌏</span>
                   </div>
-                  <p style={styles.catDesc}>Cultural awareness programs and preservation activities.</p>
+                  <h4 style={styles.catCardTitle}>Social &amp; Cultural Initiatives</h4>
+                  <p style={styles.catCardDesc}>Cultural awareness programs and preservation activities.</p>
                 </div>
 
-                <div style={styles.catItem}>
-                  <div style={styles.catTop}>
-                    <span style={styles.catIcon}>💡</span>
-                    <strong style={styles.catTitle}>Innovation in Arts &amp; Culture</strong>
+                <div style={styles.catCard}>
+                  <div style={styles.catCardIconWrap}>
+                    <span style={styles.catCardIcon}>💡</span>
                   </div>
-                  <p style={styles.catDesc}>Creative modern interpretations of traditional Indian art forms.</p>
+                  <h4 style={styles.catCardTitle}>Innovation in Arts &amp; Culture</h4>
+                  <p style={styles.catCardDesc}>Creative modern interpretations of traditional Indian art forms.</p>
                 </div>
 
-                <div style={{...styles.catItem, borderLeft: '4px solid var(--color-green)'}}>
-                  <div style={styles.catTop}>
-                    <span style={styles.catIcon}>🌐</span>
-                    <strong style={styles.catTitle}>Global Participation</strong>
+                <div style={{ ...styles.catCard, borderTop: '3px solid var(--color-green)' }}>
+                  <div style={{ ...styles.catCardIconWrap, borderColor: 'rgba(19,136,8,0.25)', background: 'linear-gradient(135deg, rgba(19,136,8,0.1), rgba(255,153,51,0.06))' }}>
+                    <span style={styles.catCardIcon}>🌐</span>
                   </div>
-                  <div style={styles.globalSubList}>
-                    <p style={styles.catDesc}><strong>Indian Artists:</strong> Artists within India performing Bharatiya arts.</p>
-                    <p style={styles.catDesc}><strong>NRI Artists:</strong> Indians abroad promoting Indian art forms.</p>
-                    <p style={styles.catDesc}><strong>International Artists:</strong> Non-Indians practicing Indian arts globally.</p>
-                  </div>
+                  <h4 style={styles.catCardTitle}>Global Participation</h4>
+                  <p style={styles.catCardDesc}><strong>Indian Artists</strong> · <strong>NRI Artists</strong> · <strong>International Artists</strong></p>
                 </div>
 
               </div>
             </section>
+
 
             {/* 4. Who Can Apply Section */}
             <section style={styles.sectionCard} className="about-card-res">
@@ -301,6 +298,7 @@ const styles = {
     fontWeight: '700',
   },
   text: {
+    textAlign: 'justify',
     fontSize: '16px',
     color: 'var(--text-main)',
     lineHeight: '1.8',
@@ -459,5 +457,51 @@ const styles = {
     fontSize: '14px',
     color: 'var(--color-navy)',
     lineHeight: '1.6',
+  },
+  /* ── Record Categories – own keys, same values as who* for now ── */
+  catGrid: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',
+    gap: '20px',
+    marginBottom: '30px',
+  },
+  catCard: {
+    backgroundColor: 'var(--color-white)',
+    borderWidth: '1px',
+    borderStyle: 'solid',
+    borderColor: 'var(--border-color)',
+    borderRadius: '12px',
+    padding: '24px 20px',
+    textAlign: 'center',
+    boxShadow: '0 4px 15px rgba(0,0,0,0.04)',
+    transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+  },
+  catCardIconWrap: {
+    width: '64px',
+    height: '64px',
+    borderRadius: '50%',
+    background: 'linear-gradient(135deg, rgba(255,153,51,0.12), rgba(19,136,8,0.08))',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    margin: '0 auto 16px',
+    borderWidth: '2px',
+    borderStyle: 'solid',
+    borderColor: 'rgba(255,153,51,0.2)',
+  },
+  catCardIcon: {
+    fontSize: '28px',
+  },
+  catCardTitle: {
+    fontSize: '16px',
+    fontWeight: '700',
+    color: 'var(--color-navy)',
+    marginBottom: '8px',
+  },
+  catCardDesc: {
+    fontSize: '13px',
+    color: 'var(--text-muted)',
+    lineHeight: '1.6',
+    margin: 0,
   },
 };

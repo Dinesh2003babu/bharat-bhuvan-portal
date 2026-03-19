@@ -46,15 +46,16 @@ export default function Home() {
       {/* HERO SECTION */}
       <section style={styles.hero}>
         <div style={styles.heroOverlay}></div>
-        <div style={styles.heroContainer}>
+        <div style={styles.heroContainer} className="hero-container">
           {/* Image Left */}
-          <div style={styles.heroLeft}>
-            <img src="/1_53.jpg" alt="Bharat Bhuvan Hero" style={styles.heroImage} />
+          <div style={styles.heroLeft} className="hero-left">
+            <img src="/1_53.jpg" alt="Bharat Bhuvan Hero" style={styles.heroImage} className="hero-image" />
           </div>
+
           {/* Text Right */}
-          <div style={styles.heroRight}>
-            <h1 style={styles.heroTitle}>
-              PROMOTING <br /> BHARATIYA ARTS <br /> TO THE GLOBAL STAGE
+          <div style={styles.heroRight} className="hero-right">
+            <h1 style={styles.heroTitle} className="hero-title">
+              WELCOME TO <br /> BHARAT BHUVAN BOOK OF RECORDS
             </h1>
             <p style={styles.heroSubtitle}>
               <b>National Recognition Platform for Indian Arts and Cultural Heritage</b>
@@ -63,9 +64,9 @@ export default function Home() {
               <Link href="/apply" style={styles.primaryBtn}>
                 Apply for a New Record
               </Link>
-              <Link href="/records" style={styles.secondaryBtn}>
+              {/* <Link href="/records" style={styles.secondaryBtn}>
                 Search the Database
-              </Link>
+              </Link> */}
             </div>
           </div>
         </div>
@@ -74,8 +75,8 @@ export default function Home() {
       {/* MISSION & VISION SECTION */}
       <section style={styles.missionVisionSection}>
         <div style={styles.container}>
-          <div style={styles.mvGrid}>
-            <div style={styles.mvCard}>
+          <div style={styles.mvGrid} className="mv-grid">
+            <div style={styles.mvCard} className="mv-card">
               <div style={styles.mvIconSaffron}>
                 <Award size={32} color="#fff" />
               </div>
@@ -84,7 +85,7 @@ export default function Home() {
                 To promote, preserve, and elevate Indian arts and cultural heritage worldwide by creating meaningful platforms for record-setting achievements in the arts. We are committed to recognizing artistic excellence, encouraging large-scale cultural participation, and ensuring that the spirit of Indian traditions reaches a global audience.
               </p>
             </div>
-            <div style={styles.mvCard}>
+            <div style={styles.mvCard} className="mv-card">
               <div style={styles.mvIconGreen}>
                 <ShieldCheck size={32} color="#fff" />
               </div>
@@ -106,7 +107,7 @@ export default function Home() {
               Bharat Bhuvan Book of Records is uniquely dedicated to Indian arts and cultural heritage. Unlike general record platforms, we focus exclusively on Bharatiya art forms and traditions, ensuring authenticity and global promotion of Indian culture.
             </p>
           </div>
-          <div style={styles.uniquenessGrid}>
+          <div style={styles.uniquenessGrid} className="uniqueness-grid">
             <div style={styles.uniquenessCard}>
               <div style={styles.mvIconSaffron}>
                 <Palette size={32} color="#fff" />
@@ -133,11 +134,11 @@ export default function Home() {
       <section style={styles.upcomingSection}>
         <div style={styles.container}>
           <h2 style={styles.upcomingMainTitle}>Upcoming Event</h2>
-          <div style={styles.upcomingFlex}>
-            <div style={styles.upcomingImageWrapper}>
-              <img src="/sarvam_shabdam.png" alt="Sarvam Shabdam" style={styles.upcomingImage} />
+          <div style={styles.upcomingFlex} className="upcoming-flex">
+            <div style={styles.upcomingImageWrapper} className="upcoming-img-wrap">
+              <img src="/sarvam_shabdam.png" alt="Sarvam Shabdam" style={styles.upcomingImage} className="upcoming-img" />
             </div>
-            <div style={styles.upcomingContent}>
+            <div style={styles.upcomingContent} className="upcoming-content">
               <h3 style={styles.upcomingEventTitle}>SARVAM SHABDAM</h3>
 
               <div style={styles.upcomingDetails}>
@@ -182,25 +183,26 @@ export default function Home() {
         <div style={styles.container}>
           <div style={styles.statsGrid}>
             <div style={styles.statCard}>
-              <Award size={40} color="var(--color-saffron)" style={styles.statIcon} />
-              <h2 style={styles.statNumber}><AnimatedCounter end={12450} suffix="+" /></h2>
-              <p style={styles.statLabel}>Official Records</p>
+              <Users size={40} color="var(--color-saffron)" style={styles.statIcon} />
+              <h2 style={{ ...styles.statNumber, fontSize: '26px', letterSpacing: '0px' }}>Professional</h2>
+              <p style={styles.statLabel}>Adjudication Process</p>
             </div>
             <div style={styles.statCard}>
-              <Users size={40} color="var(--color-navy)" style={styles.statIcon} />
-              <h2 style={styles.statNumber}><AnimatedCounter end={8900} suffix="+" /></h2>
-              <p style={styles.statLabel}>Record Holders</p>
+              <Award size={40} color="var(--color-navy)" style={styles.statIcon} />
+              <h2 style={{ ...styles.statNumber, fontSize: '28px', letterSpacing: '0px' }}>ISO</h2>
+              <p style={styles.statLabel}>Certified Organization</p>
             </div>
             <div style={styles.statCard}>
               <ShieldCheck size={40} color="var(--color-green)" style={styles.statIcon} />
               <h2 style={styles.statNumber}><AnimatedCounter end={100} suffix="%" /></h2>
-              <p style={styles.statLabel}>Verified Certificates</p>
+              <p style={styles.statLabel}>Verified Certification</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* RECENT RECORDS SECTION */}
+      {/* 
       <section style={styles.recordsSection}>
         <div style={styles.container}>
           <div style={styles.sectionHeader}>
@@ -209,7 +211,6 @@ export default function Home() {
           </div>
 
           <div style={styles.recordsGrid}>
-            {/* Record 1 */}
             <div style={styles.recordCard}>
               <div style={styles.cardHeaderSaffron}></div>
               <div style={styles.cardIconWrapper}>
@@ -226,7 +227,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Record 2 */}
             <div style={styles.recordCard}>
               <div style={styles.cardHeaderNavy}></div>
               <div style={styles.cardIconWrapper}>
@@ -243,7 +243,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Record 3 */}
             <div style={styles.recordCard}>
               <div style={styles.cardHeaderGreen}></div>
               <div style={styles.cardIconWrapper}>
@@ -267,9 +266,10 @@ export default function Home() {
             </Link>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* HOW TO APPLY (MINI BANNER) */}
+      {/* 
       <section style={styles.applyBanner}>
         <div style={styles.container}>
           <div style={styles.applyFlex}>
@@ -283,6 +283,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+       */}
     </div>
   );
 }

@@ -218,6 +218,81 @@ button {
   .mobile-menu-btn {
     display: block !important;
   }
+
+  /* ── HOME PAGE SECTION OVERRIDES ── */
+
+  /* Hero Section */
+  .hero-container {
+    flex-direction: column !important;
+    gap: 20px !important;
+    padding: 20px 15px !important;
+    align-items: center !important;
+  }
+
+  .hero-left {
+    flex: 1 1 100% !important;
+    width: 100% !important;
+  }
+
+  .hero-image {
+    max-width: 100% !important;
+    max-height: 260px !important;
+    width: 100% !important;
+    border-radius: 12px !important;
+  }
+
+  .hero-right {
+    flex: 1 1 100% !important;
+    width: 100% !important;
+  }
+
+  .hero-title {
+    font-size: 26px !important;
+    letter-spacing: 0.5px !important;
+  }
+
+  /* Mission & Vision */
+  .mv-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  .mv-card {
+    padding: 30px 20px !important;
+  }
+
+  /* Uniqueness Grid */
+  .uniqueness-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  /* Upcoming Event */
+  .upcoming-flex {
+    flex-direction: column !important;
+    gap: 25px !important;
+    align-items: center !important;
+  }
+
+  .upcoming-img-wrap {
+    flex: 1 1 100% !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    max-height: 280px !important;
+  }
+
+  .upcoming-img {
+    width: 100% !important;
+    height: 280px !important;
+    object-fit: cover !important;
+  }
+
+  .upcoming-content {
+    flex: 1 1 100% !important;
+    width: 100% !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+  }
 }
 
 /* ANIMATIONS */
