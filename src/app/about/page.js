@@ -7,6 +7,7 @@ export default function AboutPage() {
     <div style={styles.page}>
 
       {/* Header Banner */}
+      {/*       
       <div style={styles.header}>
         <div style={styles.container}>
           <h1 style={styles.title} className="about-title-res">Welcome to Bharat Bhuvan Book of Records</h1>
@@ -15,6 +16,7 @@ export default function AboutPage() {
           </p>
         </div>
       </div>
+     */}
 
       <div style={styles.container}>
         <div style={styles.contentLayout}>
@@ -262,6 +264,7 @@ const styles = {
     borderRadius: '8px',
     border: '1px solid var(--border-color)',
     boxShadow: '0 4px 15px rgba(0,0,0,0.02)',
+    marginTop: '30px',
     marginBottom: '30px',
     position: 'relative',
     overflow: 'hidden',

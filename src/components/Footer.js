@@ -24,9 +24,9 @@ export default function Footer() {
           <div style={styles.column} className="footer-column">
             <h3 style={styles.heading} className="footer-heading">Contact Secretariat</h3>
             <p style={styles.text}>
-              <strong>Email:</strong> official@bharatbhuvanrecords.in<br />
-              <strong>Phone:</strong> +91 (11) 2345-6789<br />
-              <strong>Address:</strong> BBR Bhavan, New Delhi, India 110001
+              <strong>Email:</strong> bbrecords.india@gmail.com<br />
+              <strong>Phone:</strong> +91 7603839116<br />
+              {/* <strong>Address:</strong> BBR Bhavan, Tamil Nadu, India */}
             </p>
           </div>
         </div>

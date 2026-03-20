@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { Award, ShieldCheck, Users, Palette, Landmark, Globe, Calendar, MapPin } from "lucide-react";
+import { Award, ShieldCheck, Users, Palette, Landmark, Globe, Calendar, MapPin, TimerIcon } from "lucide-react";
 
 const AnimatedCounter = ({ end, suffix = "", prefix = "", duration = 2000 }) => {
   const [count, setCount] = useState(0);
@@ -49,7 +49,7 @@ export default function Home() {
         <div style={styles.heroContainer} className="hero-container">
           {/* Image Left */}
           <div style={styles.heroLeft} className="hero-left">
-            <img src="/1_53.jpg" alt="Bharat Bhuvan Hero" style={styles.heroImage} className="hero-image" />
+            <img src="/BBBR_Logo.png" alt="Bharat Bhuvan Hero" style={styles.heroImage} className="hero-image" />
           </div>
 
           {/* Text Right */}
@@ -136,7 +136,7 @@ export default function Home() {
           <h2 style={styles.upcomingMainTitle}>Upcoming Event</h2>
           <div style={styles.upcomingFlex} className="upcoming-flex">
             <div style={styles.upcomingImageWrapper} className="upcoming-img-wrap">
-              <img src="/sarvam_shabdam.png" alt="Sarvam Shabdam" style={styles.upcomingImage} className="upcoming-img" />
+              <img src="/Sarvam_Shabdam_2.png" alt="Sarvam Shabdam" style={styles.upcomingImage} className="upcoming-img" />
             </div>
             <div style={styles.upcomingContent} className="upcoming-content">
               <h3 style={styles.upcomingEventTitle}>SARVAM SHABDAM</h3>
@@ -144,16 +144,20 @@ export default function Home() {
               <div style={styles.upcomingDetails}>
                 <div style={styles.detailItem}>
                   <Calendar size={20} color="var(--color-saffron)" />
-                  <span>October 25, 2025</span>
+                  <span>July 04, 2026</span>
+                </div>
+                <div style={styles.detailItem}>
+                  <TimerIcon size={20} color="var(--color-navy)" />
+                  <span>03:00 PM to 09:00 PM</span>
                 </div>
                 <div style={styles.detailItem}>
                   <MapPin size={20} color="var(--color-green)" />
-                  <span>Indira Gandhi Indoor Stadium, New Delhi</span>
+                  <span>AVVM Pushpam College, Poondi, Thanjavur</span>
                 </div>
               </div>
 
               <p style={styles.upcomingEventDesc}>
-                A grand cultural record event celebrating Bharatiya arts through large-scale participation and artistic excellence.
+                Everything is Sound. Everything Dances. <br />A Record-Breaking Bharatanatyam Production
               </p>
               <Link href="/upcoming" style={styles.upcomingBtn}>
                 View Details
@@ -181,7 +185,7 @@ export default function Home() {
       {/* STATISTICS SECTION */}
       <section style={styles.statsSection}>
         <div style={styles.container}>
-          <div style={styles.statsGrid}>
+          <div style={styles.statsGrid} className="stats-grid">
             <div style={styles.statCard}>
               <Users size={40} color="var(--color-saffron)" style={styles.statIcon} />
               <h2 style={{ ...styles.statNumber, fontSize: '26px', letterSpacing: '0px' }}>Professional</h2>

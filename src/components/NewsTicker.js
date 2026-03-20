@@ -20,9 +20,9 @@ export default function NewsTicker() {
         <div style={styles.marqueeContainer}>
           <div style={styles.marquee}>
             <span style={styles.item}>🔔 Applications for the year 2026 are now open. Standard processing time is 4-6 weeks.</span>
-            <span style={styles.item}>★ New Record: Fastest ascending of Mt. Everest without supplemental oxygen documented this month.</span>
+            <span style={styles.item}>★ New Record: Sarvam Shabdam. Everything is Sound. Everything Dances. A Record-Breaking Bharatanatyam Production.</span>
             <span style={styles.item}>🔔 IMPORTANT: Always verify certificates using the official verify portal.</span>
-            <span style={styles.item}>★ Read the updated Guidelines V2.1 before applying for state-level records.</span>
+            <span style={styles.item}>★ National Recognition Platform for Indian Arts and Cultural Heritage.</span>
           </div>
         </div>
         <div style={styles.date} className="ticker-date">

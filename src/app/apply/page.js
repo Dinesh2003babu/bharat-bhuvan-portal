@@ -1,290 +1,245 @@
 "use client";
 
 import { useState } from "react";
-import { CheckCircle2, ChevronRight, FileText, Upload } from "lucide-react";
-import { countryCodes } from "../../utils/countryCodes";
+import { Send, CheckCircle2, AlertCircle, ShieldCheck } from "lucide-react";
+
+const CATEGORIES = ["Arts", "Dance", "Music", "Education", "Other"];
+
+const TERMS_AND_CONDITIONS = [
+  "This submission is intended only for initial contact and preliminary review of your record proposal.",
+  "Submitting this form does not confirm approval, registration, or recognition of any record.",
+  "Our team will carefully review your details, and only shortlisted applicants will be contacted via WhatsApp.",
+  "The official application form and complete guidelines will be shared only with selected applicants.",
+  "Submission of this form does not guarantee selection, and each application is evaluated based on set criteria.",
+  "All decisions made by Bharath Bhuvan Book of Records are final and respectfully binding.",
+  "We request all applicants to provide true, accurate, and complete information.",
+  "Any incorrect or misleading information may lead to rejection or disqualification.",
+  "Applicants should be prepared to provide valid supporting evidence such as photos, videos, or documents.",
+  "Applications without sufficient proof or clarity may not be considered for further processing.",
+  "Our team may reach out for additional details or clarification during the review process.",
+  "The organization reserves the right to accept, reject, or discontinue any application if required.",
+  "All communication will be carried out through the contact details provided (WhatsApp, phone, or email).",
+  "Submitted content may be used responsibly for documentation and promotional purposes.",
+  "All record attempts should follow safety guidelines, ethical practices, and applicable regulations.",
+  "Participants are responsible for ensuring safety during their record attempt.",
+  "Any applicable fees, once paid, are non-refundable under any circumstances.",
+  "Bharath Bhuvan Book of Records may update rules or processes when necessary for better administration.",
+  "By submitting this form, you confirm that you have read, understood, and agreed to these terms.",
+  "This submission is not an official approval of a world record and does not guarantee recognition."
+];
 
 export default function ApplyPage() {
-  const [step, setStep] = useState(1);
-  const [fileName, setFileName] = useState("");
-  const [error, setError] = useState("");
   const [formData, setFormData] = useState({
-    name: "", email: "", phone: "", address: "",
-    title: "", date: "", venue: "", description: "", declaration: false
+    name: "",
+    parentName: "",
+    age: "",
+    address: "",
+    phone: "",
+    whatsapp: "",
+    instagram: "",
+    youtube: "",
+    category: "",
+    title: "",
+    description: "",
+    academy: "",
+    guru: "",
+    agreed: false
   });
 
-  const handleNext = () => {
-    setError("");
-    if (step === 1) {
-      if (!formData.name.trim() || !formData.email.trim() || !formData.phone.trim() || !formData.address.trim()) {
-        setError("Please fill all required fields in this step.");
-        return;
-      }
-    } else if (step === 2) {
-      if (!formData.title.trim() || !formData.date || !formData.venue.trim() || !formData.description.trim()) {
-        setError("Please fill all required fields in this step.");
-        return;
-      }
-    } else if (step === 3) {
-      if (!fileName || !formData.declaration) {
-        setError("Please upload evidence and accept the solemn declaration.");
-        return;
-      }
-    }
-    setStep(step + 1);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: type === 'checkbox' ? checked : value
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+
+    const message = `*Preliminary Screening Form - Bharat Bhuvan Book of Records*%0A%0A` +
+      `*PERSONAL DETAILS*%0A` +
+      `- Name: ${formData.name}%0A` +
+      `- Parent Name: ${formData.parentName}%0A` +
+      `- Age: ${formData.age}%0A` +
+      `- Address: ${formData.address || "N/A"}%0A` +
+      `- Phone: ${formData.phone}%0A` +
+      `- WhatsApp: ${formData.whatsapp}%0A%0A` +
+      `*RECORD DETAILS*%0A` +
+      `- Category: ${formData.category}%0A` +
+      `- Title: ${formData.title}%0A` +
+      `- Description: ${formData.description}%0A%0A` +
+      `*ACADEMY DETAILS*%0A` +
+      `- Academy: ${formData.academy || "N/A"}%0A` +
+      `- Guru: ${formData.guru || "N/A"}%0A%0A` +
+      `*SOCIAL DETAILS*%0A` +
+      `- Instagram: ${formData.instagram || "N/A"}%0A` +
+      `- YouTube: ${formData.youtube || "N/A"}%0A%0A` +
+      `_I confirm that all information provided is true and accurate._`;
+
+    const whatsappUrl = `https://wa.me/91XXXXXXXXXX?text=${message}`; // Replace with actual WhatsApp number if provided
+
+    // Redirect after a short delay
+    setTimeout(() => {
+      window.open(whatsappUrl, "_blank");
+      setIsLoading(false);
+    }, 800);
   };
 
   return (
     <div style={styles.page}>
-
-      {/* Header Banner */}
+      {/* Header */}
       <div style={styles.header}>
         <div style={styles.container}>
-          <h1 style={styles.title} className="form-header-title">Official Application for Record Certification</h1>
-          <p style={styles.subtitle}>
-            Please fill out this formal declaration accurately. Any discrepancies may lead to immediate rejection of the application.
-          </p>
+          <h1 style={styles.headerTitle}>Apply for Pre-Screening</h1>
+          <p style={styles.headerSubtitle}>Initiate your record-breaking journey today.</p>
         </div>
       </div>
 
-      <div style={styles.container} className="form-container">
+      <div style={styles.container}>
         <div style={styles.layout}>
 
-          {/* Sidebar Steps */}
-          <div style={styles.sidebar} className="sidebar-hide-mobile">
-            <div style={styles.stepsBox}>
-              <h3 style={styles.stepsTitle}>Application Process</h3>
+          {/* Form Side */}
+          <div style={styles.formSection}>
+            <form onSubmit={handleSubmit} style={styles.formCard}>
 
-              <div style={step >= 1 ? styles.stepActive : styles.stepInactive}>
-                <div style={step > 1 ? styles.stepIconSuccess : (step === 1 ? styles.stepIconCurrent : styles.stepIconPending)}>
-                  {step > 1 ? <CheckCircle2 size={16} /> : 1}
+              {/* Personal Details */}
+              <div style={styles.formGroup}>
+                <h3 style={styles.groupTitle}>Personal Details</h3>
+                <div style={styles.grid}>
+                  <div style={styles.field}>
+                    <label style={styles.label}>Individual Participant Name <span style={styles.req}>*</span></label>
+                    <input name="name" required style={styles.input} value={formData.name} onChange={handleChange} />
+                  </div>
+                  <div style={styles.field}>
+                    <label style={styles.label}>Parent’s Name <span style={styles.req}>*</span></label>
+                    <input name="parentName" required style={styles.input} value={formData.parentName} onChange={handleChange} />
+                  </div>
+                  <div style={styles.field}>
+                    <label style={styles.label}>Age <span style={styles.req}>*</span></label>
+                    <input name="age" type="number" required style={styles.input} value={formData.age} onChange={handleChange} />
+                  </div>
+                  <div style={styles.field}>
+                    <label style={styles.label}>Phone Number <span style={styles.req}>*</span></label>
+                    <input name="phone" type="tel" required style={styles.input} value={formData.phone} onChange={handleChange} />
+                  </div>
+                  <div style={styles.field}>
+                    <label style={styles.label}>WhatsApp Number <span style={styles.req}>*</span></label>
+                    <input name="whatsapp" type="tel" required style={styles.input} value={formData.whatsapp} onChange={handleChange} />
+                  </div>
+                  <div style={styles.fieldFull}>
+                    <label style={styles.label}>Address</label>
+                    <textarea name="address" style={styles.textarea} rows={2} value={formData.address} onChange={handleChange} />
+                  </div>
                 </div>
-                <div style={styles.stepText}>
-                  <strong>Applicant Details</strong>
-                  <span>Personal or Organization Info</span>
+              </div>
+
+              {/* Social Details */}
+              <div style={styles.formGroup}>
+                <h3 style={styles.groupTitle}>Social Details (Optional)</h3>
+                <div style={styles.grid}>
+                  <div style={styles.field}>
+                    <label style={styles.label}>Instagram ID</label>
+                    <input name="instagram" style={styles.input} placeholder="@username" value={formData.instagram} onChange={handleChange} />
+                  </div>
+                  <div style={styles.field}>
+                    <label style={styles.label}>YouTube Link</label>
+                    <input name="youtube" style={styles.input} placeholder="https://youtube.com/..." value={formData.youtube} onChange={handleChange} />
+                  </div>
                 </div>
               </div>
 
-              <div style={styles.stepConnector}></div>
-
-              <div style={step >= 2 ? styles.stepActive : styles.stepInactive}>
-                <div style={step > 2 ? styles.stepIconSuccess : (step === 2 ? styles.stepIconCurrent : styles.stepIconPending)}>
-                  {step > 2 ? <CheckCircle2 size={16} /> : 2}
+              {/* Record Details */}
+              <div style={styles.formGroup}>
+                <h3 style={styles.groupTitle}>Record Details</h3>
+                <div style={styles.grid}>
+                  <div style={styles.field}>
+                    <label style={styles.label}>Category <span style={styles.req}>*</span></label>
+                    <select name="category" required style={styles.input} value={formData.category} onChange={handleChange}>
+                      <option value="">Select Category</option>
+                      {CATEGORIES.map(c => <option key={c} value={c}>{c}</option>)}
+                    </select>
+                  </div>
+                  <div style={styles.field}>
+                    <label style={styles.label}>Title of Record Attempt <span style={styles.req}>*</span></label>
+                    <input name="title" required style={styles.input} value={formData.title} onChange={handleChange} />
+                  </div>
+                  <div style={styles.fieldFull}>
+                    <label style={styles.label}>Brief Description <span style={styles.req}>*</span></label>
+                    <textarea name="description" required style={styles.textarea} rows={3} placeholder="Explain your record attempt in 1-3 lines." value={formData.description} onChange={handleChange} />
+                  </div>
                 </div>
-                <div style={styles.stepText}>
-                  <strong>Record Particulars</strong>
-                  <span>Category and Event Details</span>
+              </div>
+
+              {/* Academy Details */}
+              <div style={styles.formGroup}>
+                <h3 style={styles.groupTitle}>Academy Details (Optional)</h3>
+                <div style={styles.grid}>
+                  <div style={styles.field}>
+                    <label style={styles.label}>Academy Name</label>
+                    <input name="academy" style={styles.input} value={formData.academy} onChange={handleChange} />
+                  </div>
+                  <div style={styles.field}>
+                    <label style={styles.label}>Guru Name</label>
+                    <input name="guru" style={styles.input} value={formData.guru} onChange={handleChange} />
+                  </div>
                 </div>
               </div>
 
-              <div style={styles.stepConnector}></div>
-
-              <div style={step >= 3 ? styles.stepActive : styles.stepInactive}>
-                <div style={step > 3 ? styles.stepIconSuccess : (step === 3 ? styles.stepIconCurrent : styles.stepIconPending)}>
-                  {step > 3 ? <CheckCircle2 size={16} /> : 3}
-                </div>
-                <div style={styles.stepText}>
-                  <strong>Evidence Upload</strong>
-                  <span>Photographs and Videos</span>
-                </div>
+              {/* Declaration */}
+              <div style={styles.declarationSection}>
+                <label style={styles.checkboxLabel}>
+                  <input type="checkbox" name="agreed" required checked={formData.agreed} onChange={handleChange} style={styles.checkbox} />
+                  <span>I agree to the terms and conditions and confirm that all information provided is true. I understand that this is only a preliminary submission and not an approval.</span>
+                </label>
+                <button type="submit" disabled={!formData.agreed || isLoading} style={isLoading ? styles.submitBtnLoading : styles.submitBtn}>
+                  {isLoading ? "PROCCESSING..." : "CONTACT & CONTINUE ON WHATSAPP"}
+                  {!isLoading && <Send size={18} style={{ marginLeft: 10 }} />}
+                </button>
               </div>
-            </div>
 
-            <div style={styles.infoBox}>
-              <FileText size={24} color="var(--color-saffron)" style={{ marginBottom: 10 }} />
-              <h4 style={{ fontSize: 14, marginBottom: 5 }}>Need Help?</h4>
-              <p style={{ fontSize: 12, color: 'var(--text-muted)' }}>
-                Read our Standard Operating Procedures (SOP) before applying. Application fees are non-refundable.
-              </p>
-            </div>
+            </form>
           </div>
 
-          {/* Main Form Area */}
-          <div style={styles.formArea}>
-            <div style={styles.formCard}>
-              {/* Form Step Headers */}
-              <div style={styles.formHeader}>
-                <h2 style={styles.formTitle}>
-                  {step === 1 && "Part 1: Applicant Details"}
-                  {step === 2 && "Part 2: Record Particulars"}
-                  {step === 3 && "Part 3: Evidence & Declaration"}
-                  {step === 4 && "Application Submitted"}
-                </h2>
-                {step < 4 && <span style={styles.stepBadge}>Step {step} of 3</span>}
+          {/* Sidebar / Legal */}
+          <div style={styles.sidebar}>
+
+            <div style={styles.disclaimerBox}>
+              <div style={styles.disclaimerHeader}>
+                <AlertCircle size={20} color="var(--color-saffron)" />
+                <h4 style={styles.disclaimerTitle}>IMPORTANT DISCLAIMER</h4>
               </div>
-
-              {/* Form Fields - Step 1 */}
-              {step === 1 && (
-                <div style={styles.formBody}>
-                  <div style={styles.row}>
-                    <div style={styles.fieldGroup}>
-                      <label style={styles.label}>Application Type <span style={styles.req}>*</span></label>
-                      <select style={styles.input}>
-                        <option>Individual</option>
-                        <option>Organization / Institution</option>
-                        <option>Government Body</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div style={styles.row}>
-                    <div style={styles.fieldGroup}>
-                      <label style={styles.label}>Full Name / Organization Name <span style={styles.req}>*</span></label>
-                      <input type="text" style={styles.input} placeholder="As per official documents" value={formData.name} onChange={e => setFormData({ ...formData, name: e.target.value })} />
-                    </div>
-                  </div>
-
-                  <div style={styles.row}>
-                    <div style={styles.fieldGroup}>
-                      <label style={styles.label}>Email Address <span style={styles.req}>*</span></label>
-                      <input type="email" style={styles.input} placeholder="official@example.com" value={formData.email} onChange={e => setFormData({ ...formData, email: e.target.value })} />
-                    </div>
-                    <div style={styles.fieldGroup}>
-                      <label style={styles.label}>Mobile Number <span style={styles.req}>*</span></label>
-                      <div style={styles.phoneInputContainer}>
-                        <select style={styles.phonePrefixSelect} defaultValue="+91">
-                          {countryCodes.map((c) => (
-                            <option key={c.code} value={c.code}>
-                              {c.code}
-                            </option>
-                          ))}
-                        </select>
-                        <input type="tel" style={styles.phoneInput} placeholder="1234567890" value={formData.phone} onChange={e => setFormData({ ...formData, phone: e.target.value })} />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div style={styles.row}>
-                    <div style={styles.fieldGroup}>
-                      <label style={styles.label}>Complete Postal Address <span style={styles.req}>*</span></label>
-                      <textarea style={styles.textarea} rows={3} placeholder="Include City, State, and PIN Code" value={formData.address} onChange={e => setFormData({ ...formData, address: e.target.value })}></textarea>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {/* Form Fields - Step 2 */}
-              {step === 2 && (
-                <div style={styles.formBody}>
-                  <div style={styles.row}>
-                    <div style={styles.fieldGroup}>
-                      <label style={styles.label}>Record Category <span style={styles.req}>*</span></label>
-                      <select style={styles.input}>
-                        <option>Select a category...</option>
-                        <option>Mass Events</option>
-                        <option>Education & Skills</option>
-                        <option>Sports & Endurance</option>
-                        <option>Art & Culture</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div style={styles.row}>
-                    <div style={styles.fieldGroup}>
-                      <label style={styles.label}>Proposed Record Title <span style={styles.req}>*</span></label>
-                      <input type="text" style={styles.input} placeholder="e.g. Largest gathering of..." value={formData.title} onChange={e => setFormData({ ...formData, title: e.target.value })} />
-                    </div>
-                  </div>
-
-                  <div style={styles.row}>
-                    <div style={styles.fieldGroup}>
-                      <label style={styles.label}>Date of Attempt <span style={styles.req}>*</span></label>
-                      <input type="date" style={styles.input} value={formData.date} onChange={e => setFormData({ ...formData, date: e.target.value })} />
-                    </div>
-                    <div style={styles.fieldGroup}>
-                      <label style={styles.label}>Venue / Location <span style={styles.req}>*</span></label>
-                      <input type="text" style={styles.input} placeholder="City, State" value={formData.venue} onChange={e => setFormData({ ...formData, venue: e.target.value })} />
-                    </div>
-                  </div>
-
-                  <div style={styles.row}>
-                    <div style={styles.fieldGroup}>
-                      <label style={styles.label}>Detailed Description of the Attempt <span style={styles.req}>*</span></label>
-                      <textarea style={styles.textarea} rows={4} placeholder="Describe the rules followed, the measurements, and the exact achievement." value={formData.description} onChange={e => setFormData({ ...formData, description: e.target.value })}></textarea>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {/* Form Fields - Step 3 */}
-              {step === 3 && (
-                <div style={styles.formBody}>
-                  <div style={styles.uploadBox}>
-                    <Upload size={32} color="var(--color-navy)" style={{ marginBottom: 10 }} />
-                    <h4 style={{ marginBottom: 5 }}>Upload Evidence Package</h4>
-                    <p style={{ fontSize: 12, color: 'var(--text-muted)' }}>Upload a single ZIP file containing videos, high-res photos, and logbooks. (Max: 50MB)</p>
-
-                    <label htmlFor="evidence-upload" style={styles.uploadBtn}>
-                      {fileName ? "Change File" : "Select File"}
-                    </label>
-                    <input
-                      id="evidence-upload"
-                      type="file"
-                      accept=".zip,.rar"
-                      style={{ display: 'none' }}
-                      onChange={(e) => {
-                        if (e.target.files && e.target.files.length > 0) {
-                          setFileName(e.target.files[0].name);
-                        }
-                      }}
-                    />
-
-                    {fileName && (
-                      <div style={styles.fileSuccessBadge}>
-                        ✓ Selected: {fileName}
-                      </div>
-                    )}
-                  </div>
-
-                  <div style={styles.declarationBox}>
-                    <h4 style={{ color: 'var(--color-saffron)', marginBottom: 10 }}>Solemn Declaration</h4>
-                    <p style={{ fontSize: 13, color: 'var(--text-muted)', lineHeight: 1.5, marginBottom: 15 }}>
-                      I hereby declare that all information provided in this application is true and correct to the best of my knowledge. I understand that the Bharat Bhuvan Book of Records holds the final authority to reject or adjudicate this claim.
-                    </p>
-                    <label style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 13, fontWeight: 600 }}>
-                      <input type="checkbox" style={{ width: 16, height: 16 }} checked={formData.declaration} onChange={e => setFormData({ ...formData, declaration: e.target.checked })} />
-                      I accept the terms and conditions and affirm this declaration.
-                    </label>
-                  </div>
-                </div>
-              )}
-
-              {/* Success Step 4 */}
-              {step === 4 && (
-                <div style={styles.successBody}>
-                  <CheckCircle2 size={64} color="var(--color-green)" style={{ marginBottom: 20 }} />
-                  <h2 style={{ color: 'var(--color-green)', marginBottom: 10 }}>Application Submitted Successfully</h2>
-                  <p style={{ color: 'var(--text-muted)', marginBottom: 20 }}>
-                    Your Application Reference ID is <strong>BBR-APP-{Math.floor(Math.random() * 90000) + 10000}</strong>.<br />
-                    Please save this ID for future correspondence. You will receive an email confirmation shortly.
-                  </p>
-                  <button onClick={() => setStep(1)} style={styles.primaryBtn}>Submit Another Application</button>
-                </div>
-              )}
-
-              {/* Form Actions */}
-              {step < 4 && (
-                <div style={styles.formFooterWrapper}>
-                  {error && <div style={styles.errorBanner}>{error}</div>}
-                  <div style={styles.formFooter}>
-                    {step > 1 ? (
-                      <button onClick={() => { setError(""); setStep(step - 1); }} style={styles.secondaryBtn}>Back</button>
-                    ) : <div></div>}
-
-                    {step < 3 ? (
-                      <button onClick={handleNext} style={styles.primaryBtn}>
-                        Save & Continue <ChevronRight size={18} />
-                      </button>
-                    ) : (
-                      <button onClick={handleNext} style={styles.submitBtn}>
-                        Submit Official Application
-                      </button>
-                    )}
-                  </div>
-                </div>
-              )}
-
+              <ul style={styles.disclaimerList}>
+                <li>This submission is only for initial contact and preliminary review.</li>
+                <li>This is <strong>not</strong> an official application or approval of a world record.</li>
+                <li>Submission does not guarantee selection or recognition.</li>
+                <li>Valid supporting evidence (photos/videos) will be required during the official process.</li>
+                <li>Final decision rests with Bharath Bhuvan Book of Records.</li>
+              </ul>
             </div>
+
+            <div style={styles.termsBox}>
+              <div style={styles.termsHeader}>
+                <ShieldCheck size={20} color="var(--color-navy)" />
+                <h4 style={styles.termsTitle}>Terms & Conditions</h4>
+              </div>
+              <div style={styles.termsScroll}>
+                {TERMS_AND_CONDITIONS.map((t, i) => (
+                  <p key={i} style={styles.termItem}>
+                    <span style={styles.termNum}>{i + 1}.</span> {t}
+                  </p>
+                ))}
+              </div>
+            </div>
+
+            <div style={styles.trustBox}>
+              <CheckCircle2 size={32} color="var(--color-green)" />
+              <p style={styles.trustText}>Your data is securely handled for preliminary screening purposes only.</p>
+            </div>
+
           </div>
 
         </div>
@@ -295,304 +250,237 @@ export default function ApplyPage() {
 
 const styles = {
   page: {
+    backgroundColor: '#f4f7f9',
+    minHeight: '100vh',
     paddingBottom: '80px',
-    backgroundColor: 'var(--bg-color)',
-    minHeight: '100%',
   },
   header: {
     backgroundColor: 'var(--color-navy)',
-    color: 'var(--color-white)',
-    padding: '40px 0',
-    marginBottom: '40px',
+    color: '#fff',
+    padding: '20px 0 20px',
+    // marginBottom: '40px',
+    textAlign: 'center',
     borderBottom: '6px solid var(--color-saffron)',
   },
+  headerTitle: {
+    color: 'var(--color-saffron)',
+    fontSize: '36px',
+    fontWeight: '800',
+    marginBottom: '10px',
+    textTransform: 'uppercase',
+    letterSpacing: '1px',
+  },
+  headerSubtitle: {
+    fontSize: '18px',
+    color: 'rgba(255,255,255,0.8)',
+  },
   container: {
-    maxWidth: '1000px',
+    maxWidth: '1200px',
     margin: '0 auto',
     padding: '0 20px',
-  },
-  title: {
-    fontSize: '28px',
-    fontWeight: '700',
-    marginBottom: '10px',
-  },
-  subtitle: {
-    fontSize: '15px',
-    color: 'rgba(255,255,255,0.8)',
-    maxWidth: '600px',
   },
   layout: {
     display: 'flex',
     gap: '30px',
-    alignItems: 'flex-start',
     flexWrap: 'wrap',
   },
+  formSection: {
+    flex: '2 1 600px',
+    marginTop: '20px',
+  },
   sidebar: {
-    flex: '1 1 250px',
-    maxWidth: '300px',
+    flex: '1 1 350px',
     display: 'flex',
     flexDirection: 'column',
-    gap: '20px',
-  },
-  stepsBox: {
-    backgroundColor: '#fff',
-    border: '1px solid var(--border-color)',
-    borderRadius: '4px',
-    padding: '20px',
-    boxShadow: '0 2px 10px rgba(0,0,0,0.02)',
-  },
-  stepsTitle: {
-    fontSize: '16px',
-    marginBottom: '20px',
-    color: 'var(--color-navy)',
-    borderBottom: '1px solid var(--border-color)',
-    paddingBottom: '10px',
-  },
-  stepActive: {
-    display: 'flex',
-    gap: '15px',
-    opacity: 1,
-  },
-  stepInactive: {
-    display: 'flex',
-    gap: '15px',
-    opacity: 0.5,
-  },
-  stepIconCurrent: {
-    width: '24px', height: '24px', borderRadius: '50%',
-    backgroundColor: 'var(--color-navy)', color: '#fff',
-    display: 'flex', alignItems: 'center', justifyContent: 'center',
-    fontSize: '12px', fontWeight: 'bold',
-  },
-  stepIconPending: {
-    width: '24px', height: '24px', borderRadius: '50%',
-    backgroundColor: '#e2e8f0', color: 'var(--text-muted)',
-    display: 'flex', alignItems: 'center', justifyContent: 'center',
-    fontSize: '12px', fontWeight: 'bold',
-  },
-  stepIconSuccess: {
-    width: '24px', height: '24px', borderRadius: '50%',
-    backgroundColor: 'var(--color-green)', color: '#fff',
-    display: 'flex', alignItems: 'center', justifyContent: 'center',
-  },
-  stepText: {
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  stepTextTitle: {
-    fontSize: '14px',
-    fontWeight: '600',
-    color: 'var(--text-main)',
-  },
-  stepTextDesc: {
-    fontSize: '12px',
-    color: 'var(--text-muted)',
-  },
-  stepConnector: {
-    width: '2px',
-    height: '25px',
-    backgroundColor: 'var(--border-color)',
-    marginLeft: '11px',
-    margin: '5px 0',
-  },
-  infoBox: {
-    backgroundColor: 'var(--color-saffron-light)',
-    border: '1px solid rgba(255,153,51,0.3)',
-    borderRadius: '4px',
-    padding: '20px',
-  },
-  formArea: {
-    flex: '3 1 500px',
+    gap: '30px',
   },
   formCard: {
     backgroundColor: '#fff',
-    border: '1px solid var(--border-color)',
-    borderTop: '4px solid var(--color-navy)',
-    borderRadius: '4px',
-    boxShadow: '0 4px 15px rgba(0,0,0,0.03)',
+    padding: '40px',
+    borderRadius: '12px',
+    boxShadow: '0 10px 30px rgba(0,0,0,0.05)',
   },
-  formHeader: {
-    padding: '20px 30px',
-    borderBottom: '1px solid var(--border-color)',
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    backgroundColor: '#f8fafc',
+  formGroup: {
+    marginBottom: '40px',
+    paddingBottom: '20px',
+    borderBottom: '1px solid #edf2f7',
   },
-  formTitle: {
+  groupTitle: {
     fontSize: '20px',
+    fontWeight: '800',
     color: 'var(--color-navy)',
+    marginBottom: '20px',
+    paddingLeft: '15px',
+    borderLeft: '4px solid var(--color-saffron)',
   },
-  stepBadge: {
-    backgroundColor: 'var(--color-navy-light)',
-    color: 'var(--color-navy)',
-    padding: '4px 10px',
-    borderRadius: '20px',
-    fontSize: '12px',
-    fontWeight: '700',
-  },
-  formBody: {
-    padding: '30px',
-    display: 'flex',
-    flexDirection: 'column',
+  grid: {
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr',
     gap: '20px',
   },
-  successBody: {
-    padding: '60px 30px',
-    textAlign: 'center',
+  field: {
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center',
   },
-  row: {
-    display: 'flex',
-    gap: '20px',
-    flexWrap: 'wrap',
-  },
-  fieldGroup: {
-    flex: 1,
+  fieldFull: {
+    gridColumn: '1 / span 2',
     display: 'flex',
     flexDirection: 'column',
-    minWidth: '200px',
   },
   label: {
     fontSize: '14px',
-    fontWeight: '600',
+    fontWeight: '700',
     marginBottom: '8px',
-    color: 'var(--text-main)',
+    color: '#4a5568',
   },
   req: {
-    color: 'red',
+    color: '#e53e3e',
   },
   input: {
     padding: '12px 15px',
-    border: '1px solid var(--border-color)',
-    borderRadius: '4px',
-    fontSize: '14px',
+    border: '1px solid #e2e8f0',
+    borderRadius: '8px',
+    fontSize: '15px',
+    backgroundColor: '#f8fafc',
     outline: 'none',
     transition: 'border-color 0.2s',
   },
   textarea: {
     padding: '12px 15px',
-    border: '1px solid var(--border-color)',
-    borderRadius: '4px',
-    fontSize: '14px',
+    border: '1px solid #e2e8f0',
+    borderRadius: '8px',
+    fontSize: '15px',
+    backgroundColor: '#f8fafc',
     outline: 'none',
-    resize: 'vertical',
+    resize: 'none',
     fontFamily: 'inherit',
   },
-  uploadBox: {
-    border: '2px dashed var(--border-color)',
-    padding: '40px',
-    textAlign: 'center',
-    borderRadius: '4px',
+  declarationSection: {
+    marginTop: '20px',
     backgroundColor: '#f8fafc',
+    padding: '30px',
+    borderRadius: '12px',
+    border: '1px solid #e2e8f0',
+  },
+  checkboxLabel: {
     display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  uploadBtn: {
-    marginTop: '15px',
-    padding: '8px 20px',
-    border: '1px solid var(--color-navy)',
-    backgroundColor: 'transparent',
-    color: 'var(--color-navy)',
-    fontWeight: '600',
-    borderRadius: '4px',
-    cursor: 'pointer',
-    display: 'inline-block',
-  },
-  fileSuccessBadge: {
-    marginTop: '15px',
-    padding: '8px 15px',
-    backgroundColor: '#e5f5e5', // Light green
-    color: 'var(--color-green)',
-    border: '1px solid var(--color-green)',
-    borderRadius: '4px',
-    fontSize: '13px',
-    fontWeight: '600',
-  },
-  declarationBox: {
-    backgroundColor: 'var(--color-saffron-light)',
-    padding: '20px',
-    borderRadius: '4px',
-    borderLeft: '4px solid var(--color-saffron)',
-  },
-  errorBanner: {
-    backgroundColor: '#fff0f0',
-    color: '#d32f2f',
-    padding: '12px 20px',
+    gap: '15px',
     fontSize: '14px',
-    fontWeight: '600',
-    borderLeft: '4px solid #d32f2f',
-    marginBottom: '10px',
-    borderRadius: '4px',
+    color: '#4a5568',
+    lineHeight: '1.6',
+    cursor: 'pointer',
+    marginBottom: '30px',
   },
-  formFooterWrapper: {
-    display: 'flex',
-    flexDirection: 'column',
-    backgroundColor: '#f8fafc',
-    padding: '20px 30px',
-    borderTop: '1px solid var(--border-color)',
-  },
-  formFooter: {
-    display: 'flex',
-    justifyContent: 'space-between',
-  },
-  primaryBtn: {
-    backgroundColor: 'var(--color-navy)',
-    color: '#fff',
-    border: 'none',
-    padding: '12px 24px',
-    borderRadius: '4px',
-    fontWeight: '600',
-    display: 'flex',
-    alignItems: 'center',
-    gap: '8px',
-    transition: 'background-color 0.2s',
-  },
-  secondaryBtn: {
-    backgroundColor: 'transparent',
-    color: 'var(--color-navy)',
-    border: '1px solid var(--color-navy)',
-    padding: '12px 24px',
-    borderRadius: '4px',
-    fontWeight: '600',
+  checkbox: {
+    width: '20px',
+    height: '20px',
+    marginTop: '2px',
+    accentColor: 'var(--color-navy)',
   },
   submitBtn: {
+    width: '100%',
     backgroundColor: 'var(--color-green)',
     color: '#fff',
     border: 'none',
-    borderRadius: '4px',
-    fontWeight: '700',
-    boxShadow: '0 4px 10px rgba(19,136,8,0.3)',
-  },
-  phoneInputContainer: {
+    padding: '18px',
+    borderRadius: '8px',
+    fontSize: '16px',
+    fontWeight: '800',
+    cursor: 'pointer',
     display: 'flex',
     alignItems: 'center',
-    border: '1px solid var(--border-color)',
-    borderRadius: '4px',
-    overflow: 'hidden',
-    backgroundColor: '#fff',
+    justifyContent: 'center',
+    boxShadow: '0 4px 15px rgba(19,136,8,0.3)',
+    transition: 'transform 0.2s, background-color 0.2s',
   },
-  phonePrefixSelect: {
-    padding: '12px 10px',
-    backgroundColor: '#f1f5f9',
-    color: 'var(--text-main)',
-    border: 'none',
-    borderRight: '1px solid var(--border-color)',
-    fontSize: '14px',
-    fontWeight: '600',
-    outline: 'none',
-    cursor: 'pointer',
-    maxWidth: '120px',
-  },
-  phoneInput: {
-    flex: 1,
-    padding: '12px 15px',
-    border: 'none',
-    fontSize: '14px',
-    outline: 'none',
+  submitBtnLoading: {
     width: '100%',
+    backgroundColor: '#718096',
+    color: '#fff',
+    border: 'none',
+    padding: '18px',
+    borderRadius: '8px',
+    fontSize: '16px',
+    fontWeight: '800',
+    cursor: 'not-allowed',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  disclaimerBox: {
+    backgroundColor: '#fffaf0',
+    padding: '30px',
+    borderRadius: '12px',
+    marginTop: '20px',
+    border: '1px solid #feebc8',
+    borderLeft: '5px solid var(--color-saffron)',
+  },
+  disclaimerHeader: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '10px',
+    marginBottom: '15px',
+  },
+  disclaimerTitle: {
+    fontSize: '16px',
+    fontWeight: '800',
+    color: '#c05621',
+  },
+  disclaimerList: {
+    paddingLeft: '20px',
+    fontSize: '14px',
+    color: '#744210',
+    lineHeight: '1.7',
+  },
+  termsBox: {
+    backgroundColor: '#fff',
+    padding: '30px',
+    borderRadius: '12px',
+    boxShadow: '0 4px 15px rgba(0,0,0,0.05)',
+    border: '1px solid #e2e8f0',
+  },
+  termsHeader: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '10px',
+    marginBottom: '20px',
+    borderBottom: '1px solid #edf2f7',
+    paddingBottom: '10px',
+  },
+  termsTitle: {
+    fontSize: '16px',
+    fontWeight: '800',
+    color: 'var(--color-navy)',
+  },
+  termsScroll: {
+    maxHeight: '400px',
+    overflowY: 'auto',
+    paddingRight: '10px',
+  },
+  termItem: {
+    fontSize: '13px',
+    color: '#4a5568',
+    lineHeight: '1.6',
+    marginBottom: '12px',
+    display: 'flex',
+    gap: '8px',
+  },
+  termNum: {
+    fontWeight: '700',
+    color: 'var(--color-navy)',
+    minWidth: '20px',
+  },
+  trustBox: {
+    textAlign: 'center',
+    padding: '20px',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    gap: '10px',
+  },
+  trustText: {
+    fontSize: '12px',
+    color: '#a0aec0',
+    fontStyle: 'italic',
   }
 };

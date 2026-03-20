@@ -16,32 +16,34 @@ export default function Header() {
   return (
     <header style={styles.header}>
       <div style={styles.topOrnament}></div>
-      <div style={styles.container}>
-        <div style={styles.logoArea}>
-          {/* Placeholder for standard emblem */}
-          <div style={styles.emblemPlaceholder}>
-            <div style={styles.innerCircle}></div>
+      <div style={styles.container} className="header-container">
+        <div style={styles.logoArea} className="logo-section">
+          {/* Official Logo Emblem */}
+          <div style={styles.logoWrapper}>
+            <img src="/BBBR_Logo.png" alt="BBBR Logo" style={styles.logoImage} />
           </div>
           <div style={styles.titleArea}>
             <h1 style={styles.englishTitle}>BHARAT BHUVAN BOOK OF RECORDS</h1>
-            <p style={styles.subtitle}>Recognizing Indian Arts & Cultural Excellence</p>
+            <p style={styles.subtitle}>Recognizing Indian Arts & Cultural Heritage</p>
           </div>
         </div>
 
         <nav style={styles.nav} className="mobile-hide">
           <Link href="/" className={getLinkClass("/")}>Home</Link>
-          <Link href="/about" className={getLinkClass("/about")}>About us</Link>
-          <Link href="/records" className={getLinkClass("/records")}>Search Records</Link>
+          <Link href="/about" className={getLinkClass("/about")}>About Us</Link>
+          {/* <Link href="/records" className={getLinkClass("/records")}>Search Records</Link> */}
           <Link href="/upcoming" className={getLinkClass("/upcoming")}>Upcoming</Link>
-          <Link href="/verify" className={getLinkClass("/verify")}>Verify Certificate</Link>
+          {/* <Link href="/verify" className={getLinkClass("/verify")}>Verify Certificate</Link> */}
           <Link href="/apply" className="nav-link-apply">Apply Now</Link>
+          <Link href="/contact" className={getLinkClass("/contact")}>Contact Us</Link>
         </nav>
 
         {/* Mobile Menu Button */}
-        <button 
-          style={styles.mobileMenuBtn} 
+        <button
+          style={styles.mobileMenuBtn}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label="Toggle menu"
+          className="mobile-menu-btn"
         >
           {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
@@ -56,6 +58,7 @@ export default function Header() {
               <Link href="/upcoming" onClick={() => setIsMenuOpen(false)} style={styles.mobileNavLink}>Upcoming</Link>
               <Link href="/verify" onClick={() => setIsMenuOpen(false)} style={styles.mobileNavLink}>Verify Certificate</Link>
               <Link href="/apply" onClick={() => setIsMenuOpen(false)} style={styles.mobileApplyBtn}>Apply Now</Link>
+              <Link href="/contact" onClick={() => setIsMenuOpen(false)} style={styles.mobileNavLink}>Contact Us</Link>
             </div>
           </div>
         )}
@@ -91,24 +94,19 @@ const styles = {
   logoArea: {
     display: 'flex',
     alignItems: 'center',
-    gap: '15px',
+    gap: '10px',
   },
-  emblemPlaceholder: {
-    width: '60px',
-    height: '80px',
-    backgroundColor: 'var(--color-navy-light)',
-    border: '2px solid var(--color-navy)',
-    borderRadius: '4px 4px 30px 30px',
+  logoWrapper: {
+    width: '70px',
+    height: '70px',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    padding: '5px',
   },
-  innerCircle: {
-    width: '24px',
-    height: '24px',
-    borderRadius: '50%',
-    border: '3px solid var(--color-navy)',
+  logoImage: {
+    width: '100%',
+    height: '100%',
+    objectFit: 'contain',
   },
   titleArea: {
     display: 'flex',

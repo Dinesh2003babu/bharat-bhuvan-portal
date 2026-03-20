@@ -1,0 +1,433 @@
+"use client";
+
+import { useState } from "react";
+import { Phone, Mail, MapPin, MessageCircle, Send, CheckCircle2 } from "lucide-react";
+
+export default function ContactPage() {
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    subject: "General Inquiry",
+    message: ""
+  });
+
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSubmitted(true);
+    // Logic for form submission could go here (e.g., API call)
+  };
+
+  const handleWhatsAppClick = () => {
+    const message = encodeURIComponent("Hello, I would like to know more about Bharath Bhuvan Book of Records.");
+    window.open(`https://wa.me/917603839116?text=${message}`, "_blank");
+  };
+
+  return (
+    <div style={styles.page}>
+      {/* Hero Header */}
+      <div style={styles.header}>
+        <div style={styles.container}>
+          <h1 style={styles.headerTitle} className="header-title-mobile">CONTACT US</h1>
+          <p style={styles.headerSubtitle}>Get in touch with us for queries, record applications, and support</p>
+        </div>
+      </div>
+
+      <div style={styles.container}>
+        <div style={styles.layout}>
+
+          {/* Left: Contact Info */}
+          <div style={styles.infoColumn}>
+            <div style={styles.infoCard}>
+              <h2 style={styles.sectionTitle}>Official Channels</h2>
+
+              <div style={{ ...styles.contactItem, borderLeft: '4px solid var(--color-saffron)' }}>
+                <div style={styles.iconBoxSaffron}>
+                  <Phone size={24} color="#fff" />
+                </div>
+                <div>
+                  <p style={{ ...styles.contactLabel, color: 'var(--color-saffron)' }}>Phone Number</p>
+                  <p style={styles.contactValue}>+91 7603839116</p>
+                </div>
+              </div>
+
+              <div style={{ ...styles.contactItem, borderLeft: '4px solid var(--color-green)' }}>
+                <div style={styles.iconBoxGreen}>
+                  <MessageCircle size={24} color="#fff" />
+                </div>
+                <div onClick={handleWhatsAppClick} style={{ cursor: 'pointer' }}>
+                  <p style={{ ...styles.contactLabel, color: 'var(--color-green)' }}>WhatsApp</p>
+                  <p style={styles.contactValue}>+91 7603839116</p>
+                </div>
+              </div>
+
+              <div style={{ ...styles.contactItem, borderLeft: '4px solid var(--color-navy)' }}>
+                <div style={styles.iconBoxNavy}>
+                  <Mail size={24} color="#fff" />
+                </div>
+                <div>
+                  <p style={{ ...styles.contactLabel, color: 'var(--color-navy)' }}>Email Address</p>
+                  <p style={styles.contactValue}>bbrecords.india@gmail.com</p>
+                </div>
+              </div>
+
+              {/* <div style={styles.contactItem}>
+                <div style={styles.iconBoxSaffron}>
+                  <MapPin size={24} color="#fff" />
+                </div>
+                <div>
+                  <p style={styles.contactLabel}>Office Address</p>
+                  <p style={styles.contactValue}>Thanjavur, Tamil Nadu, India</p>
+                </div>
+              </div> */}
+
+              <p style={styles.note}>Our team will respond to your queries as soon as possible.</p>
+
+              <button
+                onClick={handleWhatsAppClick}
+                style={styles.whatsappBtn}
+              >
+                <MessageCircle size={20} style={{ marginRight: 10 }} />
+                CHAT WITH US ON WHATSAPP
+              </button>
+            </div>
+
+            <div style={styles.importantNoteBox}>
+              <h3 style={styles.noteTitle}>Please Note:</h3>
+              <ul style={styles.noteList}>
+                <li>For record applications, please use the <strong>"Apply Now"</strong> page.</li>
+                <li>Only shortlisted applicants will be contacted for record verification.</li>
+                <li>Avoid sending duplicate messages on multiple platforms for faster response.</li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Right: Contact Form */}
+          <div style={styles.formColumn}>
+            <div style={styles.formCard}>
+              <h2 style={styles.sectionTitle}>Submit Enquiry</h2>
+
+              {submitted ? (
+                <div style={styles.successMessage}>
+                  <CheckCircle2 size={48} color="var(--color-green)" style={{ marginBottom: 15 }} />
+                  <h3 style={{ color: 'var(--color-green)', marginBottom: 10 }}>Thank You!</h3>
+                  <p style={{ color: '#4a5568' }}>Thank you for contacting us. Our team will get back to you shortly.</p>
+                  <button onClick={() => setSubmitted(false)} style={styles.resetBtn}>Send Another Message</button>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} style={styles.form}>
+                  <div style={styles.field}>
+                    <label style={styles.label}>Full Name</label>
+                    <input
+                      required
+                      style={styles.input}
+                      value={formData.name}
+                      onChange={e => setFormData({ ...formData, name: e.target.value })}
+                    />
+                  </div>
+
+                  <div style={styles.row}>
+                    <div style={styles.field}>
+                      <label style={styles.label}>Phone Number</label>
+                      <input
+                        required
+                        type="tel"
+                        style={styles.input}
+                        value={formData.phone}
+                        onChange={e => setFormData({ ...formData, phone: e.target.value })}
+                      />
+                    </div>
+                    <div style={styles.field}>
+                      <label style={styles.label}>Email ID</label>
+                      <input
+                        required
+                        type="email"
+                        style={styles.input}
+                        value={formData.email}
+                        onChange={e => setFormData({ ...formData, email: e.target.value })}
+                      />
+                    </div>
+                  </div>
+
+                  <div style={styles.field}>
+                    <label style={styles.label}>Subject</label>
+                    <select
+                      style={styles.select}
+                      value={formData.subject}
+                      onChange={e => setFormData({ ...formData, subject: e.target.value })}
+                    >
+                      <option>General Inquiry</option>
+                      <option>Record Application</option>
+                      <option>Verification</option>
+                      <option>Others</option>
+                    </select>
+                  </div>
+
+                  <div style={styles.field}>
+                    <label style={styles.label}>Message</label>
+                    <textarea
+                      required
+                      rows={5}
+                      style={styles.textarea}
+                      value={formData.message}
+                      onChange={e => setFormData({ ...formData, message: e.target.value })}
+                    />
+                  </div>
+
+                  <button type="submit" style={styles.submitBtn}>
+                    SUBMIT ENQUIRY
+                    <Send size={18} style={{ marginLeft: 10 }} />
+                  </button>
+                </form>
+              )}
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  );
+}
+
+const styles = {
+  page: {
+    backgroundColor: '#f8fafc',
+    minHeight: '100vh',
+    paddingBottom: '80px',
+  },
+  header: {
+    backgroundColor: 'var(--color-navy)',
+    color: '#fff',
+    padding: '20px 0 20px 0',
+    // marginBottom: '60px',
+    textAlign: 'center',
+    borderBottom: '6px solid var(--color-saffron)',
+  },
+  headerTitle: {
+    color: 'var(--color-saffron)',
+    fontSize: '42px',
+    fontWeight: '900',
+    marginBottom: '10px',
+    letterSpacing: '2px',
+  },
+  headerSubtitle: {
+    fontSize: '18px',
+    color: 'rgba(255,255,255,0.8)',
+    maxWidth: '600px',
+    margin: '0 auto',
+  },
+  container: {
+    maxWidth: '1200px',
+    margin: '0 auto',
+    padding: '0 20px',
+  },
+  layout: {
+    display: 'flex',
+    gap: '40px',
+    flexWrap: 'wrap',
+  },
+  infoColumn: {
+    flex: '1 1 400px',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '30px',
+  },
+  formColumn: {
+    flex: '1.5 1 500px',
+  },
+  infoCard: {
+    backgroundColor: '#fff',
+    padding: '40px',
+    marginTop: '20px',
+    borderRadius: '12px',
+    boxShadow: '0 10px 30px rgba(0,0,0,0.05)',
+    borderTop: '4px solid var(--color-saffron)',
+  },
+  sectionTitle: {
+    fontSize: '24px',
+    fontWeight: '800',
+    color: 'var(--color-navy)',
+    marginBottom: '30px',
+    borderBottom: '2px solid #edf2f7',
+    paddingBottom: '15px',
+  },
+  contactItem: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '20px',
+    marginBottom: '25px',
+    padding: '15px',
+    borderRadius: '8px',
+    backgroundColor: '#f8fafc',
+    transition: 'transform 0.2s',
+  },
+  iconBoxSaffron: {
+    width: '50px',
+    height: '50px',
+    borderRadius: '10px',
+    backgroundColor: 'var(--color-saffron)',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    boxShadow: '0 4px 10px rgba(255,153,51,0.3)',
+  },
+  iconBoxGreen: {
+    width: '50px',
+    height: '50px',
+    borderRadius: '10px',
+    backgroundColor: 'var(--color-green)',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    boxShadow: '0 4px 10px rgba(19,136,8,0.3)',
+  },
+  iconBoxNavy: {
+    width: '50px',
+    height: '50px',
+    borderRadius: '10px',
+    backgroundColor: 'var(--color-navy)',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    boxShadow: '0 4px 10px rgba(0,0,0,0.3)',
+  },
+  contactLabel: {
+    fontSize: '14px',
+    fontWeight: '700',
+    color: '#718096',
+    marginBottom: '4px',
+    textTransform: 'uppercase',
+  },
+  contactValue: {
+    fontSize: '18px',
+    fontWeight: '800',
+    color: '#2d3748',
+  },
+  note: {
+    fontSize: '14px',
+    fontStyle: 'italic',
+    color: '#718096',
+    marginTop: '20px',
+    marginBottom: '30px',
+  },
+  whatsappBtn: {
+    width: '100%',
+    backgroundColor: 'var(--color-green)',
+    color: '#fff',
+    border: 'none',
+    padding: '18px',
+    borderRadius: '8px',
+    fontSize: '16px',
+    fontWeight: '800',
+    cursor: 'pointer',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    transition: 'background-color 0.2s',
+  },
+  importantNoteBox: {
+    backgroundColor: '#fff',
+    padding: '30px',
+    borderRadius: '12px',
+    borderLeft: '5px solid var(--color-saffron)',
+    boxShadow: '0 4px 15px rgba(0,0,0,0.05)',
+  },
+  noteTitle: {
+    fontSize: '18px',
+    fontWeight: '800',
+    color: '#c05621',
+    marginBottom: '15px',
+  },
+  noteList: {
+    paddingLeft: '20px',
+    fontSize: '14px',
+    color: '#4a5568',
+    lineHeight: '1.8',
+  },
+  formCard: {
+    backgroundColor: '#fff',
+    padding: '40px',
+    marginTop: '20px',
+    borderRadius: '12px',
+    boxShadow: '0 10px 30px rgba(0,0,0,0.05)',
+    borderTop: '4px solid var(--color-green)',
+  },
+  form: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '20px',
+  },
+  field: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '8px',
+  },
+  row: {
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr',
+    gap: '20px',
+  },
+  label: {
+    fontSize: '14px',
+    fontWeight: '700',
+    color: '#4a5568',
+  },
+  input: {
+    padding: '12px 15px',
+    border: '1px solid #e2e8f0',
+    borderRadius: '8px',
+    fontSize: '15px',
+    outline: 'none',
+    backgroundColor: '#f8fafc',
+    transition: 'border-color 0.2s',
+  },
+  select: {
+    padding: '12px 15px',
+    border: '1px solid #e2e8f0',
+    borderRadius: '8px',
+    fontSize: '15px',
+    outline: 'none',
+    backgroundColor: '#f8fafc',
+  },
+  textarea: {
+    padding: '12px 15px',
+    border: '1px solid #e2e8f0',
+    borderRadius: '8px',
+    fontSize: '15px',
+    outline: 'none',
+    backgroundColor: '#f8fafc',
+    resize: 'none',
+    fontFamily: 'inherit',
+  },
+  submitBtn: {
+    backgroundColor: 'var(--color-saffron)',
+    color: '#fff',
+    border: 'none',
+    padding: '18px',
+    borderRadius: '8px',
+    fontSize: '16px',
+    fontWeight: '800',
+    cursor: 'pointer',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: '10px',
+    boxShadow: '0 4px 15px rgba(234, 138, 64, 0.3)',
+  },
+  successMessage: {
+    textAlign: 'center',
+    padding: '40px 0',
+  },
+  resetBtn: {
+    backgroundColor: 'transparent',
+    color: 'var(--color-navy)',
+    border: '1px solid var(--color-navy)',
+    padding: '10px 20px',
+    borderRadius: '6px',
+    marginTop: '20px',
+    fontWeight: '600',
+    cursor: 'pointer',
+  }
+};
