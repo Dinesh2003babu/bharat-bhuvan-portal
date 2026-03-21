@@ -135,6 +135,10 @@ button {
 
 /* RESPONSIVE UTILITIES */
 @media (max-width: 768px) {
+  body {
+    zoom: 0.85;
+  }
+  
   .mobile-hide {
     display: none !important;
   }
