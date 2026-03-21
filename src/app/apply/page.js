@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Send, CheckCircle2, AlertCircle, ShieldCheck } from "lucide-react";
+import { Send, CheckCircle2, AlertCircle, ShieldCheck, X } from "lucide-react";
 import { supabase } from "../../lib/supabaseClient";
 
 const CATEGORIES = ["Performing Arts",
@@ -59,6 +59,7 @@ export default function ApplyPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
+  const [showTermsModal, setShowTermsModal] = useState(false);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -182,7 +183,7 @@ export default function ApplyPage() {
                     <input name="whatsapp" type="tel" required style={styles.input} value={formData.whatsapp} onChange={handleChange} />
                   </div>
                   <div style={styles.fieldFull}>
-                    <label style={styles.label}>Address</label>
+                    <label style={styles.label}>Address <span style={styles.req}>*</span></label>
                     <textarea name="address" style={styles.textarea} rows={2} value={formData.address} onChange={handleChange} />
                   </div>
                 </div>
@@ -190,14 +191,14 @@ export default function ApplyPage() {
 
               {/* Academy Details */}
               <div style={styles.formGroup}>
-                <h3 style={styles.groupTitle}>Academy Details (Optional)</h3>
+                <h3 style={styles.groupTitle}>Academy Details</h3>
                 <div style={styles.grid}>
                   <div style={styles.field}>
-                    <label style={styles.label}>Academy Name</label>
+                    <label style={styles.label}>Academy Name <span style={styles.req}>*</span></label>
                     <input name="academy" style={styles.input} value={formData.academy} onChange={handleChange} />
                   </div>
                   <div style={styles.field}>
-                    <label style={styles.label}>Guru Name</label>
+                    <label style={styles.label}>Guru Name <span style={styles.req}>*</span></label>
                     <input name="guru" style={styles.input} value={formData.guru} onChange={handleChange} />
                   </div>
                 </div>
@@ -205,14 +206,14 @@ export default function ApplyPage() {
 
               {/* Social Details */}
               <div style={styles.formGroup}>
-                <h3 style={styles.groupTitle}>Social Details (Optional)</h3>
+                <h3 style={styles.groupTitle}>Social Details</h3>
                 <div style={styles.grid}>
                   <div style={styles.field}>
-                    <label style={styles.label}>Instagram ID</label>
+                    <label style={styles.label}>Instagram ID <span style={styles.req}>*</span></label>
                     <input name="instagram" style={styles.input} placeholder="@username" value={formData.instagram} onChange={handleChange} />
                   </div>
                   <div style={styles.field}>
-                    <label style={styles.label}>YouTube Link</label>
+                    <label style={styles.label}>YouTube Link <span style={styles.req}>*</span></label>
                     <input name="youtube" style={styles.input} placeholder="https://youtube.com/..." value={formData.youtube} onChange={handleChange} />
                   </div>
                 </div>
@@ -244,7 +245,7 @@ export default function ApplyPage() {
               <div style={styles.declarationSection}>
                 <label style={styles.checkboxLabel}>
                   <input type="checkbox" name="agreed" required checked={formData.agreed} onChange={handleChange} style={styles.checkbox} />
-                  <span>I agree to the terms and conditions and confirm that all information provided is true. I understand that this is only a preliminary submission and not an approval.</span>
+                  <span>I agree to the <span style={styles.termsLink} onClick={(e) => { e.preventDefault(); setShowTermsModal(true); }}>terms and conditions</span> and confirm that all information provided is true. I understand that this is only a preliminary submission and not an approval.</span>
                 </label>
                 <button type="submit" disabled={!formData.agreed || isLoading} style={isLoading ? styles.submitBtnLoading : styles.submitBtn}>
                   {isLoading ? "PROCCESSING..." : "SUBMIT PRELIMINARY APPLICATION"}
@@ -297,7 +298,29 @@ export default function ApplyPage() {
 
         </div>
       </div>
-    </div >
+
+      {/* Terms Modal */}
+      {showTermsModal && (
+        <div style={styles.modalOverlay} onClick={() => setShowTermsModal(false)}>
+          <div style={styles.modalContent} onClick={e => e.stopPropagation()}>
+            <div style={styles.modalHeader}>
+              <h3 style={styles.modalTitle}>Terms & Conditions</h3>
+              <button style={styles.closeBtn} onClick={() => setShowTermsModal(false)}>
+                <X size={24} />
+              </button>
+            </div>
+            <div style={styles.modalBody}>
+              {TERMS_AND_CONDITIONS.map((t, i) => (
+                <p key={i} style={styles.termItem}>
+                  <span style={styles.termNum}>{i + 1}.</span> {t}
+                </p>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+
+    </div>
   );
 }
 
@@ -535,5 +558,56 @@ const styles = {
     fontSize: '12px',
     color: '#a0aec0',
     fontStyle: 'italic',
+  },
+  termsLink: {
+    color: 'var(--color-navy)',
+    fontWeight: '800',
+    textDecoration: 'underline',
+    cursor: 'pointer',
+  },
+  modalOverlay: {
+    position: 'fixed',
+    top: 0, left: 0, right: 0, bottom: 0,
+    backgroundColor: 'rgba(0,0,0,0.6)',
+    zIndex: 1000,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: '20px',
+  },
+  modalContent: {
+    backgroundColor: '#fff',
+    borderRadius: '12px',
+    width: '100%',
+    maxWidth: '600px',
+    maxHeight: '80vh',
+    display: 'flex',
+    flexDirection: 'column',
+    boxShadow: '0 20px 50px rgba(0,0,0,0.2)',
+  },
+  modalHeader: {
+    padding: '20px 30px',
+    borderBottom: '1px solid #edf2f7',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  modalTitle: {
+    fontSize: '20px',
+    fontWeight: '800',
+    color: 'var(--color-navy)',
+    margin: 0,
+  },
+  closeBtn: {
+    background: 'none',
+    border: 'none',
+    cursor: 'pointer',
+    color: '#a0aec0',
+    padding: '5px',
+    display: 'flex',
+  },
+  modalBody: {
+    padding: '30px',
+    overflowY: 'auto',
   }
 };
