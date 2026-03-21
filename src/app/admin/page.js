@@ -60,7 +60,7 @@ export default function AdminDashboard() {
     
     // Map data ensuring commas in descriptions don't break the CSV
     const rows = filteredApps.map(app => [
-      new Date(app.created_at).toLocaleDateString(),
+      new Date(app.created_at).toLocaleString('en-IN', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true }),
       `"${app.name || ''}"`,
       `"${app.parent_name || ''}"`,
       app.age || '',
@@ -86,7 +86,7 @@ export default function AdminDashboard() {
     const link = document.createElement("a");
     const url = URL.createObjectURL(blob);
     link.setAttribute("href", url);
-    link.setAttribute("download", `BBBR_Records_Export_${new Date().toLocaleDateString().replace(/\//g, '-')}.csv`);
+    link.setAttribute("download", `BBBR_Records_Export_${new Date().toISOString().split('T')[0]}.csv`);
     link.style.visibility = 'hidden';
     document.body.appendChild(link);
     link.click();
@@ -192,7 +192,11 @@ export default function AdminDashboard() {
                 <tbody>
                   {filteredApps.map((app) => (
                     <tr key={app.id} style={styles.tr}>
-                      <td style={styles.td}>{new Date(app.created_at).toLocaleDateString()}</td>
+                      <td style={styles.td}>
+                        <div style={{ whiteSpace: 'nowrap' }}>
+                          {new Date(app.created_at).toLocaleString('en-IN', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true })}
+                        </div>
+                      </td>
                       <td style={styles.td}><strong>{app.name}</strong></td>
                       <td style={styles.td}>{app.parent_name || '-'}</td>
                       <td style={styles.td}><strong>{app.age}</strong></td>
