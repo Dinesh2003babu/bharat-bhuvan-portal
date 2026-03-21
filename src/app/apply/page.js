@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Send, CheckCircle2, AlertCircle, ShieldCheck } from "lucide-react";
+import { supabase } from "../../lib/supabaseClient";
 
 const CATEGORIES = ["Arts", "Dance", "Music", "Education", "Other"];
 
@@ -47,6 +48,8 @@ export default function ApplyPage() {
   });
 
   const [isLoading, setIsLoading] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -56,46 +59,78 @@ export default function ApplyPage() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
+    setErrorMsg("");
 
-    const message = `*Preliminary Screening Form - Bharat Bhuvan Book of Records*%0A%0A` +
-      `*PERSONAL DETAILS*%0A` +
-      `- Name: ${formData.name}%0A` +
-      `- Parent Name: ${formData.parentName}%0A` +
-      `- Age: ${formData.age}%0A` +
-      `- Address: ${formData.address || "N/A"}%0A` +
-      `- Phone: ${formData.phone}%0A` +
-      `- WhatsApp: ${formData.whatsapp}%0A%0A` +
-      `*RECORD DETAILS*%0A` +
-      `- Category: ${formData.category}%0A` +
-      `- Title: ${formData.title}%0A` +
-      `- Description: ${formData.description}%0A%0A` +
-      `*ACADEMY DETAILS*%0A` +
-      `- Academy: ${formData.academy || "N/A"}%0A` +
-      `- Guru: ${formData.guru || "N/A"}%0A%0A` +
-      `*SOCIAL DETAILS*%0A` +
-      `- Instagram: ${formData.instagram || "N/A"}%0A` +
-      `- YouTube: ${formData.youtube || "N/A"}%0A%0A` +
-      `_I confirm that all information provided is true and accurate._`;
+    try {
+      const { data, error } = await supabase
+        .from('applications')
+        .insert([{
+          name: formData.name,
+          parent_name: formData.parentName,
+          age: parseInt(formData.age),
+          phone: formData.phone,
+          whatsapp: formData.whatsapp,
+          address: formData.address,
+          category: formData.category,
+          title: formData.title,
+          description: formData.description,
+          academy: formData.academy,
+          guru: formData.guru,
+          instagram: formData.instagram,
+          youtube: formData.youtube
+        }]);
 
-    const whatsappUrl = `https://wa.me/91XXXXXXXXXX?text=${message}`; // Replace with actual WhatsApp number if provided
-
-    // Redirect after a short delay
-    setTimeout(() => {
-      window.open(whatsappUrl, "_blank");
+      if (error) throw error;
+      
+      setIsSuccess(true);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } catch (error) {
+      console.error('Error submitting application:', error);
+      setErrorMsg("Failed to submit application. Please check your connection and try again.");
+    } finally {
       setIsLoading(false);
-    }, 800);
+    }
   };
+
+  if (isSuccess) {
+    return (
+      <div style={styles.page}>
+        <div style={styles.header}>
+          <div style={styles.container}>
+            <h1 style={styles.headerTitle}>Application Received</h1>
+            <p style={styles.headerSubtitle}>Your record-breaking journey has officially begun.</p>
+          </div>
+        </div>
+        <div style={styles.container}>
+          <div style={{ ...styles.formCard, textAlign: 'center', marginTop: '40px', padding: '60px 40px' }}>
+            <CheckCircle2 size={80} color="var(--color-green)" style={{ margin: '0 auto 20px' }} />
+            <h2 style={{ fontSize: '28px', color: 'var(--color-navy)', marginBottom: '15px' }}>Thank You, {formData.name}!</h2>
+            <p style={{ fontSize: '18px', color: 'var(--text-main)', lineHeight: '1.6', maxWidth: '600px', margin: '0 auto 30px' }}>
+              We have successfully received your preliminary application for the <strong>{formData.category}</strong> category. 
+              Our evaluation team will review your details carefully. If shortlisted, you will be contacted via WhatsApp at <strong>{formData.whatsapp}</strong> with the official guidelines.
+            </p>
+            <button 
+              onClick={() => window.location.reload()} 
+              style={{ ...styles.submitBtn, width: 'auto', padding: '15px 40px', display: 'inline-block', margin: '0 auto' }}
+            >
+              Return to Website
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div style={styles.page}>
       {/* Header */}
       <div style={styles.header}>
         <div style={styles.container}>
-          <h1 style={styles.headerTitle}>Apply for Pre-Screening</h1>
-          <p style={styles.headerSubtitle}>Initiate your record-breaking journey today.</p>
+          <h1 style={styles.headerTitle}>Application for Pre-Screening</h1>
+          <p style={styles.headerSubtitle}>Initiate your record-breaking odyssey.</p>
         </div>
       </div>
 
@@ -105,6 +140,13 @@ export default function ApplyPage() {
           {/* Form Side */}
           <div style={styles.formSection}>
             <form onSubmit={handleSubmit} style={styles.formCard}>
+
+              {errorMsg && (
+                <div style={{ backgroundColor: '#fff5f5', color: '#c53030', padding: '15px', borderRadius: '8px', marginBottom: '25px', borderLeft: '4px solid #c53030', fontWeight: '600' }}>
+                  <AlertCircle size={18} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '8px' }} />
+                  {errorMsg}
+                </div>
+              )}
 
               {/* Personal Details */}
               <div style={styles.formGroup}>
@@ -133,6 +175,21 @@ export default function ApplyPage() {
                   <div style={styles.fieldFull}>
                     <label style={styles.label}>Address</label>
                     <textarea name="address" style={styles.textarea} rows={2} value={formData.address} onChange={handleChange} />
+                  </div>
+                </div>
+              </div>
+
+              {/* Academy Details */}
+              <div style={styles.formGroup}>
+                <h3 style={styles.groupTitle}>Academy Details (Optional)</h3>
+                <div style={styles.grid}>
+                  <div style={styles.field}>
+                    <label style={styles.label}>Academy Name</label>
+                    <input name="academy" style={styles.input} value={formData.academy} onChange={handleChange} />
+                  </div>
+                  <div style={styles.field}>
+                    <label style={styles.label}>Guru Name</label>
+                    <input name="guru" style={styles.input} value={formData.guru} onChange={handleChange} />
                   </div>
                 </div>
               </div>
@@ -169,22 +226,7 @@ export default function ApplyPage() {
                   </div>
                   <div style={styles.fieldFull}>
                     <label style={styles.label}>Brief Description <span style={styles.req}>*</span></label>
-                    <textarea name="description" required style={styles.textarea} rows={3} placeholder="Explain your record attempt in 1-3 lines." value={formData.description} onChange={handleChange} />
-                  </div>
-                </div>
-              </div>
-
-              {/* Academy Details */}
-              <div style={styles.formGroup}>
-                <h3 style={styles.groupTitle}>Academy Details (Optional)</h3>
-                <div style={styles.grid}>
-                  <div style={styles.field}>
-                    <label style={styles.label}>Academy Name</label>
-                    <input name="academy" style={styles.input} value={formData.academy} onChange={handleChange} />
-                  </div>
-                  <div style={styles.field}>
-                    <label style={styles.label}>Guru Name</label>
-                    <input name="guru" style={styles.input} value={formData.guru} onChange={handleChange} />
+                    <textarea name="description" required style={styles.textarea} rows={3} placeholder="Explain your record attempt in minimum 3 lines." value={formData.description} onChange={handleChange} />
                   </div>
                 </div>
               </div>
@@ -196,7 +238,7 @@ export default function ApplyPage() {
                   <span>I agree to the terms and conditions and confirm that all information provided is true. I understand that this is only a preliminary submission and not an approval.</span>
                 </label>
                 <button type="submit" disabled={!formData.agreed || isLoading} style={isLoading ? styles.submitBtnLoading : styles.submitBtn}>
-                  {isLoading ? "PROCCESSING..." : "CONTACT & CONTINUE ON WHATSAPP"}
+                  {isLoading ? "PROCCESSING..." : "SUBMIT PRELIMINARY APPLICATION"}
                   {!isLoading && <Send size={18} style={{ marginLeft: 10 }} />}
                 </button>
               </div>
@@ -214,6 +256,8 @@ export default function ApplyPage() {
               </div>
               <ul style={styles.disclaimerList}>
                 <li>This submission is only for initial contact and preliminary review.</li>
+                <li>This application is only for individual record attempts.</li>
+                <li>All mass attempts hosted by BBBR will have a separate application link which will shared via WhatsApp.</li>
                 <li>This is <strong>not</strong> an official application or approval of a world record.</li>
                 <li>Submission does not guarantee selection or recognition.</li>
                 <li>Valid supporting evidence (photos/videos) will be required during the official process.</li>
@@ -244,7 +288,7 @@ export default function ApplyPage() {
 
         </div>
       </div>
-    </div>
+    </div >
   );
 }
 

@@ -17,12 +17,45 @@ export default function ContactPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setSubmitted(true);
-    // Logic for form submission could go here (e.g., API call)
+    
+    // Automatically open WhatsApp first
+    handleWhatsAppClick();
+    
+    // Attempt to open the Email draft as well
+    // Small delay to prevent some browsers from blocking the second window/app action
+    setTimeout(() => {
+      handleEmailClick();
+    }, 800);
+  };
+
+  const constructMessage = () => {
+    return `*New Enquiry from ${formData.name}*\n` +
+           `*Subject:* ${formData.subject}\n` +
+           `*Phone:* ${formData.phone}\n` +
+           `*Email:* ${formData.email}\n\n` +
+           `*Message:*\n${formData.message}`;
   };
 
   const handleWhatsAppClick = () => {
+    const message = encodeURIComponent(constructMessage());
+    window.open(`https://wa.me/919944757082?text=${message}`, "_blank");
+  };
+
+  const handleEmailClick = () => {
+    const subject = encodeURIComponent(`Enquiry: ${formData.subject} - ${formData.name}`);
+    const body = encodeURIComponent(
+      `Full Name: ${formData.name}\n` +
+      `Phone: ${formData.phone}\n` +
+      `Email ID: ${formData.email}\n` +
+      `Subject: ${formData.subject}\n\n` +
+      `Message:\n${formData.message}`
+    );
+    window.open(`mailto:s.dineshbabu2003@gmail.com?subject=${subject}&body=${body}`);
+  };
+
+  const handleGeneralWhatsApp = () => {
     const message = encodeURIComponent("Hello, I would like to know more about Bharath Bhuvan Book of Records.");
-    window.open(`https://wa.me/917603839116?text=${message}`, "_blank");
+    window.open(`https://wa.me/919944757082?text=${message}`, "_blank");
   };
 
   return (
@@ -49,7 +82,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <p style={{ ...styles.contactLabel, color: 'var(--color-saffron)' }}>Phone Number</p>
-                  <p style={styles.contactValue}>+91 7603839116</p>
+                  <p style={styles.contactValue}>+91 9944757082</p>
                 </div>
               </div>
 
@@ -57,9 +90,9 @@ export default function ContactPage() {
                 <div style={styles.iconBoxGreen}>
                   <MessageCircle size={24} color="#fff" />
                 </div>
-                <div onClick={handleWhatsAppClick} style={{ cursor: 'pointer' }}>
+                <div onClick={handleGeneralWhatsApp} style={{ cursor: 'pointer' }}>
                   <p style={{ ...styles.contactLabel, color: 'var(--color-green)' }}>WhatsApp</p>
-                  <p style={styles.contactValue}>+91 7603839116</p>
+                  <p style={styles.contactValue}>+91 9944757082</p>
                 </div>
               </div>
 
@@ -69,7 +102,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <p style={{ ...styles.contactLabel, color: 'var(--color-navy)' }}>Email Address</p>
-                  <p style={styles.contactValue}>bbrecords.india@gmail.com</p>
+                  <p style={styles.contactValue}>s.dineshbabu2003@gmail.com</p>
                 </div>
               </div>
 
@@ -86,8 +119,9 @@ export default function ContactPage() {
               <p style={styles.note}>Our team will respond to your queries as soon as possible.</p>
 
               <button
-                onClick={handleWhatsAppClick}
+                onClick={handleGeneralWhatsApp}
                 style={styles.whatsappBtn}
+                suppressHydrationWarning
               >
                 <MessageCircle size={20} style={{ marginRight: 10 }} />
                 CHAT WITH US ON WHATSAPP
@@ -112,9 +146,28 @@ export default function ContactPage() {
               {submitted ? (
                 <div style={styles.successMessage}>
                   <CheckCircle2 size={48} color="var(--color-green)" style={{ marginBottom: 15 }} />
-                  <h3 style={{ color: 'var(--color-green)', marginBottom: 10 }}>Thank You!</h3>
-                  <p style={{ color: '#4a5568' }}>Thank you for contacting us. Our team will get back to you shortly.</p>
-                  <button onClick={() => setSubmitted(false)} style={styles.resetBtn}>Send Another Message</button>
+                  <h3 style={{ color: 'var(--color-green)', marginBottom: 10 }}>Submission Started!</h3>
+                  <p style={{ color: '#4a5568', marginBottom: 25, maxWidth: '400px', margin: '0 auto 25px' }}>
+                    We've automatically opened <strong>WhatsApp</strong> and your <strong>Email app</strong> with your enquiry details.
+                  </p>
+                  
+                  <div style={styles.actionGrid}>
+                    <button onClick={handleWhatsAppClick} style={styles.whatsappActionBtn} suppressHydrationWarning>
+                      <MessageCircle size={20} style={{ marginRight: 10 }} />
+                      OPEN WHATSAPP AGAIN
+                    </button>
+                    
+                    <button onClick={handleEmailClick} style={styles.emailActionBtn} suppressHydrationWarning>
+                      <Mail size={20} style={{ marginRight: 10 }} />
+                      OPEN EMAIL AGAIN
+                    </button>
+                  </div>
+
+                  <p style={{ fontSize: '13px', color: '#718096', fontStyle: 'italic', marginBottom: '15px' }}>
+                    *If your browser blocked the automatic popup, please click the buttons above.*
+                  </p>
+
+                  <button onClick={() => setSubmitted(false)} style={styles.resetBtn}>Back to Form</button>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} style={styles.form}>
@@ -125,6 +178,7 @@ export default function ContactPage() {
                       style={styles.input}
                       value={formData.name}
                       onChange={e => setFormData({ ...formData, name: e.target.value })}
+                      suppressHydrationWarning
                     />
                   </div>
 
@@ -137,6 +191,7 @@ export default function ContactPage() {
                         style={styles.input}
                         value={formData.phone}
                         onChange={e => setFormData({ ...formData, phone: e.target.value })}
+                        suppressHydrationWarning
                       />
                     </div>
                     <div style={styles.field}>
@@ -147,6 +202,7 @@ export default function ContactPage() {
                         style={styles.input}
                         value={formData.email}
                         onChange={e => setFormData({ ...formData, email: e.target.value })}
+                        suppressHydrationWarning
                       />
                     </div>
                   </div>
@@ -157,6 +213,7 @@ export default function ContactPage() {
                       style={styles.select}
                       value={formData.subject}
                       onChange={e => setFormData({ ...formData, subject: e.target.value })}
+                      suppressHydrationWarning
                     >
                       <option>General Inquiry</option>
                       <option>Record Application</option>
@@ -176,7 +233,7 @@ export default function ContactPage() {
                     />
                   </div>
 
-                  <button type="submit" style={styles.submitBtn}>
+                   <button type="submit" style={styles.submitBtn} suppressHydrationWarning>
                     SUBMIT ENQUIRY
                     <Send size={18} style={{ marginLeft: 10 }} />
                   </button>
@@ -420,14 +477,50 @@ const styles = {
     textAlign: 'center',
     padding: '40px 0',
   },
+  actionGrid: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '15px',
+    marginBottom: '20px',
+  },
+  whatsappActionBtn: {
+    backgroundColor: 'var(--color-green)',
+    color: '#fff',
+    border: 'none',
+    padding: '18px',
+    borderRadius: '8px',
+    fontSize: '16px',
+    fontWeight: '800',
+    cursor: 'pointer',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    transition: 'transform 0.2s',
+  },
+  emailActionBtn: {
+    backgroundColor: 'var(--color-navy)',
+    color: '#fff',
+    border: 'none',
+    padding: '18px',
+    borderRadius: '8px',
+    fontSize: '16px',
+    fontWeight: '800',
+    cursor: 'pointer',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    transition: 'transform 0.2s',
+  },
   resetBtn: {
     backgroundColor: 'transparent',
-    color: 'var(--color-navy)',
-    border: '1px solid var(--color-navy)',
+    color: '#718096',
+    border: 'none',
     padding: '10px 20px',
     borderRadius: '6px',
-    marginTop: '20px',
+    marginTop: '10px',
     fontWeight: '600',
     cursor: 'pointer',
+    fontSize: '14px',
+    textDecoration: 'underline',
   }
 };

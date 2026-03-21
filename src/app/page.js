@@ -58,7 +58,7 @@ export default function Home() {
               WELCOME TO <br /> BHARAT BHUVAN BOOK OF RECORDS
             </h1>
             <p style={styles.heroSubtitle}>
-              <b>National Recognition Platform for Indian Arts and Cultural Heritage</b>
+              <b>A National Platform for Recognizing Indian Arts and Cultural Heritage</b>
             </p>
             <div style={styles.heroActions}>
               <Link href="/apply" style={styles.primaryBtn} className="hover-saffron-btn">

@@ -42,7 +42,6 @@ export default function Footer() {
             <p style={styles.text}>
               <strong>Email:</strong> s.dineshbabu2003@gmail.com<br />
               <strong>Phone:</strong> +91 9944757082<br />
-              <strong>Address:</strong> BBR Bhavan, Tamil Nadu, India
             </p>
           </div>
         </div>
@@ -89,6 +88,7 @@ const styles = {
     flexDirection: 'column',
   },
   heading: {
+    textAlign: 'center',
     color: 'var(--color-saffron)',
     fontSize: '18px',
     marginBottom: '20px',
@@ -96,11 +96,14 @@ const styles = {
     borderBottom: '1px solid rgba(255,255,255,0.1)',
   },
   text: {
+    alignItems: 'center',
+    // textAlign: 'justify',
     color: 'rgba(255,255,255,0.8)',
     lineHeight: '1.6',
     fontSize: '14px',
   },
   list: {
+    textAlign: 'center',
     listStyle: 'none',
     padding: 0,
     margin: 0,
@@ -109,12 +112,15 @@ const styles = {
     gap: '10px',
   },
   link: {
+    alignItems: 'center',
     color: 'rgba(255,255,255,0.8)',
     textDecoration: 'none',
     fontSize: '14px',
     transition: 'color 0.2s ease',
   },
   socialLinks: {
+    alignItems: 'center',
+    justifyContent: 'center',
     display: 'flex',
     gap: '15px',
     marginTop: '5px',

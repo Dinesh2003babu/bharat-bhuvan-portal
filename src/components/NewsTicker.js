@@ -19,10 +19,11 @@ export default function NewsTicker() {
         </div>
         <div style={styles.marqueeContainer}>
           <div style={styles.marquee}>
-            <span style={styles.item}>🔔 Applications for the year 2026 are now open. Standard processing time is 4-6 weeks.</span>
-            <span style={styles.item}>★ New Record: Sarvam Shabdam. Everything is Sound. Everything Dances. A Record-Breaking Bharatanatyam Production.</span>
-            <span style={styles.item}>🔔 IMPORTANT: Always verify certificates using the official verify portal.</span>
-            <span style={styles.item}>★ National Recognition Platform for Indian Arts and Cultural Heritage.</span>
+            {/* <span style={styles.item}>★ Apply Now: Applications Open for 2026 Record-Breaking – Showcase Your Talent with Us</span> */}
+            <span style={styles.item}>🔔 Upcoming Record-Breaking Event – Sarvam Shabdam: The Pulse of Expression🔔</span>
+            <span style={styles.item}>📅 July 4, 2026 | 📍 AVVM Pushpam College, Thanjavur</span>
+            <span style={styles.item}>🔔 Contact Us on WhatsApp: 📲 +91 76038 39116🔔</span>
+            {/* <span style={styles.item}>★ National Recognition Platform for Indian Arts and Cultural Heritage.</span> */}
           </div>
         </div>
         <div style={styles.date} className="ticker-date">

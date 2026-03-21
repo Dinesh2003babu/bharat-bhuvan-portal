@@ -34,7 +34,7 @@ export default function AboutPage() {
                 <strong>Bharat Bhuvan Book of Records (BBBR)</strong> is an independent national recognition platform dedicated to promoting Indian arts and cultural heritage through meaningful achievements.
                 Our focus is rooted in Bharatiya Vidya, ensuring that traditional art forms and cultural values are preserved and recognized.
                 Unlike general record organizations, BBBR focuses exclusively on Indian arts and cultural excellence, maintaining authenticity and integrity in every recognition.
-                Our platfor provides opportunities for artists, institutions, and cultural communities to showcase their talent and promote Indian culture globally.<br />
+                Our platform provides opportunities for artists, institutions, and cultural communities to showcase their talent and promote Indian culture globally.<br />
                 <br />
                 <strong>At BBBR, every record is not just an achievement - it is a legacy.</strong>
               </p>
@@ -114,6 +114,14 @@ export default function AboutPage() {
 
                 <div style={styles.catCard}>
                   <div style={styles.catCardIconWrap}>
+                    <span style={styles.catCardIcon}>📜</span>
+                  </div>
+                  <h4 style={styles.catCardTitle}>Literature &amp; Language Arts</h4>
+                  <p style={styles.catCardDesc}>Poetry, storytelling, classical literature, regional languages, and written expressions preserving cultural identity.</p>
+                </div>
+
+                <div style={styles.catCard}>
+                  <div style={styles.catCardIconWrap}>
                     <span style={styles.catCardIcon}>👥</span>
                   </div>
                   <h4 style={styles.catCardTitle}>Mass Participation &amp; Gatherings</h4>
@@ -136,8 +144,10 @@ export default function AboutPage() {
                   <p style={styles.catCardDesc}>Creative modern interpretations of traditional Indian art forms.</p>
                 </div>
 
-                <div style={{ ...styles.catCard, borderTop: '3px solid var(--color-green)' }}>
-                  <div style={{ ...styles.catCardIconWrap, borderColor: 'rgba(19,136,8,0.25)', background: 'linear-gradient(135deg, rgba(19,136,8,0.1), rgba(255,153,51,0.06))' }}>
+                {/* <div style={{ ...styles.catCard, borderTop: '3px solid var(--color-green)' }}> */}
+                {/* <div style={{ ...styles.catCardIconWrap, borderColor: 'rgba(19,136,8,0.25)', background: 'linear-gradient(135deg, rgba(19,136,8,0.1), rgba(255,153,51,0.06))' }}> */}
+                <div style={styles.catCard}>
+                  <div style={styles.catCardIconWrap}>
                     <span style={styles.catCardIcon}>🌐</span>
                   </div>
                   <h4 style={styles.catCardTitle}>Global Participation</h4>

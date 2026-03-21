@@ -9,11 +9,14 @@ export default function UpcomingPage() {
       <section style={styles.heroSection}>
         <div style={styles.heroOverlay}></div>
         <div style={styles.heroContent}>
-          <h1 style={styles.heroTitle}>Sarvam Shabdam</h1>
+          {/* <h1 style={styles.heroTitle}>Sarvam Shabdam</h1> */}
 
           <div style={styles.heroSubtitleWrap}>
-            <p style={styles.heroItalic}>Everything is Sound. Everything Dances.</p>
-            <p style={styles.heroSubText}>A Record-Breaking Bharatanatyam Production</p>
+            {/* <p style={styles.heroItalic}>Everything is Sound. Everything Dances.</p> */}
+            <p style={styles.heroSubText}>
+              <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+              The Pulse of Expression<br />
+              A Record-Breaking Bharatanatyam Show</p>
           </div>
 
           <div style={styles.heroInfoRow}>
@@ -71,13 +74,15 @@ export default function UpcomingPage() {
           <h2 style={styles.sectionHeading}>What is Sarvam Shabdam?</h2>
           <div style={styles.aboutContent}>
             <p style={styles.aboutText}>
-              <strong>Sarvam Shabdam</strong> is a deeply conceptualized artistic production rooted in Indian philosophy.
-              It is built on the powerful idea that everything in the universe has sound, everything responds to that sound,
-              and everything dances for that sound.
-            </p>
-            <p style={styles.aboutText}>
-              From the subtlest vibration to the grandest cosmic movement, sound is the origin, force, and expression of existence.
-              Through Bharatanatyam, this concept comes alive as rhythm becomes movement.
+              <strong>Sarvam Shabdam</strong> is a deeply conceptualized artistic creation rooted in the essence of Indian philosophy and psychology.
+              It is built on the powerful idea that everything in the universe is sound. Every form, every movement, every existence originates from vibration. This primal vibration - Nādam - is the source of all creation.
+              <br /><br />
+              Every element in the universe responds to sound, and that response becomes movement. That movement becomes expression. And that expression becomes dance.
+              In this vision, every moment is dance, because every moment is born from sound.
+              Sarvam Shabdam brings forth this eternal truth - that sound is the origin of everything, and this sound is the pulse of all expression.
+              <br /><br />
+              For dance, music is not an accompaniment - it is the source. From sound emerges rhythm, from rhythm emerges movement, and from movement emerges art.
+              Every human being carries within them a rhythm, a pulse, a subtle connection to the universal sound. Sarvam Shabdam is an attempt to awaken that connection - to remind us that we are all part of this cosmic vibration.
             </p>
           </div>
         </section>
@@ -86,10 +91,14 @@ export default function UpcomingPage() {
           <h2 style={styles.sectionHeading}>Record-Breaking Vision</h2>
           <div style={styles.visionContent}>
             <p style={styles.aboutText}>
-              Sarvam Shabdam is envisioned as a large-scale record-breaking cultural movement, bringing together hundreds of Bharatanatyam artists performing in perfect unity.
+              <strong>Sarvam Shabdam</strong> is envisioned as a record-breaking Bharatanatyam odyssey, bringing together thousands of artists in a powerful expression of unity.
+              This is not merely a performance.
+              This is not just about creating history.
+              It is about reviving a way of experiencing life - a return to the ancient Indian understanding that sound has the power to transform, to heal, and to elevate human consciousness.
+              Through this large-scale cultural movement, we aim to reconnect people with a deeper truth - that art is not separate from life, but is a reflection of the universal rhythm that governs existence.
             </p>
             <p style={styles.highlightText}>
-              This is not just a performance — it is history in the making.
+              This is not just an event - It is a collective awakening through art.
             </p>
           </div>
         </section>
@@ -98,10 +107,16 @@ export default function UpcomingPage() {
           <h2 style={styles.sectionHeading}>Why This Matters</h2>
           <div style={styles.mattersContent}>
             <p style={styles.aboutText}>
-              In today’s fast-paced world, we often hear sound but rarely experience it. Sarvam Shabdam reconnects us to the spiritual depth of Naadam, the power of rhythm, and the unity it creates.
+              In today’s fast-paced world, we are constantly surrounded by sound - but rarely do we truly experience it.
+              Sarvam Shabdam seeks to change that. It is an invitation to pause, to listen, and to reconnect with the spiritual depth of Indian culture, rooted in the sacred concept of Nādam.
+              <br /><br />
+              Every sound carries the potential to create a moment of bliss, awareness, and transformation.
+              Through this initiative, every performer becomes a medium, and every audience member becomes a participant in a shared experience - one that goes beyond performance and enters the realm of the spiritual and the eternal.
+              <br /><br />
+              Sarvam Shabdam is not just about witnessing art. It is about feeling the source of art itself. It is about returning to the origin.
             </p>
             <div style={styles.quoteCard}>
-              <p style={styles.quoteText}>“Sound is not heard. It is experienced.”</p>
+              <p style={styles.quoteText}>“Where sound becomes expression, and expression becomes life.”</p>
             </div>
           </div>
         </section>
@@ -152,7 +167,7 @@ const styles = {
     textShadow: '0 2px 10px rgba(0,0,0,0.3)',
   },
   heroSubtitleWrap: {
-    marginBottom: '30px',
+    marginBottom: '20px',
   },
   heroItalic: {
     fontSize: '20px',
@@ -164,6 +179,7 @@ const styles = {
     fontSize: '18px',
     fontWeight: '600',
     letterSpacing: '1px',
+    lineHeight: '1.5',
     textTransform: 'uppercase',
   },
   heroInfoRow: {
@@ -173,7 +189,7 @@ const styles = {
     gap: '15px',
     fontSize: '18px',
     fontWeight: '700',
-    marginBottom: '40px',
+    marginBottom: '20px',
     backgroundColor: 'rgba(255,255,255,0.1)',
     padding: '10px 20px',
     borderRadius: '50px',
@@ -300,7 +316,7 @@ const styles = {
     color: 'var(--text-main)',
     lineHeight: '1.8',
     marginBottom: '20px',
-    textAlign: 'left',
+    textAlign: 'justify',
   },
   visionSection: {
     padding: '40px 0',
