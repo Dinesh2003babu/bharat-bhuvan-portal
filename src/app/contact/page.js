@@ -106,7 +106,7 @@ export default function ContactPage() {
                 </div>
               </div> */}
 
-              <p style={styles.note}>Our team will respond to your queries as soon as possible.</p>
+              <p style={styles.note}>Our Team will respond to your queries as soon as possible.</p>
 
               <button
                 onClick={handleGeneralWhatsApp}
