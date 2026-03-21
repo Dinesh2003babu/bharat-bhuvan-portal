@@ -115,7 +115,7 @@ export default function VerifyPage() {
               <h3 style={styles.guidelineTitle}>How to Verify</h3>
               <ul style={styles.list}>
                 <li style={styles.listItem}>1. Locate the Certificate ID on the bottom left corner of your physical or digital certificate.</li>
-                <li style={styles.listItem}>2. Ensure you include the 'BBR-' prefix.</li>
+                <li style={styles.listItem}>2. Ensure you include the &apos;BBR-&apos; prefix.</li>
                 <li style={styles.listItem}>3. The system is case-insensitive, but hyphens must be included.</li>
                 <li style={styles.listItem}>4. If verified, the system will display the exact record details as they appear on the original issuance.</li>
               </ul>

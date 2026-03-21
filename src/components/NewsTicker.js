@@ -8,6 +8,7 @@ export default function NewsTicker() {
   useEffect(() => {
     const today = new Date();
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     setDateStr(today.toLocaleDateString('en-IN', options));
   }, []);
 

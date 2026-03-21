@@ -121,7 +121,7 @@ export default function ContactPage() {
             <div style={styles.importantNoteBox}>
               <h3 style={styles.noteTitle}>Please Note:</h3>
               <ul style={styles.noteList}>
-                <li>For record applications, please use the <strong>"Apply Now"</strong> page.</li>
+                <li>For record applications, please use the <strong>&quot;Apply Now&quot;</strong> page.</li>
                 <li>Only shortlisted applicants will be contacted for record verification.</li>
                 <li>Avoid sending duplicate messages on multiple platforms for faster response.</li>
               </ul>

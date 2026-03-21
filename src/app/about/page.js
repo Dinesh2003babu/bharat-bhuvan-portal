@@ -93,7 +93,7 @@ export default function AboutPage() {
                     <span style={styles.catCardIcon}>🎨</span>
                   </div>
                   <h4 style={styles.catCardTitle}>Visual Arts</h4>
-                  <p style={styles.catCardDesc}>Paintings, sculpture and architectural creations that reflect India's aesthetic excellence, symbolism and craftsmanship.</p>
+                  <p style={styles.catCardDesc}>Paintings, sculpture and architectural creations that reflect India&apos;s aesthetic excellence, symbolism and craftsmanship.</p>
                 </div>
 
                 <div style={styles.catCard}>
