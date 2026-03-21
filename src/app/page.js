@@ -61,7 +61,7 @@ export default function Home() {
               <b>National Recognition Platform for Indian Arts and Cultural Heritage</b>
             </p>
             <div style={styles.heroActions}>
-              <Link href="/apply" style={styles.primaryBtn}>
+              <Link href="/apply" style={styles.primaryBtn} className="hover-saffron-btn">
                 Apply for a New Record
               </Link>
               {/* <Link href="/records" style={styles.secondaryBtn}>
@@ -157,9 +157,9 @@ export default function Home() {
               </div>
 
               <p style={styles.upcomingEventDesc}>
-                Everything is Sound. Everything Dances. <br />A Record-Breaking Bharatanatyam Production
+                The Pulse of Expression <br />A Record Breaking Bharathanatyam Odyssey
               </p>
-              <Link href="/upcoming" style={styles.upcomingBtn}>
+              <Link href="/upcoming" style={styles.upcomingBtn} className="hover-saffron-btn">
                 View Details
               </Link>
             </div>
@@ -175,7 +175,7 @@ export default function Home() {
             <p style={styles.historySubtitle}>
               Showcase your talent. Set a record. Represent Bharat globally.
             </p>
-            <Link href="/apply" style={styles.historyBtn}>
+            <Link href="/apply" style={styles.historyBtn} className="hover-saffron-btn">
               Apply Now
             </Link>
           </div>
@@ -577,8 +577,8 @@ const styles = {
     display: 'inline-block',
     backgroundColor: 'var(--color-saffron)',
     color: '#fff',
-    padding: '14px 40px',
-    borderRadius: '50px',
+    padding: '16px 32px',
+    borderRadius: '4px',
     fontSize: '16px',
     fontWeight: '700',
     textDecoration: 'none',
@@ -613,9 +613,9 @@ const styles = {
     display: 'inline-block',
     backgroundColor: 'var(--color-saffron)',
     color: 'var(--color-white)',
-    padding: '16px 45px',
-    borderRadius: '50px',
-    fontSize: '18px',
+    padding: '16px 32px',
+    borderRadius: '4px',
+    fontSize: '16px',
     fontWeight: '700',
     textDecoration: 'none',
     boxShadow: '0 6px 20px rgba(255,153,51,0.3)',

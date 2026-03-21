@@ -120,6 +120,19 @@ button {
   transform: translateY(-2px);
 }
 
+.hover-saffron-btn {
+  transition: all 0.3s ease !important;
+  border: 1px solid transparent !important;
+}
+
+.hover-saffron-btn:hover {
+  background-color: var(--color-white) !important;
+  color: var(--color-saffron) !important;
+  border: 1px solid var(--color-saffron) !important;
+  box-shadow: 0 6px 15px rgba(255, 153, 51, 0.4) !important;
+  transform: translateY(-3px) !important;
+}
+
 /* RESPONSIVE UTILITIES */
 @media (max-width: 768px) {
   .mobile-hide {
