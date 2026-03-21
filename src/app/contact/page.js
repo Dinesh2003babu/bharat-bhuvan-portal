@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Phone, Mail, MapPin, MessageCircle, Send, CheckCircle2 } from "lucide-react";
+import { supabase } from "../../lib/supabaseClient";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -13,44 +14,33 @@ export default function ContactPage() {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
+    setIsLoading(true);
+    setErrorMsg("");
     
-    // Automatically open WhatsApp first
-    handleWhatsAppClick();
-    
-    // Attempt to open the Email draft as well
-    // Small delay to prevent some browsers from blocking the second window/app action
-    setTimeout(() => {
-      handleEmailClick();
-    }, 800);
-  };
+    try {
+      const { data, error } = await supabase
+        .from('contact_enquiries')
+        .insert([{
+          name: formData.name,
+          phone: formData.phone,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message
+        }]);
 
-  const constructMessage = () => {
-    return `*New Enquiry from ${formData.name}*\n` +
-           `*Subject:* ${formData.subject}\n` +
-           `*Phone:* ${formData.phone}\n` +
-           `*Email:* ${formData.email}\n\n` +
-           `*Message:*\n${formData.message}`;
-  };
-
-  const handleWhatsAppClick = () => {
-    const message = encodeURIComponent(constructMessage());
-    window.open(`https://wa.me/919944757082?text=${message}`, "_blank");
-  };
-
-  const handleEmailClick = () => {
-    const subject = encodeURIComponent(`Enquiry: ${formData.subject} - ${formData.name}`);
-    const body = encodeURIComponent(
-      `Full Name: ${formData.name}\n` +
-      `Phone: ${formData.phone}\n` +
-      `Email ID: ${formData.email}\n` +
-      `Subject: ${formData.subject}\n\n` +
-      `Message:\n${formData.message}`
-    );
-    window.open(`mailto:s.dineshbabu2003@gmail.com?subject=${subject}&body=${body}`);
+      if (error) throw error;
+      setSubmitted(true);
+    } catch (error) {
+      console.error('Error submitting enquiry:', error);
+      setErrorMsg("Failed to send message. Please check your connection and try again.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleGeneralWhatsApp = () => {
@@ -146,31 +136,23 @@ export default function ContactPage() {
               {submitted ? (
                 <div style={styles.successMessage}>
                   <CheckCircle2 size={48} color="var(--color-green)" style={{ marginBottom: 15 }} />
-                  <h3 style={{ color: 'var(--color-green)', marginBottom: 10 }}>Submission Started!</h3>
-                  <p style={{ color: '#4a5568', marginBottom: 25, maxWidth: '400px', margin: '0 auto 25px' }}>
-                    We've automatically opened <strong>WhatsApp</strong> and your <strong>Email app</strong> with your enquiry details.
+                  <h3 style={{ color: 'var(--color-green)', marginBottom: 10 }}>Message Sent Successfully!</h3>
+                  <p style={{ color: '#4a5568', marginBottom: 25, maxWidth: '400px', margin: '0 auto 25px', lineHeight: '1.6' }}>
+                    Thank you, <strong>{formData.name}</strong>. We have securely received your enquiry regarding <strong>{formData.subject}</strong>. Our team will review your message and contact you at <strong>{formData.email}</strong> shortly.
                   </p>
                   
-                  <div style={styles.actionGrid}>
-                    <button onClick={handleWhatsAppClick} style={styles.whatsappActionBtn} suppressHydrationWarning>
-                      <MessageCircle size={20} style={{ marginRight: 10 }} />
-                      OPEN WHATSAPP AGAIN
-                    </button>
-                    
-                    <button onClick={handleEmailClick} style={styles.emailActionBtn} suppressHydrationWarning>
-                      <Mail size={20} style={{ marginRight: 10 }} />
-                      OPEN EMAIL AGAIN
-                    </button>
-                  </div>
-
-                  <p style={{ fontSize: '13px', color: '#718096', fontStyle: 'italic', marginBottom: '15px' }}>
-                    *If your browser blocked the automatic popup, please click the buttons above.*
-                  </p>
-
-                  <button onClick={() => setSubmitted(false)} style={styles.resetBtn}>Back to Form</button>
+                  <button onClick={() => {
+                    setSubmitted(false);
+                    setFormData({ name: "", phone: "", email: "", subject: "General Inquiry", message: "" });
+                  }} style={styles.resetBtn}>Send Another Message</button>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} style={styles.form}>
+                  {errorMsg && (
+                    <div style={{ backgroundColor: '#fff5f5', color: '#c53030', padding: '15px', borderRadius: '8px', borderLeft: '4px solid #c53030', fontWeight: '600' }}>
+                      {errorMsg}
+                    </div>
+                  )}
                   <div style={styles.field}>
                     <label style={styles.label}>Full Name</label>
                     <input
@@ -233,9 +215,9 @@ export default function ContactPage() {
                     />
                   </div>
 
-                   <button type="submit" style={styles.submitBtn} suppressHydrationWarning>
-                    SUBMIT ENQUIRY
-                    <Send size={18} style={{ marginLeft: 10 }} />
+                   <button type="submit" disabled={isLoading} style={isLoading ? styles.submitBtnLoading : styles.submitBtn} suppressHydrationWarning>
+                    {isLoading ? "SENDING..." : "SUBMIT ENQUIRY"}
+                    {!isLoading && <Send size={18} style={{ marginLeft: 10 }} />}
                   </button>
                 </form>
               )}
@@ -473,54 +455,34 @@ const styles = {
     marginTop: '10px',
     boxShadow: '0 4px 15px rgba(234, 138, 64, 0.3)',
   },
+  submitBtnLoading: {
+    backgroundColor: '#718096',
+    color: '#fff',
+    border: 'none',
+    padding: '18px',
+    borderRadius: '8px',
+    fontSize: '16px',
+    fontWeight: '800',
+    cursor: 'not-allowed',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: '10px',
+  },
   successMessage: {
     textAlign: 'center',
     padding: '40px 0',
   },
-  actionGrid: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '15px',
-    marginBottom: '20px',
-  },
-  whatsappActionBtn: {
-    backgroundColor: 'var(--color-green)',
-    color: '#fff',
-    border: 'none',
-    padding: '18px',
-    borderRadius: '8px',
-    fontSize: '16px',
-    fontWeight: '800',
-    cursor: 'pointer',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    transition: 'transform 0.2s',
-  },
-  emailActionBtn: {
+  resetBtn: {
     backgroundColor: 'var(--color-navy)',
     color: '#fff',
     border: 'none',
-    padding: '18px',
+    padding: '15px 30px',
     borderRadius: '8px',
-    fontSize: '16px',
+    marginTop: '10px',
     fontWeight: '800',
     cursor: 'pointer',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
+    fontSize: '15px',
     transition: 'transform 0.2s',
-  },
-  resetBtn: {
-    backgroundColor: 'transparent',
-    color: '#718096',
-    border: 'none',
-    padding: '10px 20px',
-    borderRadius: '6px',
-    marginTop: '10px',
-    fontWeight: '600',
-    cursor: 'pointer',
-    fontSize: '14px',
-    textDecoration: 'underline',
   }
 };

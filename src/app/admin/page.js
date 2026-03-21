@@ -8,6 +8,8 @@ export default function AdminDashboard() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [password, setPassword] = useState("");
   const [applications, setApplications] = useState([]);
+  const [enquiries, setEnquiries] = useState([]);
+  const [activeTab, setActiveTab] = useState("applications");
   const [isLoading, setIsLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -17,6 +19,7 @@ export default function AdminDashboard() {
     if (password === "bbbradmin2026") {
       setIsAuthenticated(true);
       fetchApplications();
+      fetchEnquiries();
     } else {
       alert("Incorrect admin password.");
     }
@@ -40,6 +43,28 @@ export default function AdminDashboard() {
     }
   };
 
+  const fetchEnquiries = async () => {
+    setIsLoading(true);
+    try {
+      const { data, error } = await supabase
+        .from('contact_enquiries')
+        .select('*')
+        .order('created_at', { ascending: false });
+
+      if (error) throw error;
+      setEnquiries(data || []);
+    } catch (error) {
+      console.error("Error fetching enquiries:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleRefresh = () => {
+    fetchApplications();
+    fetchEnquiries();
+  };
+
   // Filter based on search term
   const filteredApps = applications.filter(app => 
     app.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -48,45 +73,69 @@ export default function AdminDashboard() {
     app.whatsapp?.includes(searchTerm)
   );
 
-  const exportToCSV = () => {
-    if (filteredApps.length === 0) return;
-    
-    // Headers matching the database columns
-    const headers = [
-      "Date", "Participant Name", "Parent's Name", "Age", "Phone", "WhatsApp", 
-      "Address", "Category", "Record Title", "Brief Description", 
-      "Academy", "Guru Name", "Instagram ID", "YouTube Link", "Status"
-    ];
-    
-    // Map data ensuring commas in descriptions don't break the CSV
-    const rows = filteredApps.map(app => [
-      new Date(app.created_at).toLocaleString('en-IN', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true }),
-      `"${app.name || ''}"`,
-      `"${app.parent_name || ''}"`,
-      app.age || '',
-      `"${app.phone || ''}"`,
-      `"${app.whatsapp || ''}"`,
-      `"${(app.address || '').replace(/"/g, '""')}"`,
-      `"${app.category || ''}"`,
-      `"${(app.title || '').replace(/"/g, '""')}"`,
-      `"${(app.description || '').replace(/"/g, '""')}"`,
-      `"${app.academy || ''}"`,
-      `"${app.guru || ''}"`,
-      `"${app.instagram || ''}"`,
-      `"${app.youtube || ''}"`,
-      app.status || 'Pending'
-    ]);
+  const filteredEnquiries = enquiries.filter(enq => 
+    enq.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    enq.email?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    enq.subject?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    enq.phone?.includes(searchTerm)
+  );
 
-    const csvContent = [
-      headers.join(","),
-      ...rows.map(r => r.join(","))
-    ].join("\n");
+  const exportToCSV = () => {
+    let csvContent = "";
+    let filename = "";
+
+    if (activeTab === "applications") {
+      if (filteredApps.length === 0) return;
+      
+      const headers = [
+        "Date", "Participant Name", "Parent's Name", "Age", "Phone", "WhatsApp", 
+        "Address", "Category", "Record Title", "Brief Description", 
+        "Academy", "Guru Name", "Instagram ID", "YouTube Link", "Status"
+      ];
+      
+      const rows = filteredApps.map(app => [
+        new Date(app.created_at).toLocaleString('en-IN', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true }),
+        `"${app.name || ''}"`,
+        `"${app.parent_name || ''}"`,
+        app.age || '',
+        `"${app.phone || ''}"`,
+        `"${app.whatsapp || ''}"`,
+        `"${(app.address || '').replace(/"/g, '""')}"`,
+        `"${app.category || ''}"`,
+        `"${(app.title || '').replace(/"/g, '""')}"`,
+        `"${(app.description || '').replace(/"/g, '""')}"`,
+        `"${app.academy || ''}"`,
+        `"${app.guru || ''}"`,
+        `"${app.instagram || ''}"`,
+        `"${app.youtube || ''}"`,
+        app.status || 'Pending'
+      ]);
+
+      csvContent = [headers.join(","), ...rows.map(r => r.join(","))].join("\n");
+      filename = `BBBR_Records_Export_${new Date().toISOString().split('T')[0]}.csv`;
+
+    } else {
+      if (filteredEnquiries.length === 0) return;
+      
+      const headers = ["Date", "Name", "Phone", "Email", "Subject", "Message"];
+      const rows = filteredEnquiries.map(enq => [
+        new Date(enq.created_at).toLocaleString('en-IN', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true }),
+        `"${enq.name || ''}"`,
+        `"${enq.phone || ''}"`,
+        `"${enq.email || ''}"`,
+        `"${enq.subject || ''}"`,
+        `"${(enq.message || '').replace(/"/g, '""')}"`
+      ]);
+
+      csvContent = [headers.join(","), ...rows.map(r => r.join(","))].join("\n");
+      filename = `BBBR_Enquiries_Export_${new Date().toISOString().split('T')[0]}.csv`;
+    }
 
     const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
     const link = document.createElement("a");
     const url = URL.createObjectURL(blob);
     link.setAttribute("href", url);
-    link.setAttribute("download", `BBBR_Records_Export_${new Date().toISOString().split('T')[0]}.csv`);
+    link.setAttribute("download", filename);
     link.style.visibility = 'hidden';
     document.body.appendChild(link);
     link.click();
@@ -133,6 +182,21 @@ export default function AdminDashboard() {
       </div>
 
       <div style={styles.container}>
+        <div style={styles.tabContainer}>
+          <button 
+            style={activeTab === 'applications' ? styles.activeTab : styles.tab} 
+            onClick={() => setActiveTab('applications')}
+          >
+            Record Applications ({applications.length})
+          </button>
+          <button 
+            style={activeTab === 'enquiries' ? styles.activeTab : styles.tab} 
+            onClick={() => setActiveTab('enquiries')}
+          >
+            Contact Enquiries ({enquiries.length})
+          </button>
+        </div>
+
         <div style={styles.controlsBar}>
           <div style={styles.searchBox}>
             <Search size={18} color="#718096" style={styles.searchIcon} />
@@ -145,11 +209,11 @@ export default function AdminDashboard() {
             />
           </div>
           <div style={styles.actionButtons}>
-            <button onClick={exportToCSV} style={styles.downloadBtn} disabled={filteredApps.length === 0}>
+            <button onClick={exportToCSV} style={styles.downloadBtn} disabled={(activeTab === 'applications' && filteredApps.length === 0) || (activeTab === 'enquiries' && filteredEnquiries.length === 0)}>
               <Download size={16} />
               Export to Spreadsheet
             </button>
-            <button onClick={fetchApplications} style={styles.refreshBtn}>
+            <button onClick={handleRefresh} style={styles.refreshBtn}>
               <RefreshCcw size={16} />
               Refresh Data
             </button>
@@ -163,77 +227,124 @@ export default function AdminDashboard() {
               <p>Fetching official records from secure database...</p>
               <style>{`.spinner { animation: spin 1s linear infinite; } @keyframes spin { 100% { transform: rotate(360deg); } }`}</style>
             </div>
-          ) : filteredApps.length === 0 ? (
-            <div style={styles.emptyState}>
-              <p>No applications found.</p>
-            </div>
-          ) : (
-            <div style={styles.tableWrapper}>
-              <table style={styles.table}>
-                <thead>
-                  <tr>
-                    <th style={styles.th}>Date</th>
-                    <th style={styles.th}>Participant Name</th>
-                    <th style={styles.th}>Parent Name</th>
-                    <th style={styles.th}>Age</th>
-                    <th style={styles.th}>Phone</th>
-                    <th style={styles.th}>WhatsApp</th>
-                    <th style={styles.th}>Address</th>
-                    <th style={styles.th}>Category</th>
-                    <th style={styles.th}>Record Title</th>
-                    <th style={styles.th}>Description</th>
-                    <th style={styles.th}>Academy</th>
-                    <th style={styles.th}>Guru</th>
-                    <th style={styles.th}>Instagram</th>
-                    <th style={styles.th}>YouTube</th>
-                    <th style={styles.th}>Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {filteredApps.map((app) => (
-                    <tr key={app.id} style={styles.tr}>
-                      <td style={styles.td}>
-                        <div style={{ whiteSpace: 'nowrap' }}>
-                          {new Date(app.created_at).toLocaleString('en-IN', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true })}
-                        </div>
-                      </td>
-                      <td style={styles.td}><strong>{app.name}</strong></td>
-                      <td style={styles.td}>{app.parent_name || '-'}</td>
-                      <td style={styles.td}><strong>{app.age}</strong></td>
-                      <td style={styles.td}>{app.phone}</td>
-                      <td style={styles.td}>
-                        <a href={`https://wa.me/91${app.whatsapp}`} target="_blank" rel="noreferrer" style={styles.waLink}>
-                          {app.whatsapp}
-                        </a>
-                      </td>
-                      <td style={styles.td}>
-                        <div style={styles.truncateText} title={app.address}>{app.address || '-'}</div>
-                      </td>
-                      <td style={styles.td}><span style={styles.badge}>{app.category}</span></td>
-                      <td style={styles.td}>
-                        <div style={styles.truncateText} title={app.title}>{app.title}</div>
-                      </td>
-                      <td style={styles.td}>
-                        <div style={styles.truncateText} title={app.description}>{app.description}</div>
-                      </td>
-                      <td style={styles.td}>{app.academy || '-'}</td>
-                      <td style={styles.td}>{app.guru || '-'}</td>
-                      <td style={styles.td}>{app.instagram || '-'}</td>
-                      <td style={styles.td}>
-                        {app.youtube ? (
-                          <a href={app.youtube.startsWith('http') ? app.youtube : `https://${app.youtube}`} target="_blank" rel="noreferrer" style={styles.waLink}>
-                            Video Link
-                          </a>
-                        ) : '-'}
-                      </td>
-                      <td style={styles.td}>
-                        <span style={styles.statusBadge}>{app.status || 'Pending'}</span>
-                      </td>
+          ) : activeTab === "applications" ? (
+            filteredApps.length === 0 ? (
+              <div style={styles.emptyState}>
+                <p>No applications found.</p>
+              </div>
+            ) : (
+              <div style={styles.tableWrapper}>
+                <table style={styles.table}>
+                  <thead>
+                    <tr>
+                      <th style={styles.th}>Date</th>
+                      <th style={styles.th}>Participant Name</th>
+                      <th style={styles.th}>Parent Name</th>
+                      <th style={styles.th}>Age</th>
+                      <th style={styles.th}>Phone</th>
+                      <th style={styles.th}>WhatsApp</th>
+                      <th style={styles.th}>Address</th>
+                      <th style={styles.th}>Category</th>
+                      <th style={styles.th}>Record Title</th>
+                      <th style={styles.th}>Description</th>
+                      <th style={styles.th}>Academy</th>
+                      <th style={styles.th}>Guru</th>
+                      <th style={styles.th}>Instagram</th>
+                      <th style={styles.th}>YouTube</th>
+                      <th style={styles.th}>Status</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+                  </thead>
+                  <tbody>
+                    {filteredApps.map((app) => (
+                      <tr key={app.id} style={styles.tr}>
+                        <td style={styles.td}>
+                          <div style={{ whiteSpace: 'nowrap' }}>
+                            {new Date(app.created_at).toLocaleString('en-IN', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true })}
+                          </div>
+                        </td>
+                        <td style={styles.td}><strong>{app.name}</strong></td>
+                        <td style={styles.td}>{app.parent_name || '-'}</td>
+                        <td style={styles.td}><strong>{app.age}</strong></td>
+                        <td style={styles.td}>{app.phone}</td>
+                        <td style={styles.td}>
+                          <a href={`https://wa.me/91${app.whatsapp}`} target="_blank" rel="noreferrer" style={styles.waLink}>
+                            {app.whatsapp}
+                          </a>
+                        </td>
+                        <td style={styles.td}>
+                          <div style={styles.truncateText} title={app.address}>{app.address || '-'}</div>
+                        </td>
+                        <td style={styles.td}><span style={styles.badge}>{app.category}</span></td>
+                        <td style={styles.td}>
+                          <div style={styles.truncateText} title={app.title}>{app.title}</div>
+                        </td>
+                        <td style={styles.td}>
+                          <div style={styles.truncateText} title={app.description}>{app.description}</div>
+                        </td>
+                        <td style={styles.td}>{app.academy || '-'}</td>
+                        <td style={styles.td}>{app.guru || '-'}</td>
+                        <td style={styles.td}>{app.instagram || '-'}</td>
+                        <td style={styles.td}>
+                          {app.youtube ? (
+                            <a href={app.youtube.startsWith('http') ? app.youtube : `https://${app.youtube}`} target="_blank" rel="noreferrer" style={styles.waLink}>
+                              Video Link
+                            </a>
+                          ) : '-'}
+                        </td>
+                        <td style={styles.td}>
+                          <span style={styles.statusBadge}>{app.status || 'Pending'}</span>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )
+          ) : (
+            filteredEnquiries.length === 0 ? (
+              <div style={styles.emptyState}>
+                <p>No enquiries found.</p>
+              </div>
+            ) : (
+              <div style={styles.tableWrapper}>
+                <table style={styles.table}>
+                  <thead>
+                    <tr>
+                      <th style={styles.th}>Date & Time</th>
+                      <th style={styles.th}>Name</th>
+                      <th style={styles.th}>Phone</th>
+                      <th style={styles.th}>Email</th>
+                      <th style={styles.th}>Subject</th>
+                      <th style={styles.th}>Message Details</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {filteredEnquiries.map((enq) => (
+                      <tr key={enq.id} style={styles.tr}>
+                        <td style={styles.td}>
+                          <div style={{ whiteSpace: 'nowrap' }}>
+                            {new Date(enq.created_at).toLocaleString('en-IN', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true })}
+                          </div>
+                        </td>
+                        <td style={styles.td}><strong>{enq.name}</strong></td>
+                        <td style={styles.td}>
+                          <a href={`https://wa.me/91${enq.phone}`} target="_blank" rel="noreferrer" style={styles.waLink}>
+                            {enq.phone}
+                          </a>
+                        </td>
+                        <td style={styles.td}>
+                           <a href={`mailto:${enq.email}`} style={styles.waLink}>{enq.email}</a>
+                        </td>
+                        <td style={styles.td}><span style={styles.badge}>{enq.subject}</span></td>
+                        <td style={styles.td}>
+                          <div style={{ maxWidth: '400px', whiteSpace: 'normal', color: 'var(--text-main)', lineHeight: '1.6' }}>{enq.message}</div>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )
           )}
         </div>
       </div>
@@ -485,5 +596,34 @@ const styles = {
     whiteSpace: 'nowrap',
     overflow: 'hidden',
     textOverflow: 'ellipsis',
+  },
+  tabContainer: {
+    display: 'flex',
+    gap: '15px',
+    marginBottom: '20px',
+    borderBottom: '2px solid #e2e8f0',
+    paddingBottom: '10px',
+  },
+  tab: {
+    padding: '12px 25px',
+    backgroundColor: 'transparent',
+    border: 'none',
+    fontSize: '16px',
+    fontWeight: '700',
+    color: '#718096',
+    cursor: 'pointer',
+    position: 'relative',
+    transition: 'color 0.2s',
+  },
+  activeTab: {
+    padding: '12px 25px',
+    backgroundColor: 'var(--color-navy)',
+    border: 'none',
+    fontSize: '16px',
+    fontWeight: '700',
+    color: '#fff',
+    cursor: 'pointer',
+    borderRadius: '8px',
+    boxShadow: '0 4px 10px rgba(0,0,80,0.2)',
   }
 };

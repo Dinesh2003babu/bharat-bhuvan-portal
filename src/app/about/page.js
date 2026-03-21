@@ -152,6 +152,14 @@ export default function AboutPage() {
                   <p style={styles.catCardDesc}>Storytelling traditions that convey epics, values and philosophy through narration, dialogue and expressive presentation.</p>
                 </div>
 
+                {/* <div style={{ ...styles.catCard, borderTop: '3px solid var(--color-green)' }}>
+                  <div style={{ ...styles.catCardIconWrap, borderColor: 'rgba(19,136,8,0.25)', background: 'linear-gradient(135deg, rgba(19,136,8,0.1), rgba(255,153,51,0.06))' }}>
+                    <span style={styles.catCardIcon}>🌐</span>
+                  </div>
+                  <h4 style={styles.catCardTitle}>Global Participation</h4>
+                  <p style={styles.catCardDesc}><strong>Indian Artists</strong> · <strong>NRI Artists</strong> · <strong>International Artists</strong></p>
+                </div> */}
+
               </div>
             </section>
 
