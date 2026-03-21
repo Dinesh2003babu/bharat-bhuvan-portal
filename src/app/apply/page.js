@@ -116,7 +116,7 @@ export default function ApplyPage() {
           </div>
         </div>
         <div style={styles.container}>
-          <div style={{ ...styles.formCard, textAlign: 'center', marginTop: '40px', padding: '60px 40px' }}>
+          <div className="form-card-res" style={{ ...styles.formCard, textAlign: 'center', marginTop: '40px', padding: '60px 40px' }}>
             <CheckCircle2 size={80} color="var(--color-green)" style={{ margin: '0 auto 20px' }} />
             <h2 style={{ fontSize: '28px', color: 'var(--color-navy)', marginBottom: '15px' }}>Thank You, {formData.name}!</h2>
             <p style={{ fontSize: '18px', color: 'var(--text-main)', lineHeight: '1.6', maxWidth: '600px', margin: '0 auto 30px' }}>
@@ -146,11 +146,11 @@ export default function ApplyPage() {
       </div>
 
       <div style={styles.container}>
-        <div style={styles.layout}>
+        <div className="layout-res" style={styles.layout}>
 
           {/* Form Side */}
           <div style={styles.formSection}>
-            <form onSubmit={handleSubmit} style={styles.formCard}>
+            <form onSubmit={handleSubmit} className="form-card-res" style={styles.formCard}>
 
               {errorMsg && (
                 <div style={{ backgroundColor: '#fff5f5', color: '#c53030', padding: '15px', borderRadius: '8px', marginBottom: '25px', borderLeft: '4px solid #c53030', fontWeight: '600' }}>

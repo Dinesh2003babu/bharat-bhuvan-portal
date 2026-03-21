@@ -59,11 +59,11 @@ export default function ContactPage() {
       </div>
 
       <div style={styles.container}>
-        <div style={styles.layout}>
+        <div className="layout-res" style={styles.layout}>
 
           {/* Left: Contact Info */}
           <div style={styles.infoColumn}>
-            <div style={styles.infoCard}>
+            <div className="form-card-res" style={styles.infoCard}>
               <h2 style={styles.sectionTitle}>Official Channels</h2>
 
               <div style={{ ...styles.contactItem, borderLeft: '4px solid var(--color-saffron)' }}>
@@ -130,7 +130,7 @@ export default function ContactPage() {
 
           {/* Right: Contact Form */}
           <div style={styles.formColumn}>
-            <div style={styles.formCard}>
+            <div className="form-card-res" style={styles.formCard}>
               <h2 style={styles.sectionTitle}>Submit Enquiry</h2>
 
               {submitted ? (

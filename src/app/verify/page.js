@@ -38,10 +38,10 @@ export default function VerifyPage() {
       </div>
 
       <div style={styles.container}>
-        <div style={styles.layout}>
+        <div className="layout-res" style={styles.layout}>
 
           <div style={styles.mainBox}>
-            <div style={styles.verifyCard}>
+            <div className="form-card-res" style={styles.verifyCard}>
               <h2 style={styles.cardTitle}>Verify Document Authenticity</h2>
               <p style={styles.cardDesc}>
                 The system checks real-time databanks to ensure the certificate in question was officially issued by the Secretariat and has not been revoked.

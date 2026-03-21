@@ -196,6 +196,21 @@ button {
     grid-template-columns: 1fr !important;
   }
 
+  .layout-res {
+    flex-direction: column !important;
+    gap: 20px !important;
+  }
+  
+  .layout-res > div {
+    flex: 1 1 100% !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .form-card-res {
+    padding: 25px 15px !important;
+  }
+
   /* Verify Page */
   .verify-data-grid {
     grid-template-columns: 1fr !important;

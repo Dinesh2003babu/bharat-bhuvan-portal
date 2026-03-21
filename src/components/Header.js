@@ -54,9 +54,9 @@ export default function Header() {
             <div style={styles.mobileMenu}>
               <Link href="/" onClick={() => setIsMenuOpen(false)} style={styles.mobileNavLink}>Home</Link>
               <Link href="/about" onClick={() => setIsMenuOpen(false)} style={styles.mobileNavLink}>About us</Link>
-              <Link href="/records" onClick={() => setIsMenuOpen(false)} style={styles.mobileNavLink}>Search Records</Link>
+              {/* <Link href="/records" onClick={() => setIsMenuOpen(false)} style={styles.mobileNavLink}>Search Records</Link> */}
               <Link href="/upcoming" onClick={() => setIsMenuOpen(false)} style={styles.mobileNavLink}>Upcoming</Link>
-              <Link href="/verify" onClick={() => setIsMenuOpen(false)} style={styles.mobileNavLink}>Verify Certificate</Link>
+              {/* <Link href="/verify" onClick={() => setIsMenuOpen(false)} style={styles.mobileNavLink}>Verify Certificate</Link> */}
               <Link href="/apply" onClick={() => setIsMenuOpen(false)} style={styles.mobileApplyBtn}>Apply Now</Link>
               <Link href="/contact" onClick={() => setIsMenuOpen(false)} style={styles.mobileNavLink}>Contact Us</Link>
             </div>
