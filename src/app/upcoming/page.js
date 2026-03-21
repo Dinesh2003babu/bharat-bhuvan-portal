@@ -314,7 +314,7 @@ const styles = {
     textAlign: 'justify',
     maxWidth: '800px',
     margin: '0 auto',
-    backgroundColor: 'var(--color-white)',
+    backgroundColor: 'var(--color-saffron-light)',
     padding: '40px',
     borderRadius: '12px',
     boxShadow: '0 4px 20px rgba(0,0,0,0.05)',

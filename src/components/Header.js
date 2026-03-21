@@ -24,7 +24,7 @@ export default function Header() {
           </div>
           <div style={styles.titleArea}>
             <h1 style={styles.englishTitle}>BHARAT BHUVAN BOOK OF RECORDS</h1>
-            <p style={styles.subtitle}>Recognizing Indian Arts & Cultural Heritage</p>
+            <p style={styles.subtitle}>A National Platform for Recognizing Indian Arts and Cultural Heritage</p>
           </div>
         </div>
 

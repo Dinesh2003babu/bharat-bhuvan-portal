@@ -54,9 +54,11 @@ export default function Home() {
 
           {/* Text Right */}
           <div style={styles.heroRight} className="hero-right">
-            <h1 style={styles.heroTitle} className="hero-title">
-              WELCOME TO <br /> BHARAT BHUVAN BOOK OF RECORDS
-            </h1>
+            <h3 style={styles.welcomeheroTitle} className="hero-title">
+              <p style={styles.welcomeheroTitle}>WELCOME TO</p>
+              <p style={styles.heroTitle}>BHARAT BHUVAN</p>
+              <p style={styles.subheroTitle}>BOOK OF RECORDS</p>
+            </h3>
             <p style={styles.heroSubtitle}>
               <b>A National Platform for Recognizing Indian Arts and Cultural Heritage</b>
             </p>
@@ -340,10 +342,10 @@ const styles = {
   },
   heroImage: {
     width: '100%',
-    maxHeight: '400px',
-    maxWidth: '400px',
+    maxHeight: '500px',
+    maxWidth: '500px',
     borderRadius: '12px',
-    boxShadow: '0 8px 24px rgba(0,0,0,0.1)',
+    // boxShadow: '0 8px 24px rgba(0,0,0,0.1)',
     objectFit: 'cover',
   },
   heroRight: {
@@ -353,9 +355,27 @@ const styles = {
     alignItems: 'center',
     textAlign: 'center',
   },
+  welcomeheroTitle: {
+    fontSize: '30px',
+    // lineHeight: '1.2',
+    color: 'var(--color-navy)',
+    fontWeight: '900',
+    // marginBottom: '20px',
+    letterSpacing: '1px',
+    textShadow: '0 2px 4px rgba(0,0,0,0.05)',
+  },
   heroTitle: {
     fontSize: '50px',
     lineHeight: '1.2',
+    color: 'var(--color-navy)',
+    fontWeight: '900',
+    // marginBottom: '20px',
+    letterSpacing: '1px',
+    textShadow: '0 2px 4px rgba(0,0,0,0.05)',
+  },
+  subheroTitle: {
+    fontSize: '30px',
+    // lineHeight: '1.2',
     color: 'var(--color-navy)',
     fontWeight: '900',
     marginBottom: '20px',

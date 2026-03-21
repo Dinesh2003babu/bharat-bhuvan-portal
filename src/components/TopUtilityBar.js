@@ -3,7 +3,7 @@ export default function TopUtilityBar() {
     <div style={styles.utilityBar}>
       <div style={styles.container} className="utility-bar-container">
         <div style={styles.left} className="mobile-hide">
-          <span>Certified Institution as per Government of India | An Official Record Affirming Entity</span>
+          <span>An ISO Certified Institution | An Official Record Affirming Entity</span>
         </div>
         <div style={styles.right}>
           <button style={styles.btn} className="mobile-hide">Skip to Main Content</button>
