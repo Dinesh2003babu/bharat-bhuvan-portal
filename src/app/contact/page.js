@@ -21,7 +21,7 @@ export default function ContactPage() {
     e.preventDefault();
     setIsLoading(true);
     setErrorMsg("");
-    
+
     try {
       const { data, error } = await supabase
         .from('contact_enquiries')
@@ -140,7 +140,7 @@ export default function ContactPage() {
                   <p style={{ color: '#4a5568', marginBottom: 25, maxWidth: '400px', margin: '0 auto 25px', lineHeight: '1.6' }}>
                     Thank you, <strong>{formData.name}</strong>. We have securely received your enquiry regarding <strong>{formData.subject}</strong>. Our team will review your message and contact you at <strong>{formData.email}</strong> shortly.
                   </p>
-                  
+
                   <button onClick={() => {
                     setSubmitted(false);
                     setFormData({ name: "", phone: "", email: "", subject: "General Inquiry", message: "" });
@@ -215,7 +215,7 @@ export default function ContactPage() {
                     />
                   </div>
 
-                   <button type="submit" disabled={isLoading} style={isLoading ? styles.submitBtnLoading : styles.submitBtn} suppressHydrationWarning>
+                  <button type="submit" disabled={isLoading} style={isLoading ? styles.submitBtnLoading : styles.submitBtn} suppressHydrationWarning>
                     {isLoading ? "SENDING..." : "SUBMIT ENQUIRY"}
                     {!isLoading && <Send size={18} style={{ marginLeft: 10 }} />}
                   </button>
