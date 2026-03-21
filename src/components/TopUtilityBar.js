@@ -6,8 +6,8 @@ export default function TopUtilityBar() {
           <span>Certified Institution as per Government of India | An Official Record Affirming Entity</span>
         </div>
         <div style={styles.right}>
-          <button style={styles.btn}>Skip to Main Content</button>
-          <div style={styles.divider}>|</div>
+          <button style={styles.btn} className="mobile-hide">Skip to Main Content</button>
+          <div style={styles.divider} className="mobile-hide">|</div>
           <button style={styles.btn}>A-</button>
           <button style={styles.btn}>A</button>
           <button style={styles.btn}>A+</button>
