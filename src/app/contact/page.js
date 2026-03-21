@@ -45,7 +45,7 @@ export default function ContactPage() {
 
   const handleGeneralWhatsApp = () => {
     const message = encodeURIComponent("Hello, I would like to know more about Bharath Bhuvan Book of Records.");
-    window.open(`https://wa.me/919944757082?text=${message}`, "_blank");
+    window.open(`https://wa.me/917603839116?text=${message}`, "_blank");
   };
 
   return (
@@ -70,9 +70,9 @@ export default function ContactPage() {
                 <div style={styles.iconBoxSaffron}>
                   <Phone size={24} color="#fff" />
                 </div>
-                <div style={{ flex: 1, minWidth: 0 }}>
+                <div>
                   <p style={{ ...styles.contactLabel, color: 'var(--color-saffron)' }}>Phone Number</p>
-                  <p style={styles.contactValue}>+91 9944757082</p>
+                  <p style={styles.contactValue}>+91 76038 39116</p>
                 </div>
               </div>
 
@@ -82,7 +82,7 @@ export default function ContactPage() {
                 </div>
                 <div onClick={handleGeneralWhatsApp} style={{ cursor: 'pointer', flex: 1, minWidth: 0 }}>
                   <p style={{ ...styles.contactLabel, color: 'var(--color-green)' }}>WhatsApp</p>
-                  <p style={styles.contactValue}>+91 9944757082</p>
+                  <p style={styles.contactValue}>+91 76038 39116</p>
                 </div>
               </div>
 
@@ -92,7 +92,7 @@ export default function ContactPage() {
                 </div>
                 <div style={{ flex: 1, minWidth: 0 }}>
                   <p style={{ ...styles.contactLabel, color: 'var(--color-navy)' }}>Email Address</p>
-                  <p style={styles.contactValue}>s.dineshbabu2003@gmail.com</p>
+                  <p style={styles.contactValue}>bbrecords.india@gmail.com</p>
                 </div>
               </div>
 

@@ -119,7 +119,7 @@ const styles = {
     marginBottom: '2px',
   },
   englishTitle: {
-    fontSize: '18px',
+    fontSize: '22px',
     color: 'var(--color-navy)',
     fontWeight: '900',
     letterSpacing: '0.5px',

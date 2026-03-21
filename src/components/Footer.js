@@ -40,8 +40,8 @@ export default function Footer() {
           <div style={styles.column} className="footer-column">
             <h3 style={styles.heading} className="footer-heading">Contact</h3>
             <p style={styles.text}>
-              <strong>Email:</strong> s.dineshbabu2003@gmail.com<br />
-              <strong>Phone:</strong> +91 9944757082<br />
+              <strong>Email:</strong> bbrecords.india@gmail.com<br />
+              <strong>Phone:</strong> +91 76038 39116<br />
             </p>
           </div>
         </div>
