@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Instagram, Youtube, Facebook } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -9,24 +10,39 @@ export default function Footer() {
           <div style={styles.column} className="footer-column">
             <h3 style={styles.heading} className="footer-heading">Bharat Bhuvan Book of Records</h3>
             <p style={styles.text}>
-              The premier authority on validating and chronicling extraordinary achievements across the Indian subcontinent.
+              An Eminent Institution Dedicated to Recognizing and Preserving the Bharatiya Arts and Cultural Heritage of India.
             </p>
           </div>
           <div style={styles.column} className="footer-column">
             <h3 style={styles.heading} className="footer-heading">Quick Links</h3>
             <ul style={styles.list}>
-              <li><Link href="/records" style={styles.link}>Record Database</Link></li>
+              {/* <li><Link href="/records" style={styles.link}>Record Database</Link></li> */}
               <li><Link href="/apply" style={styles.link}>Apply for a Record</Link></li>
-              <li><Link href="/verify" style={styles.link}>Verify Certificate</Link></li>
-              <li><Link href="/guidelines" style={styles.link}>Official Guidelines</Link></li>
+              <li><Link href="/upcoming" style={styles.link}>Upcoming Events</Link></li>
+              {/* <li><Link href="/verify" style={styles.link}>Verify Certificate</Link></li> */}
+              {/* <li><Link href="/guidelines" style={styles.link}>Official Guidelines</Link></li> */}
             </ul>
           </div>
           <div style={styles.column} className="footer-column">
-            <h3 style={styles.heading} className="footer-heading">Contact Secretariat</h3>
+            <h3 style={styles.heading} className="footer-heading">Follow Us</h3>
+            <div style={styles.socialLinks}>
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" style={styles.socialIcon} className="social-hover">
+                <Instagram size={20} />
+              </a>
+              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" style={styles.socialIcon} className="social-hover">
+                <Youtube size={20} />
+              </a>
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" style={styles.socialIcon} className="social-hover">
+                <Facebook size={20} />
+              </a>
+            </div>
+          </div>
+          <div style={styles.column} className="footer-column">
+            <h3 style={styles.heading} className="footer-heading">Contact</h3>
             <p style={styles.text}>
-              <strong>Email:</strong> bbrecords.india@gmail.com<br />
-              <strong>Phone:</strong> +91 7603839116<br />
-              {/* <strong>Address:</strong> BBR Bhavan, Tamil Nadu, India */}
+              <strong>Email:</strong> s.dineshbabu2003@gmail.com<br />
+              <strong>Phone:</strong> +91 9944757082<br />
+              <strong>Address:</strong> BBR Bhavan, Tamil Nadu, India
             </p>
           </div>
         </div>
@@ -65,8 +81,8 @@ const styles = {
   },
   grid: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-    gap: '40px',
+    gridTemplateColumns: '1.5fr 1fr 1fr 1.2fr',
+    gap: '30px',
   },
   column: {
     display: 'flex',
@@ -97,6 +113,23 @@ const styles = {
     textDecoration: 'none',
     fontSize: '14px',
     transition: 'color 0.2s ease',
+  },
+  socialLinks: {
+    display: 'flex',
+    gap: '15px',
+    marginTop: '5px',
+  },
+  socialIcon: {
+    color: 'rgba(255,255,255,0.8)',
+    backgroundColor: 'rgba(255,255,255,0.05)',
+    width: '40px',
+    height: '40px',
+    borderRadius: '50%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    transition: 'all 0.3s ease',
+    border: '1px solid rgba(255,255,255,0.1)',
   },
   bottomBar: {
     backgroundColor: 'rgba(0,0,0,0.2)',
