@@ -85,73 +85,71 @@ export default function AboutPage() {
                     <span style={styles.catCardIcon}>🎭</span>
                   </div>
                   <h4 style={styles.catCardTitle}>Performing Arts</h4>
-                  <p style={styles.catCardDesc}>Dance, music, theatre, classical and folk performances rooted in Indian traditions.</p>
+                  <p style={styles.catCardDesc}>Dance, music and theatre traditions that express emotions, stories and devotion through movement, rhythm and performance.</p>
                 </div>
 
                 <div style={styles.catCard}>
                   <div style={styles.catCardIconWrap}>
                     <span style={styles.catCardIcon}>🎨</span>
                   </div>
-                  <h4 style={styles.catCardTitle}>Art, Craft &amp; Handicrafts</h4>
-                  <p style={styles.catCardDesc}>Traditional crafts, handmade creations, artisan skills and cultural art forms.</p>
-                </div>
-
-                <div style={styles.catCard}>
-                  <div style={styles.catCardIconWrap}>
-                    <span style={styles.catCardIcon}>🏛️</span>
-                  </div>
-                  <h4 style={styles.catCardTitle}>Cultural Heritage &amp; Traditions</h4>
-                  <p style={styles.catCardDesc}>Temple arts, rituals, folk traditions and heritage preservation.</p>
-                </div>
-
-                <div style={styles.catCard}>
-                  <div style={styles.catCardIconWrap}>
-                    <span style={styles.catCardIcon}>📚</span>
-                  </div>
-                  <h4 style={styles.catCardTitle}>Education &amp; Skill Development</h4>
-                  <p style={styles.catCardDesc}>Workshops, training programs and cultural education initiatives.</p>
+                  <h4 style={styles.catCardTitle}>Visual Arts</h4>
+                  <p style={styles.catCardDesc}>Paintings, sculpture and architectural creations that reflect India's aesthetic excellence, symbolism and craftsmanship.</p>
                 </div>
 
                 <div style={styles.catCard}>
                   <div style={styles.catCardIconWrap}>
                     <span style={styles.catCardIcon}>📜</span>
                   </div>
-                  <h4 style={styles.catCardTitle}>Literature &amp; Language Arts</h4>
-                  <p style={styles.catCardDesc}>Poetry, storytelling, classical literature, regional languages, and written expressions preserving cultural identity.</p>
+                  <h4 style={styles.catCardTitle}>Literary Arts</h4>
+                  <p style={styles.catCardDesc}>Sacred texts, poetry, epics and writings that preserve knowledge, philosophy and cultural narratives across generations.</p>
                 </div>
 
                 <div style={styles.catCard}>
                   <div style={styles.catCardIconWrap}>
-                    <span style={styles.catCardIcon}>👥</span>
+                    <span style={styles.catCardIcon}>🌺</span>
                   </div>
-                  <h4 style={styles.catCardTitle}>Mass Participation &amp; Gatherings</h4>
-                  <p style={styles.catCardDesc}>Large-scale cultural events, group performances and mass gatherings.</p>
+                  <h4 style={styles.catCardTitle}>Folk &amp; Tribal Arts</h4>
+                  <p style={styles.catCardDesc}>Indigenous art forms rooted in local traditions, festivals and daily life, reflecting the cultural diversity of communities.</p>
                 </div>
 
                 <div style={styles.catCard}>
                   <div style={styles.catCardIconWrap}>
-                    <span style={styles.catCardIcon}>🌏</span>
+                    <span style={styles.catCardIcon}>🏺</span>
                   </div>
-                  <h4 style={styles.catCardTitle}>Social &amp; Cultural Initiatives</h4>
-                  <p style={styles.catCardDesc}>Cultural awareness programs and preservation activities.</p>
+                  <h4 style={styles.catCardTitle}>Crafts (Applied Arts)</h4>
+                  <p style={styles.catCardDesc}>Handcrafted creations including textiles, jewellery and artisan works that combine skill, tradition and functional beauty.</p>
                 </div>
 
                 <div style={styles.catCard}>
                   <div style={styles.catCardIconWrap}>
-                    <span style={styles.catCardIcon}>💡</span>
+                    <span style={styles.catCardIcon}>🪔</span>
                   </div>
-                  <h4 style={styles.catCardTitle}>Innovation in Arts &amp; Culture</h4>
-                  <p style={styles.catCardDesc}>Creative modern interpretations of traditional Indian art forms.</p>
+                  <h4 style={styles.catCardTitle}>Ritual &amp; Spiritual Arts</h4>
+                  <p style={styles.catCardDesc}>Temple arts, devotional practices and sacred expressions performed as offerings, connecting art with spirituality and faith.</p>
                 </div>
 
-                {/* <div style={{ ...styles.catCard, borderTop: '3px solid var(--color-green)' }}> */}
-                {/* <div style={{ ...styles.catCardIconWrap, borderColor: 'rgba(19,136,8,0.25)', background: 'linear-gradient(135deg, rgba(19,136,8,0.1), rgba(255,153,51,0.06))' }}> */}
                 <div style={styles.catCard}>
                   <div style={styles.catCardIconWrap}>
-                    <span style={styles.catCardIcon}>🌐</span>
+                    <span style={styles.catCardIcon}>📚</span>
                   </div>
-                  <h4 style={styles.catCardTitle}>Global Participation</h4>
-                  <p style={styles.catCardDesc}><strong>Indian Artists</strong> · <strong>NRI Artists</strong> · <strong>International Artists</strong></p>
+                  <h4 style={styles.catCardTitle}>Knowledge Systems (Shastra-based)</h4>
+                  <p style={styles.catCardDesc}>Structured artistic principles and ancient treatises that define the science, techniques and discipline behind Indian arts.</p>
+                </div>
+
+                <div style={styles.catCard}>
+                  <div style={styles.catCardIconWrap}>
+                    <span style={styles.catCardIcon}>⚔️</span>
+                  </div>
+                  <h4 style={styles.catCardTitle}>Martial Arts</h4>
+                  <p style={styles.catCardDesc}>Traditional systems of physical discipline that integrate movement, control and energy, rooted in cultural and spiritual practices.</p>
+                </div>
+
+                <div style={styles.catCard}>
+                  <div style={styles.catCardIconWrap}>
+                    <span style={styles.catCardIcon}>🗣️</span>
+                  </div>
+                  <h4 style={styles.catCardTitle}>Communication &amp; Narrative Arts</h4>
+                  <p style={styles.catCardDesc}>Storytelling traditions that convey epics, values and philosophy through narration, dialogue and expressive presentation.</p>
                 </div>
 
               </div>

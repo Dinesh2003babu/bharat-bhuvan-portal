@@ -4,15 +4,16 @@ import { useState } from "react";
 import { Send, CheckCircle2, AlertCircle, ShieldCheck, X } from "lucide-react";
 import { supabase } from "../../lib/supabaseClient";
 
-const CATEGORIES = ["Performing Arts",
-  "Art, Craft & Handicrafts",
-  "Cultural Heritage",
-  "Education & Skill Development",
-  "Literature & Language Arts",
-  "Mass Participation & Gatherings",
-  "Social & Cultural Initiatives",
-  "Innovation in Arts & Culture",
-  "Global Participation "
+const CATEGORIES = [
+  "Performing Arts",
+  "Visual Arts",
+  "Literary Arts",
+  "Folk & Tribal Arts",
+  "Crafts (Applied Arts)",
+  "Ritual & Spiritual Arts",
+  "Knowledge Systems (Shastra-based)",
+  "Martial Arts",
+  "Communication & Narrative Arts"
 ];
 
 const TERMS_AND_CONDITIONS = [
