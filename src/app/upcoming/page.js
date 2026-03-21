@@ -15,8 +15,9 @@ export default function UpcomingPage() {
             {/* <p style={styles.heroItalic}>Everything is Sound. Everything Dances.</p> */}
             <p style={styles.heroSubText}>
               <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-              The Pulse of Expression<br />
-              A Record-Breaking Bharatanatyam Show</p>
+              {/* The Pulse of Expression<br /> */}
+              {/* A Record-Breaking Bharatanatyam Show */}
+            </p>
           </div>
 
           <div style={styles.heroInfoRow}>
@@ -135,7 +136,7 @@ const styles = {
   heroSection: {
     position: 'relative',
     height: '600px', // Increased height slightly
-    backgroundImage: 'url("/Sarvam_Shabdam_1.png")',
+    backgroundImage: 'url("/S1.png")',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     display: 'flex',

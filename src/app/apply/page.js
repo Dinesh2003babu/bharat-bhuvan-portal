@@ -4,7 +4,16 @@ import { useState } from "react";
 import { Send, CheckCircle2, AlertCircle, ShieldCheck } from "lucide-react";
 import { supabase } from "../../lib/supabaseClient";
 
-const CATEGORIES = ["Arts", "Dance", "Music", "Education", "Other"];
+const CATEGORIES = ["Performing Arts",
+  "Art, Craft & Handicrafts",
+  "Cultural Heritage",
+  "Education & Skill Development",
+  "Literature & Language Arts",
+  "Mass Participation & Gatherings",
+  "Social & Cultural Initiatives",
+  "Innovation in Arts & Culture",
+  "Global Participation "
+];
 
 const TERMS_AND_CONDITIONS = [
   "This submission is intended only for initial contact and preliminary review of your record proposal.",
@@ -84,7 +93,7 @@ export default function ApplyPage() {
         }]);
 
       if (error) throw error;
-      
+
       setIsSuccess(true);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } catch (error) {
@@ -109,11 +118,11 @@ export default function ApplyPage() {
             <CheckCircle2 size={80} color="var(--color-green)" style={{ margin: '0 auto 20px' }} />
             <h2 style={{ fontSize: '28px', color: 'var(--color-navy)', marginBottom: '15px' }}>Thank You, {formData.name}!</h2>
             <p style={{ fontSize: '18px', color: 'var(--text-main)', lineHeight: '1.6', maxWidth: '600px', margin: '0 auto 30px' }}>
-              We have successfully received your preliminary application for the <strong>{formData.category}</strong> category. 
+              We have successfully received your preliminary application for the <strong>{formData.category}</strong> category.
               Our evaluation team will review your details carefully. If shortlisted, you will be contacted via WhatsApp at <strong>{formData.whatsapp}</strong> with the official guidelines.
             </p>
-            <button 
-              onClick={() => window.location.reload()} 
+            <button
+              onClick={() => window.location.reload()}
               style={{ ...styles.submitBtn, width: 'auto', padding: '15px 40px', display: 'inline-block', margin: '0 auto' }}
             >
               Return to Website

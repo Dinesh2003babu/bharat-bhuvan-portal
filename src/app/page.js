@@ -136,7 +136,7 @@ export default function Home() {
           <h2 style={styles.upcomingMainTitle}>Upcoming Event</h2>
           <div style={styles.upcomingFlex} className="upcoming-flex">
             <div style={styles.upcomingImageWrapper} className="upcoming-img-wrap">
-              <img src="/Sarvam_Shabdam_2.png" alt="Sarvam Shabdam" style={styles.upcomingImage} className="upcoming-img" />
+              <img src="/Sarvam_Shabdam_3.png" alt="Sarvam Shabdam" style={styles.upcomingImage} className="upcoming-img" />
             </div>
             <div style={styles.upcomingContent} className="upcoming-content">
               <h3 style={styles.upcomingEventTitle}>SARVAM SHABDAM</h3>

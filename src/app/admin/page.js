@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { supabase } from "../../lib/supabaseClient";
-import { Search, Loader2, RefreshCcw, LogOut } from "lucide-react";
+import { Search, Loader2, RefreshCcw, LogOut, Download } from "lucide-react";
 
 export default function AdminDashboard() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -47,6 +47,51 @@ export default function AdminDashboard() {
     app.phone?.includes(searchTerm) ||
     app.whatsapp?.includes(searchTerm)
   );
+
+  const exportToCSV = () => {
+    if (filteredApps.length === 0) return;
+    
+    // Headers matching the database columns
+    const headers = [
+      "Date", "Participant Name", "Parent's Name", "Age", "Phone", "WhatsApp", 
+      "Address", "Category", "Record Title", "Brief Description", 
+      "Academy", "Guru Name", "Instagram ID", "YouTube Link", "Status"
+    ];
+    
+    // Map data ensuring commas in descriptions don't break the CSV
+    const rows = filteredApps.map(app => [
+      new Date(app.created_at).toLocaleDateString(),
+      `"${app.name || ''}"`,
+      `"${app.parent_name || ''}"`,
+      app.age || '',
+      `"${app.phone || ''}"`,
+      `"${app.whatsapp || ''}"`,
+      `"${(app.address || '').replace(/"/g, '""')}"`,
+      `"${app.category || ''}"`,
+      `"${(app.title || '').replace(/"/g, '""')}"`,
+      `"${(app.description || '').replace(/"/g, '""')}"`,
+      `"${app.academy || ''}"`,
+      `"${app.guru || ''}"`,
+      `"${app.instagram || ''}"`,
+      `"${app.youtube || ''}"`,
+      app.status || 'Pending'
+    ]);
+
+    const csvContent = [
+      headers.join(","),
+      ...rows.map(r => r.join(","))
+    ].join("\n");
+
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement("a");
+    const url = URL.createObjectURL(blob);
+    link.setAttribute("href", url);
+    link.setAttribute("download", `BBBR_Records_Export_${new Date().toLocaleDateString().replace(/\//g, '-')}.csv`);
+    link.style.visibility = 'hidden';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   if (!isAuthenticated) {
     return (
@@ -99,10 +144,16 @@ export default function AdminDashboard() {
               style={styles.searchInput}
             />
           </div>
-          <button onClick={fetchApplications} style={styles.refreshBtn}>
-            <RefreshCcw size={16} />
-            Refresh Data
-          </button>
+          <div style={styles.actionButtons}>
+            <button onClick={exportToCSV} style={styles.downloadBtn} disabled={filteredApps.length === 0}>
+              <Download size={16} />
+              Export to Spreadsheet
+            </button>
+            <button onClick={fetchApplications} style={styles.refreshBtn}>
+              <RefreshCcw size={16} />
+              Refresh Data
+            </button>
+          </div>
         </div>
 
         <div style={styles.tableCard}>
@@ -123,10 +174,18 @@ export default function AdminDashboard() {
                   <tr>
                     <th style={styles.th}>Date</th>
                     <th style={styles.th}>Participant Name</th>
+                    <th style={styles.th}>Parent Name</th>
                     <th style={styles.th}>Age</th>
+                    <th style={styles.th}>Phone</th>
+                    <th style={styles.th}>WhatsApp</th>
+                    <th style={styles.th}>Address</th>
                     <th style={styles.th}>Category</th>
                     <th style={styles.th}>Record Title</th>
-                    <th style={styles.th}>WhatsApp</th>
+                    <th style={styles.th}>Description</th>
+                    <th style={styles.th}>Academy</th>
+                    <th style={styles.th}>Guru</th>
+                    <th style={styles.th}>Instagram</th>
+                    <th style={styles.th}>YouTube</th>
                     <th style={styles.th}>Status</th>
                   </tr>
                 </thead>
@@ -135,13 +194,33 @@ export default function AdminDashboard() {
                     <tr key={app.id} style={styles.tr}>
                       <td style={styles.td}>{new Date(app.created_at).toLocaleDateString()}</td>
                       <td style={styles.td}><strong>{app.name}</strong></td>
-                      <td style={styles.td}>{app.age}</td>
-                      <td style={styles.td}><span style={styles.badge}>{app.category}</span></td>
-                      <td style={styles.td}>{app.title}</td>
+                      <td style={styles.td}>{app.parent_name || '-'}</td>
+                      <td style={styles.td}><strong>{app.age}</strong></td>
+                      <td style={styles.td}>{app.phone}</td>
                       <td style={styles.td}>
                         <a href={`https://wa.me/91${app.whatsapp}`} target="_blank" rel="noreferrer" style={styles.waLink}>
                           {app.whatsapp}
                         </a>
+                      </td>
+                      <td style={styles.td}>
+                        <div style={styles.truncateText} title={app.address}>{app.address || '-'}</div>
+                      </td>
+                      <td style={styles.td}><span style={styles.badge}>{app.category}</span></td>
+                      <td style={styles.td}>
+                        <div style={styles.truncateText} title={app.title}>{app.title}</div>
+                      </td>
+                      <td style={styles.td}>
+                        <div style={styles.truncateText} title={app.description}>{app.description}</div>
+                      </td>
+                      <td style={styles.td}>{app.academy || '-'}</td>
+                      <td style={styles.td}>{app.guru || '-'}</td>
+                      <td style={styles.td}>{app.instagram || '-'}</td>
+                      <td style={styles.td}>
+                        {app.youtube ? (
+                          <a href={app.youtube.startsWith('http') ? app.youtube : `https://${app.youtube}`} target="_blank" rel="noreferrer" style={styles.waLink}>
+                            Video Link
+                          </a>
+                        ) : '-'}
                       </td>
                       <td style={styles.td}>
                         <span style={styles.statusBadge}>{app.status || 'Pending'}</span>
@@ -292,6 +371,24 @@ const styles = {
     width: '100%',
     fontSize: '14px',
   },
+  actionButtons: {
+    display: 'flex',
+    gap: '12px',
+    flexWrap: 'wrap',
+  },
+  downloadBtn: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '8px',
+    backgroundColor: 'var(--color-green)',
+    color: '#fff',
+    border: 'none',
+    padding: '12px 20px',
+    borderRadius: '8px',
+    cursor: 'pointer',
+    fontWeight: '600',
+    transition: 'opacity 0.2s',
+  },
   refreshBtn: {
     display: 'flex',
     alignItems: 'center',
@@ -378,5 +475,11 @@ const styles = {
     color: 'var(--text-muted)',
     fontSize: '16px',
     fontWeight: '500',
+  },
+  truncateText: {
+    maxWidth: '220px',
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
   }
 };
