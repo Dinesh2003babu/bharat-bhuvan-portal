@@ -70,7 +70,7 @@ export default function ContactPage() {
                 <div style={styles.iconBoxSaffron}>
                   <Phone size={24} color="#fff" />
                 </div>
-                <div>
+                <div style={{ flex: 1, minWidth: 0 }}>
                   <p style={{ ...styles.contactLabel, color: 'var(--color-saffron)' }}>Phone Number</p>
                   <p style={styles.contactValue}>+91 9944757082</p>
                 </div>
@@ -80,7 +80,7 @@ export default function ContactPage() {
                 <div style={styles.iconBoxGreen}>
                   <MessageCircle size={24} color="#fff" />
                 </div>
-                <div onClick={handleGeneralWhatsApp} style={{ cursor: 'pointer' }}>
+                <div onClick={handleGeneralWhatsApp} style={{ cursor: 'pointer', flex: 1, minWidth: 0 }}>
                   <p style={{ ...styles.contactLabel, color: 'var(--color-green)' }}>WhatsApp</p>
                   <p style={styles.contactValue}>+91 9944757082</p>
                 </div>
@@ -90,7 +90,7 @@ export default function ContactPage() {
                 <div style={styles.iconBoxNavy}>
                   <Mail size={24} color="#fff" />
                 </div>
-                <div>
+                <div style={{ flex: 1, minWidth: 0 }}>
                   <p style={{ ...styles.contactLabel, color: 'var(--color-navy)' }}>Email Address</p>
                   <p style={styles.contactValue}>s.dineshbabu2003@gmail.com</p>
                 </div>
@@ -343,6 +343,7 @@ const styles = {
     fontSize: '18px',
     fontWeight: '800',
     color: '#2d3748',
+    wordBreak: 'break-word',
   },
   note: {
     fontSize: '14px',
