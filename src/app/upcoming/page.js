@@ -1,6 +1,7 @@
 "use client";
 
 import { Calendar, MapPin, Clock } from "lucide-react";
+import Link from "next/link";
 
 export default function UpcomingPage() {
   return (
@@ -29,8 +30,15 @@ export default function UpcomingPage() {
           </div>
 
           <div style={styles.heroActions}>
-            <button style={styles.joinBtn}>Join Now</button>
-            <button style={styles.exploreBtn}>Explore Concept</button>
+            <Link href="/apply">
+              <button style={styles.joinBtn}>Join Now</button>
+            </Link>
+            <button style={styles.exploreBtn} onClick={() => {
+              const el = document.getElementById('concept');
+              if (el) el.scrollIntoView({ behavior: 'smooth' });
+            }}>
+              Explore Concept
+            </button>
           </div>
         </div>
       </section>
@@ -71,7 +79,7 @@ export default function UpcomingPage() {
       </section>
 
       <div style={styles.container}>
-        <section style={styles.aboutSection}>
+        <section id="concept" style={styles.aboutSection}>
           <h2 style={styles.sectionHeading}>What is Sarvam Shabdam?</h2>
           <div style={styles.aboutContent}>
             <p style={styles.aboutText}>
@@ -151,7 +159,7 @@ const styles = {
     left: 0,
     right: 0,
     bottom: 0,
-    backgroundColor: 'rgba(0, 0, 80, 0.4)', // Subtle navy overlay for readability
+    // backgroundColor: 'rgba(0, 0, 80, 0.4)', // Subtle navy overlay for readability
     zIndex: 1,
   },
   heroContent: {
