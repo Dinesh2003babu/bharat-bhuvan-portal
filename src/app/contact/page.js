@@ -164,7 +164,7 @@ export default function ContactPage() {
                     />
                   </div>
 
-                  <div style={styles.row}>
+                  <div className="form-grid-res" style={styles.row}>
                     <div style={styles.field}>
                       <label style={styles.label}>Phone Number</label>
                       <input

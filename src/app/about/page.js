@@ -78,7 +78,7 @@ export default function AboutPage() {
                 <h2 style={styles.sectionTitle}>Record Categories</h2>
               </div>
 
-              <div style={styles.catGrid}>
+              <div className="cat-grid-res" style={styles.catGrid}>
 
                 <div style={styles.catCard}>
                   <div style={styles.catCardIconWrap}>

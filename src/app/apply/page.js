@@ -162,7 +162,7 @@ export default function ApplyPage() {
               {/* Personal Details */}
               <div style={styles.formGroup}>
                 <h3 style={styles.groupTitle}>Personal Details</h3>
-                <div style={styles.grid}>
+                <div className="form-grid-res" style={styles.grid}>
                   <div style={styles.field}>
                     <label style={styles.label}>Individual Participant Name <span style={styles.req}>*</span></label>
                     <input name="name" required style={styles.input} value={formData.name} onChange={handleChange} />
@@ -193,7 +193,7 @@ export default function ApplyPage() {
               {/* Academy Details */}
               <div style={styles.formGroup}>
                 <h3 style={styles.groupTitle}>Academy Details</h3>
-                <div style={styles.grid}>
+                <div className="form-grid-res" style={styles.grid}>
                   <div style={styles.field}>
                     <label style={styles.label}>Academy Name <span style={styles.req}>*</span></label>
                     <input name="academy" style={styles.input} value={formData.academy} onChange={handleChange} />
@@ -208,7 +208,7 @@ export default function ApplyPage() {
               {/* Social Details */}
               <div style={styles.formGroup}>
                 <h3 style={styles.groupTitle}>Social Details</h3>
-                <div style={styles.grid}>
+                <div className="form-grid-res" style={styles.grid}>
                   <div style={styles.field}>
                     <label style={styles.label}>Instagram ID <span style={styles.req}>*</span></label>
                     <input name="instagram" style={styles.input} placeholder="@username" value={formData.instagram} onChange={handleChange} />
@@ -223,7 +223,7 @@ export default function ApplyPage() {
               {/* Record Details */}
               <div style={styles.formGroup}>
                 <h3 style={styles.groupTitle}>Record Details</h3>
-                <div style={styles.grid}>
+                <div className="form-grid-res" style={styles.grid}>
                   <div style={styles.field}>
                     <label style={styles.label}>Category <span style={styles.req}>*</span></label>
                     <select name="category" required style={styles.input} value={formData.category} onChange={handleChange}>

@@ -192,6 +192,10 @@ button {
     font-size: 20px !important;
   }
 
+  .form-grid-res {
+    grid-template-columns: 1fr !important;
+  }
+
   /* Verify Page */
   .verify-data-grid {
     grid-template-columns: 1fr !important;
@@ -209,6 +213,10 @@ button {
   
   .about-card-res {
     padding: 25px 20px !important;
+  }
+
+  .cat-grid-res {
+    grid-template-columns: 1fr !important;
   }
 
   /* Records Page */
