@@ -400,7 +400,7 @@ const styles = {
     flexDirection: 'column',
   },
   fieldFull: {
-    gridColumn: '1 / span 2',
+    gridColumn: '1 / -1',
     display: 'flex',
     flexDirection: 'column',
   },

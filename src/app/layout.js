@@ -12,6 +12,12 @@ export const metadata = {
   description: "Official portal for the Bharat Bhuvan Book of Records. Apply for a record, verify certificates, and view the database.",
 };
 
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
