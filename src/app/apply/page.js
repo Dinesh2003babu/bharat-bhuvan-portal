@@ -115,7 +115,7 @@ export default function ApplyPage() {
             <p style={styles.headerSubtitle}>Your record-breaking journey has officially begun.</p>
           </div>
         </div>
-        <div style={styles.container}>
+        <div style={styles.container} className="container-fluid">
           <div className="form-card-res" style={{ ...styles.formCard, textAlign: 'center', marginTop: '40px', padding: '60px 40px' }}>
             <CheckCircle2 size={80} color="var(--color-green)" style={{ margin: '0 auto 20px' }} />
             <h2 style={{ fontSize: '28px', color: 'var(--color-navy)', marginBottom: '15px' }}>Thank You, {formData.name}!</h2>
@@ -139,13 +139,13 @@ export default function ApplyPage() {
     <div style={styles.page}>
       {/* Header */}
       <div style={styles.header}>
-        <div style={styles.container}>
+        <div style={styles.container} className="container-fluid">
           <h1 style={styles.headerTitle}>Application for Pre-Screening</h1>
           <p style={styles.headerSubtitle}>Initiate your record-breaking odyssey.</p>
         </div>
       </div>
 
-      <div style={styles.container}>
+      <div style={styles.container} className="container-fluid">
         <div className="layout-res" style={styles.layout}>
 
           {/* Form Side */}
@@ -352,48 +352,48 @@ const styles = {
     color: 'rgba(255,255,255,0.8)',
   },
   container: {
-    maxWidth: '1200px',
+    width: 'var(--container-width)',
     margin: '0 auto',
-    padding: '0 20px',
+    padding: '0 1.25rem',
   },
   layout: {
     display: 'flex',
-    gap: '30px',
+    gap: 'var(--gap-fluid)',
     flexWrap: 'wrap',
+    padding: 'var(--section-padding) 0',
   },
   formSection: {
-    flex: '2 1 600px',
-    marginTop: '20px',
+    flex: '1 1 500px',
   },
   sidebar: {
-    flex: '1 1 350px',
+    flex: '1 1 300px',
     display: 'flex',
     flexDirection: 'column',
-    gap: '30px',
+    gap: 'var(--gap-fluid)',
   },
   formCard: {
     backgroundColor: '#fff',
-    padding: '40px',
+    padding: 'var(--gap-fluid)',
     borderRadius: '12px',
     boxShadow: '0 10px 30px rgba(0,0,0,0.05)',
   },
   formGroup: {
-    marginBottom: '40px',
-    paddingBottom: '20px',
+    marginBottom: '2.5rem',
+    paddingBottom: '1.25rem',
     borderBottom: '1px solid #edf2f7',
   },
   groupTitle: {
-    fontSize: '20px',
+    fontSize: '1.25rem',
     fontWeight: '800',
     color: 'var(--color-navy)',
-    marginBottom: '20px',
-    paddingLeft: '15px',
+    marginBottom: '1.25rem',
+    paddingLeft: '1rem',
     borderLeft: '4px solid var(--color-saffron)',
   },
   grid: {
     display: 'grid',
-    gridTemplateColumns: '1fr 1fr',
-    gap: '20px',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+    gap: '1.25rem',
   },
   field: {
     display: 'flex',

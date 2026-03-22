@@ -31,9 +31,9 @@ export default function UpcomingPage() {
 
           <div style={styles.heroActions}>
             <Link href="/apply">
-              <button style={styles.joinBtn}>Join Now</button>
+              <button style={styles.joinBtn} className="btn-join-hover">Join Now</button>
             </Link>
-            <button style={styles.exploreBtn} onClick={() => {
+            <button style={styles.exploreBtn} className="btn-explore-hover" onClick={() => {
               const el = document.getElementById('concept');
               if (el) el.scrollIntoView({ behavior: 'smooth' });
             }}>
@@ -139,7 +139,7 @@ const styles = {
   page: {
     backgroundColor: 'var(--bg-color)',
     minHeight: '100vh',
-    paddingBottom: '60px'
+    // paddingBottom: '60px'
   },
   heroSection: {
     position: 'relative',
@@ -239,7 +239,7 @@ const styles = {
   },
   detailsSection: {
     backgroundColor: '#f8f9fa',
-    padding: '80px 0',
+    padding: '1.5rem 0',
     borderBottom: '1px solid var(--border-color)',
   },
   detailsHeading: {
@@ -307,7 +307,7 @@ const styles = {
     paddingBottom: '15px',
   },
   aboutSection: {
-    padding: '60px 0',
+    padding: '1.5rem 0',
     textAlign: 'center',
   },
   aboutContent: {
@@ -328,7 +328,7 @@ const styles = {
     textAlign: 'justify',
   },
   visionSection: {
-    padding: '40px 0',
+    padding: '1.5rem 0',
   },
   visionContent: {
     maxWidth: '800px',
@@ -347,7 +347,7 @@ const styles = {
     marginTop: '20px',
   },
   mattersSection: {
-    padding: '40px 0',
+    padding: '1.5rem 0',
   },
   mattersContent: {
     maxWidth: '800px',

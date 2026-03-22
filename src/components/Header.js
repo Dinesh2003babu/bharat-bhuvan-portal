@@ -16,14 +16,14 @@ export default function Header() {
   return (
     <header style={styles.header}>
       <div style={styles.topOrnament}></div>
-      <div style={styles.container} className="header-container">
+      <div style={styles.container} className="container-fluid header-container">
         <div style={styles.logoArea} className="logo-section">
           {/* Official Logo Emblem */}
           <div style={styles.logoWrapper}>
             <img src="/BBBR_Logo.png" alt="BBBR Logo" style={styles.logoImage} />
           </div>
           <div style={styles.titleArea}>
-            <h1 style={styles.englishTitle}>BHARAT BHUVAN BOOK OF RECORDS</h1>
+            <h1 style={styles.englishTitle} className="fluid-label">BHARAT BHUVAN BOOK OF RECORDS</h1>
             <p style={styles.subtitle}>A National Platform for Recognizing Indian Arts and Cultural Heritage</p>
           </div>
         </div>
@@ -70,10 +70,7 @@ export default function Header() {
 const styles = {
   header: {
     backgroundColor: 'var(--color-white)',
-    boxShadow: '0 4px 6px rgba(0,0,0,0.05)',
     borderBottom: '4px solid var(--color-navy)',
-    position: 'sticky',
-    top: 0,
     zIndex: 100,
   },
   topOrnament: {
@@ -82,23 +79,23 @@ const styles = {
     width: '100%',
   },
   container: {
-    maxWidth: '1200px',
+    width: 'var(--container-width)',
     margin: '0 auto',
-    padding: '15px 20px',
+    padding: '1rem 0',
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
     flexWrap: 'wrap',
-    gap: '20px',
+    gap: '1.5rem',
   },
   logoArea: {
     display: 'flex',
     alignItems: 'center',
-    gap: '10px',
+    gap: '0.75rem',
   },
   logoWrapper: {
-    width: '70px',
-    height: '70px',
+    width: 'clamp(50px, 8vw, 70px)',
+    height: 'clamp(50px, 8vw, 70px)',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
@@ -112,26 +109,20 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
   },
-  hindiTitle: {
-    fontSize: '20px',
-    color: 'var(--color-saffron)',
-    fontWeight: '700',
-    marginBottom: '2px',
-  },
   englishTitle: {
-    fontSize: '22px',
+    fontSize: 'clamp(1rem, 2.5vw, 1.4rem)',
     color: 'var(--color-navy)',
     fontWeight: '900',
     letterSpacing: '0.5px',
     margin: 0,
+    lineHeight: '1.2',
   },
   subtitle: {
-    fontSize: '12px',
+    fontSize: 'clamp(0.6rem, 1.2vw, 0.75rem)',
     color: 'var(--color-green)',
     fontWeight: '600',
-    // textTransform: 'uppercase',
-    letterSpacing: '1px',
-    marginTop: '2px',
+    letterSpacing: '0.5px',
+    marginTop: '0.2rem',
   },
   nav: {
     display: 'flex',

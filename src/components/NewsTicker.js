@@ -39,7 +39,7 @@ const styles = {
   tickerWrapper: {
     backgroundColor: '#fff',
     borderBottom: '1px solid var(--border-color)',
-    height: '40px',
+    height: '30px',
     display: 'flex',
     alignItems: 'center',
     overflow: 'hidden',

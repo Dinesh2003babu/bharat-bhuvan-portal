@@ -46,7 +46,7 @@ export default function Home() {
       {/* HERO SECTION */}
       <section style={styles.hero}>
         <div style={styles.heroOverlay}></div>
-        <div style={styles.heroContainer} className="hero-container">
+        <div style={styles.heroContainer} className="container-fluid hero-container">
           {/* Image Left */}
           <div style={styles.heroLeft} className="hero-left">
             <img src="/BBBR_Logo.png" alt="Bharat Bhuvan Hero" style={styles.heroImage} className="hero-image" />
@@ -76,7 +76,7 @@ export default function Home() {
 
       {/* MISSION & VISION SECTION */}
       <section style={styles.missionVisionSection}>
-        <div style={styles.container}>
+        <div style={styles.container} className="container-fluid">
           <div style={styles.mvGrid} className="mv-grid">
             <div style={styles.mvCard} className="mv-card">
               <div style={styles.mvIconSaffron}>
@@ -102,7 +102,7 @@ export default function Home() {
 
       {/* OUR UNIQUENESS SECTION */}
       <section style={styles.uniquenessSection}>
-        <div style={styles.container}>
+        <div style={styles.container} className="container-fluid">
           <div style={styles.sectionHeaderUniqueness}>
             <h2 style={styles.uniquenessTitle}>Our Uniqueness</h2>
             <p style={styles.uniquenessSubtitle}>
@@ -134,7 +134,7 @@ export default function Home() {
 
       {/* UPCOMING EVENT SECTION */}
       <section style={styles.upcomingSection}>
-        <div style={styles.container}>
+        <div style={styles.container} className="container-fluid">
           <h2 style={styles.upcomingMainTitle}>Upcoming Event</h2>
           <div style={styles.upcomingFlex} className="upcoming-flex">
             <div style={styles.upcomingImageWrapper} className="upcoming-img-wrap">
@@ -171,7 +171,7 @@ export default function Home() {
 
       {/* BE A PART OF HISTORY SECTION */}
       <section style={styles.historySection}>
-        <div style={styles.container}>
+        <div style={styles.container} className="container-fluid">
           <div style={styles.historyCard}>
             <h2 style={styles.historyTitle}>Be a Part of History</h2>
             <p style={styles.historySubtitle}>
@@ -186,7 +186,7 @@ export default function Home() {
 
       {/* STATISTICS SECTION */}
       <section style={styles.statsSection}>
-        <div style={styles.container}>
+        <div style={styles.container} className="container-fluid">
           <div style={styles.statsGrid} className="stats-grid">
             <div style={styles.statCard}>
               <Users size={40} color="var(--color-saffron)" style={styles.statIcon} />
@@ -677,39 +677,38 @@ const styles = {
     fontWeight: '600',
   },
   recordsSection: {
-    padding: '80px 0',
+    padding: 'var(--section-padding) 0',
     backgroundColor: 'var(--bg-color)',
   },
   sectionHeader: {
     textAlign: 'center',
-    marginBottom: '50px',
+    marginBottom: '3.125rem',
   },
   sectionTitle: {
-    fontSize: '32px',
+    fontSize: 'clamp(1.8rem, 4vw, 2.2rem)',
     fontWeight: '700',
   },
   titleUnderline: {
     height: '4px',
     width: '60px',
     background: 'var(--color-navy)',
-    margin: '15px auto 0',
+    margin: '1rem auto 0',
   },
   recordsGrid: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
-    gap: '30px',
-    marginBottom: '40px',
+    gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
+    gap: 'var(--gap-fluid)',
+    marginBottom: '3rem',
   },
   recordCard: {
     backgroundColor: 'var(--color-white)',
     borderRadius: '8px',
     overflow: 'hidden',
-    boxShadow: '0 4px 15px rgba(0,0,0,0.05)',
+    boxShadow: '0 4px 15px rgba(0,0,0,0.02)',
     border: '1px solid var(--border-color)',
     position: 'relative',
-    padding: '30px',
-    paddingTop: '40px',
-    transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+    padding: '2rem',
+    paddingTop: '2.5rem',
   },
   cardHeaderSaffron: {
     position: 'absolute',

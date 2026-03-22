@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer style={styles.footer}>
       <div style={styles.tricolorBorder}></div>
-      <div style={styles.container}>
+      <div style={styles.container} className="container-fluid">
         <div style={styles.grid} className="footer-grid">
           <div style={styles.column} className="footer-column">
             <h3 style={styles.heading} className="footer-heading">Bharat Bhuvan Book of Records</h3>
@@ -47,7 +47,7 @@ export default function Footer() {
         </div>
       </div>
       <div style={styles.bottomBar}>
-        <div style={styles.container}>
+        <div style={styles.bottomContainer}>
           <p style={styles.copyright}>
             © {new Date().getFullYear()} Bharat Bhuvan Book of Records. All Rights Reserved.
           </p>
@@ -74,62 +74,64 @@ const styles = {
     width: '100%',
   },
   container: {
-    maxWidth: '1200px',
+    width: 'var(--container-width)',
     margin: '0 auto',
-    padding: '20px 20px',
+    padding: 'clamp(1rem, 5vw, 1rem) 0',
+  },
+  bottomContainer: {
+    width: 'var(--container-width)',
+    margin: '0 auto',
+    // padding: 'clamp(1rem, 5vw, 1rem) 0',
   },
   grid: {
     display: 'grid',
-    gridTemplateColumns: '1.5fr 1fr 1fr 1.2fr',
-    gap: '30px',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+    gap: 'var(--gap-fluid)',
   },
   column: {
+    // justifyContent: 'center',
+    alignItems: 'center',
     display: 'flex',
     flexDirection: 'column',
   },
   heading: {
     textAlign: 'center',
     color: 'var(--color-saffron)',
-    fontSize: '18px',
-    marginBottom: '20px',
-    paddingBottom: '10px',
+    fontSize: '1.125rem',
+    marginBottom: '1.25rem',
+    paddingBottom: '0.625rem',
     borderBottom: '1px solid rgba(255,255,255,0.1)',
   },
   text: {
-    alignItems: 'center',
-    // textAlign: 'justify',
+    textAlign: 'justify',
     color: 'rgba(255,255,255,0.8)',
     lineHeight: '1.6',
-    fontSize: '14px',
+    fontSize: '0.9rem',
   },
   list: {
-    textAlign: 'center',
     listStyle: 'none',
     padding: 0,
     margin: 0,
     display: 'flex',
     flexDirection: 'column',
-    gap: '10px',
+    gap: '0.75rem',
   },
   link: {
-    alignItems: 'center',
     color: 'rgba(255,255,255,0.8)',
     textDecoration: 'none',
-    fontSize: '14px',
+    fontSize: '0.9rem',
     transition: 'color 0.2s ease',
   },
   socialLinks: {
-    alignItems: 'center',
-    justifyContent: 'center',
     display: 'flex',
-    gap: '15px',
-    marginTop: '5px',
+    gap: '1rem',
+    marginTop: '0.5rem',
   },
   socialIcon: {
     color: 'rgba(255,255,255,0.8)',
     backgroundColor: 'rgba(255,255,255,0.05)',
-    width: '40px',
-    height: '40px',
+    width: '2.5rem',
+    height: '2.5rem',
     borderRadius: '50%',
     display: 'flex',
     alignItems: 'center',
@@ -139,7 +141,7 @@ const styles = {
   },
   bottomBar: {
     backgroundColor: 'rgba(0,0,0,0.2)',
-    padding: '15px 0',
+    padding: '1rem 0',
   },
   copyright: {
     fontSize: '12px',

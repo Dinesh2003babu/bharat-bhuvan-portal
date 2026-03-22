@@ -16,15 +16,32 @@
   --text-muted: #666666;
   --border-color: #e2e8f0;
 
+  /* Fluid Spacing & Sizing */
+  --container-width: min(1200px, 92%);
+  --section-padding: clamp(2rem, 5vw, 5rem);
+  --gap-fluid: clamp(1rem, 3vw, 2.5rem);
+
   /* Typical Gradients */
   --gradient-tricolor: linear-gradient(90deg, var(--color-saffron) 0%, var(--color-white) 50%, var(--color-green) 100%);
   --gradient-tricolor-subtle: linear-gradient(135deg, rgba(255, 153, 51, 0.05) 0%, rgba(255, 255, 255, 1) 50%, rgba(19, 136, 8, 0.05) 100%);
 }
 
+/* Fluid Typography Utilities */
+.fluid-h1 { font-size: clamp(2rem, 5vw + 1rem, 4rem); line-height: 1.1; }
+.fluid-h2 { font-size: clamp(1.5rem, 4vw + 1rem, 2.5rem); line-height: 1.2; }
+.fluid-h3 { font-size: clamp(1.25rem, 3vw + 1rem, 2rem); line-height: 1.3; }
+.fluid-p { font-size: clamp(0.9rem, 0.5vw + 0.8rem, 1.1rem); line-height: 1.6; }
+
+.container-fluid {
+  width: var(--container-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
 html,
 body {
   max-width: 100vw;
-  overflow-x: hidden;
+  overflow-x: clip; /* clip is better for sticky than hidden in some browsers */
 }
 
 body {
@@ -133,6 +150,138 @@ button {
   transform: translateY(-3px) !important;
 }
 
+.social-hover {
+  transition: all 0.3s ease !important;
+}
+
+.social-hover:hover {
+  background-color: var(--color-saffron) !important;
+  color: var(--color-white) !important;
+  border-color: var(--color-saffron) !important;
+  transform: translateY(-5px) scale(1.1) !important;
+  box-shadow: 0 5px 15px rgba(255, 153, 51, 0.4) !important;
+}
+
+/* Premium Card Hover Effects */
+.card-hover-effect {
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
+  cursor: pointer;
+}
+
+.card-hover-effect:hover {
+  transform: translateY(-8px) !important;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1) !important;
+  border-color: var(--color-saffron) !important;
+}
+
+.card-hover-effect:hover h4 {
+  color: var(--color-saffron) !important;
+  transition: color 0.3s ease;
+}
+
+.card-hover-effect:hover .cat-card-icon-wrap,
+.card-hover-effect:hover .who-icon-wrap {
+  transform: scale(1.1);
+  background: linear-gradient(135deg, var(--color-saffron), var(--color-saffron-light)) !important;
+  border-color: var(--color-saffron) !important;
+  transition: all 0.4s ease;
+}
+
+.card-hover-effect:hover .cat-card-icon,
+.card-hover-effect:hover .who-icon {
+  filter: brightness(1.2);
+}
+
+/* Button Specific Hover Effects for Upcoming Page */
+.btn-join-hover {
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+.btn-join-hover:hover {
+  transform: translateY(-5px) scale(1.05) !important;
+  background-color: var(--color-white) !important;
+  color: var(--color-saffron) !important;
+  border: 2px solid var(--color-saffron) !important;
+  box-shadow: 0 10px 20px rgba(255, 153, 51, 0.4) !important;
+}
+
+.btn-explore-hover {
+  transition: all 0.3s ease !important;
+}
+
+.btn-explore-hover:hover {
+  background-color: var(--color-white) !important;
+  color: var(--color-navy) !important;
+  transform: translateY(-3px) !important;
+  box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Sticky Navigation Wrapper */
+.sticky-top-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: var(--color-white);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes marquee {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+/* WhatsApp Floating Icon Styles */
+.whatsapp-float-container {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 2000;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.whatsapp-float-container:hover {
+  transform: scale(1.15) rotate(5deg);
+}
+
+.whatsapp-icon-btn {
+  background-color: #25D366;
+  color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+  position: relative;
+  z-index: 2;
+}
+
+.whatsapp-pulse {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #25D366;
+  border-radius: 50%;
+  opacity: 0.6;
+  z-index: 1;
+  animation: whatsappPulse 2s infinite ease-out;
+}
+
+@keyframes whatsappPulse {
+  0% { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+
+
 /* RESPONSIVE UTILITIES */
 @media (max-width: 768px) {
   .mobile-hide {
@@ -155,11 +304,8 @@ button {
   /* ── GLOBAL MOBILE SCALING OVERRIDES ── */
   /* Aggressively scale down elements that use hardcoded inline styles */
   
-  /* Headings */
-  h1[style] { font-size: 24px !important; line-height: 1.3 !important; }
-  h2[style] { font-size: 20px !important; line-height: 1.3 !important; }
-  h3[style] { font-size: 18px !important; margin-bottom: 10px !important; }
-  h4[style] { font-size: 16px !important; }
+  /* Headings handled by clamp() typography */
+
   
   /* Form Inputs and Buttons */
   input[style], select[style], textarea[style] {
@@ -179,12 +325,8 @@ button {
   svg[width="32"] { width: 24px !important; height: 24px !important; }
   
   /* Spacing Reductions */
-  div[style*="padding: 40px"] { padding: 20px 15px !important; }
-  div[style*="padding: 50px"] { padding: 25px 15px !important; }
-  div[style*="padding: 60px"] { padding: 30px 15px !important; }
-  div[style*="padding: 80px"] { padding: 40px 15px !important; }
-  div[style*="margin-bottom: 40px"] { margin-bottom: 20px !important; }
-  div[style*="gap: 30px"] { gap: 15px !important; }
+  /* Handled by fluid-padding and fluid-gap tokens */
+
 
   /* Top Utility Bar */
   .utility-bar-container {

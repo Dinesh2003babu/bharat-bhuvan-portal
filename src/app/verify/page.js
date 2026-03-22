@@ -29,15 +29,15 @@ export default function VerifyPage() {
 
       {/* Header Banner */}
       <div style={styles.header}>
-        <div style={styles.container}>
-          <h1 style={styles.title} className="form-header-title">Certificate Verification Portal</h1>
+        <div style={styles.container} className="container-fluid">
+          <h1 style={styles.title} className="fluid-h2">Certificate Verification Portal</h1>
           <p style={styles.subtitle}>
             Authenticity check for all Bharat Bhuvan Book of Records certificates. Enter your Certificate Number to verify.
           </p>
         </div>
       </div>
 
-      <div style={styles.container}>
+      <div style={styles.container} className="container-fluid">
         <div className="layout-res" style={styles.layout}>
 
           <div style={styles.mainBox}>
@@ -148,9 +148,9 @@ const styles = {
     borderBottom: '6px solid var(--color-saffron)',
   },
   container: {
-    maxWidth: '1000px',
+    width: 'var(--container-width)',
     margin: '0 auto',
-    padding: '0 20px',
+    padding: '0 1.25rem',
   },
   title: {
     fontSize: '28px',
@@ -164,9 +164,10 @@ const styles = {
   },
   layout: {
     display: 'flex',
-    gap: '30px',
+    gap: 'var(--gap-fluid)',
     alignItems: 'flex-start',
     flexWrap: 'wrap',
+    padding: 'var(--section-padding) 0',
   },
   mainBox: {
     flex: '2 1 500px',
@@ -175,40 +176,40 @@ const styles = {
     flex: '1 1 300px',
     display: 'flex',
     flexDirection: 'column',
-    gap: '20px',
+    gap: '1.25rem',
   },
   verifyCard: {
     backgroundColor: '#fff',
     border: '1px solid var(--border-color)',
-    borderRadius: '4px',
-    padding: '30px',
+    borderRadius: '12px',
+    padding: 'var(--gap-fluid)',
     boxShadow: '0 4px 15px rgba(0,0,0,0.03)',
   },
   cardTitle: {
-    fontSize: '22px',
+    fontSize: '1.5rem',
     color: 'var(--color-navy)',
-    marginBottom: '10px',
+    marginBottom: '1rem',
   },
   cardDesc: {
-    fontSize: '14px',
+    fontSize: '0.9rem',
     color: 'var(--text-muted)',
     lineHeight: '1.6',
-    marginBottom: '30px',
+    marginBottom: '2rem',
   },
   form: {
     backgroundColor: '#f8fafc',
-    padding: '25px',
+    padding: '1.5rem',
     borderRadius: '4px',
     border: '1px solid var(--border-color)',
-    marginBottom: '30px',
+    marginBottom: '2rem',
   },
   inputWrapper: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '10px',
+    gap: '0.75rem',
   },
   label: {
-    fontSize: '15px',
+    fontSize: '1rem',
     fontWeight: '600',
     color: 'var(--color-navy)',
   },
@@ -257,8 +258,8 @@ const styles = {
   },
   dataGrid: {
     display: 'grid',
-    gridTemplateColumns: '1fr 1fr',
-    gap: '15px',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
+    gap: '1rem',
     position: 'relative',
     zIndex: 2,
   },

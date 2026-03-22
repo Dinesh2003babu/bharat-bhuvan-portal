@@ -18,7 +18,7 @@ export default function AboutPage() {
       </div>
      */}
 
-      <div style={styles.container}>
+      <div style={styles.container} className="container-fluid">
         <div style={styles.contentLayout}>
 
           {/* Main Content Area */}
@@ -80,72 +80,72 @@ export default function AboutPage() {
 
               <div className="cat-grid-res" style={styles.catGrid}>
 
-                <div style={styles.catCard}>
-                  <div style={styles.catCardIconWrap}>
+                <div style={styles.catCard} className="card-hover-effect">
+                  <div style={styles.catCardIconWrap} className="cat-card-icon-wrap">
                     <span style={styles.catCardIcon}>🎭</span>
                   </div>
                   <h4 style={styles.catCardTitle}>Performing Arts</h4>
                   <p style={styles.catCardDesc}>Dance, music and theatre traditions that express emotions, stories and devotion through movement, rhythm and performance.</p>
                 </div>
 
-                <div style={styles.catCard}>
-                  <div style={styles.catCardIconWrap}>
+                <div style={styles.catCard} className="card-hover-effect">
+                  <div style={styles.catCardIconWrap} className="cat-card-icon-wrap">
                     <span style={styles.catCardIcon}>🎨</span>
                   </div>
                   <h4 style={styles.catCardTitle}>Visual Arts</h4>
                   <p style={styles.catCardDesc}>Paintings, sculpture and architectural creations that reflect India&apos;s aesthetic excellence, symbolism and craftsmanship.</p>
                 </div>
 
-                <div style={styles.catCard}>
-                  <div style={styles.catCardIconWrap}>
+                <div style={styles.catCard} className="card-hover-effect">
+                  <div style={styles.catCardIconWrap} className="cat-card-icon-wrap">
                     <span style={styles.catCardIcon}>📜</span>
                   </div>
                   <h4 style={styles.catCardTitle}>Literary Arts</h4>
                   <p style={styles.catCardDesc}>Sacred texts, poetry, epics and writings that preserve knowledge, philosophy and cultural narratives across generations.</p>
                 </div>
 
-                <div style={styles.catCard}>
-                  <div style={styles.catCardIconWrap}>
+                <div style={styles.catCard} className="card-hover-effect">
+                  <div style={styles.catCardIconWrap} className="cat-card-icon-wrap">
                     <span style={styles.catCardIcon}>🌺</span>
                   </div>
                   <h4 style={styles.catCardTitle}>Folk &amp; Tribal Arts</h4>
                   <p style={styles.catCardDesc}>Indigenous art forms rooted in local traditions, festivals and daily life, reflecting the cultural diversity of communities.</p>
                 </div>
 
-                <div style={styles.catCard}>
-                  <div style={styles.catCardIconWrap}>
+                <div style={styles.catCard} className="card-hover-effect">
+                  <div style={styles.catCardIconWrap} className="cat-card-icon-wrap">
                     <span style={styles.catCardIcon}>🏺</span>
                   </div>
                   <h4 style={styles.catCardTitle}>Crafts (Applied Arts)</h4>
                   <p style={styles.catCardDesc}>Handcrafted creations including textiles, jewellery and artisan works that combine skill, tradition and functional beauty.</p>
                 </div>
 
-                <div style={styles.catCard}>
-                  <div style={styles.catCardIconWrap}>
+                <div style={styles.catCard} className="card-hover-effect">
+                  <div style={styles.catCardIconWrap} className="cat-card-icon-wrap">
                     <span style={styles.catCardIcon}>🪔</span>
                   </div>
                   <h4 style={styles.catCardTitle}>Ritual &amp; Spiritual Arts</h4>
                   <p style={styles.catCardDesc}>Temple arts, devotional practices and sacred expressions performed as offerings, connecting art with spirituality and faith.</p>
                 </div>
 
-                <div style={styles.catCard}>
-                  <div style={styles.catCardIconWrap}>
+                <div style={styles.catCard} className="card-hover-effect">
+                  <div style={styles.catCardIconWrap} className="cat-card-icon-wrap">
                     <span style={styles.catCardIcon}>📚</span>
                   </div>
                   <h4 style={styles.catCardTitle}>Knowledge Systems (Shastra-based)</h4>
                   <p style={styles.catCardDesc}>Structured artistic principles and ancient treatises that define the science, techniques and discipline behind Indian arts.</p>
                 </div>
 
-                <div style={styles.catCard}>
-                  <div style={styles.catCardIconWrap}>
+                <div style={styles.catCard} className="card-hover-effect">
+                  <div style={styles.catCardIconWrap} className="cat-card-icon-wrap">
                     <span style={styles.catCardIcon}>⚔️</span>
                   </div>
                   <h4 style={styles.catCardTitle}>Martial Arts</h4>
                   <p style={styles.catCardDesc}>Traditional systems of physical discipline that integrate movement, control and energy, rooted in cultural and spiritual practices.</p>
                 </div>
 
-                <div style={styles.catCard}>
-                  <div style={styles.catCardIconWrap}>
+                <div style={styles.catCard} className="card-hover-effect">
+                  <div style={styles.catCardIconWrap} className="cat-card-icon-wrap">
                     <span style={styles.catCardIcon}>🗣️</span>
                   </div>
                   <h4 style={styles.catCardTitle}>Communication &amp; Narrative Arts</h4>
@@ -177,48 +177,48 @@ export default function AboutPage() {
 
               <div style={styles.whoGrid}>
 
-                <div style={styles.whoCard}>
-                  <div style={styles.whoIconWrap}>
+                <div style={styles.whoCard} className="card-hover-effect">
+                  <div style={styles.whoIconWrap} className="who-icon-wrap">
                     <span style={styles.whoIcon}>🧑‍🎤</span>
                   </div>
                   <h4 style={styles.whoTitle}>Individual Artists</h4>
                   <p style={styles.whoDesc}>Singers, dancers, painters, sculptors, and performers in any Indian art form.</p>
                 </div>
 
-                <div style={styles.whoCard}>
-                  <div style={styles.whoIconWrap}>
+                <div style={styles.whoCard} className="card-hover-effect">
+                  <div style={styles.whoIconWrap} className="who-icon-wrap">
                     <span style={styles.whoIcon}>🏫</span>
                   </div>
                   <h4 style={styles.whoTitle}>Schools &amp; Academies</h4>
                   <p style={styles.whoDesc}>Cultural schools, gurukuls, arts academies and educational institutions.</p>
                 </div>
 
-                <div style={styles.whoCard}>
-                  <div style={styles.whoIconWrap}>
+                <div style={styles.whoCard} className="card-hover-effect">
+                  <div style={styles.whoIconWrap} className="who-icon-wrap">
                     <span style={styles.whoIcon}>🏢</span>
                   </div>
                   <h4 style={styles.whoTitle}>Organizations &amp; NGOs</h4>
                   <p style={styles.whoDesc}>Registered trusts, cultural societies, and non-profit organizations.</p>
                 </div>
 
-                <div style={styles.whoCard}>
-                  <div style={styles.whoIconWrap}>
+                <div style={styles.whoCard} className="card-hover-effect">
+                  <div style={styles.whoIconWrap} className="who-icon-wrap">
                     <span style={styles.whoIcon}>🏛️</span>
                   </div>
                   <h4 style={styles.whoTitle}>Government Bodies</h4>
                   <p style={styles.whoDesc}>State and central government departments running cultural programs and mass events.</p>
                 </div>
 
-                <div style={styles.whoCard}>
-                  <div style={styles.whoIconWrap}>
+                <div style={styles.whoCard} className="card-hover-effect">
+                  <div style={styles.whoIconWrap} className="who-icon-wrap">
                     <span style={styles.whoIcon}>🌏</span>
                   </div>
                   <h4 style={styles.whoTitle}>NRI &amp; Global Indians</h4>
                   <p style={styles.whoDesc}>Indians living abroad who are promoting Bharatiya arts on an international stage.</p>
                 </div>
 
-                <div style={styles.whoCard}>
-                  <div style={styles.whoIconWrap}>
+                <div style={styles.whoCard} className="card-hover-effect">
+                  <div style={styles.whoIconWrap} className="who-icon-wrap">
                     <span style={styles.whoIcon}>🌐</span>
                   </div>
                   <h4 style={styles.whoTitle}>International Artists</h4>
@@ -240,31 +240,19 @@ export default function AboutPage() {
 }
 
 const styles = {
-  page: {
-    paddingBottom: '80px',
-    backgroundColor: 'var(--bg-color)',
-    minHeight: '100%',
-  },
-  header: {
-    backgroundColor: 'var(--color-white)',
-    padding: '50px 0',
-    borderBottom: '4px solid var(--color-navy)',
-    marginBottom: '40px',
-    backgroundImage: 'linear-gradient(to right, rgba(255,153,51,0.05), rgba(255,255,255,0), rgba(19,136,8,0.05))',
-  },
   container: {
-    maxWidth: '1000px',
+    width: 'var(--container-width)',
     margin: '0 auto',
-    padding: '0 20px',
+    padding: '0 1.25rem',
   },
   title: {
-    fontSize: '36px',
+    fontSize: 'clamp(1.8rem, 5vw, 2.5rem)',
     fontWeight: '800',
     color: 'var(--color-navy)',
-    marginBottom: '15px'
+    marginBottom: '1rem'
   },
   subtitle: {
-    fontSize: '18px',
+    fontSize: '1.125rem',
     color: 'var(--text-muted)',
     maxWidth: '700px',
     lineHeight: '1.5'
@@ -272,198 +260,174 @@ const styles = {
   contentLayout: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '30px',
+    gap: 'var(--gap-fluid)',
+    // padding: 'var(--section-padding) 0',
   },
   sectionCard: {
     backgroundColor: '#fff',
-    padding: '40px',
+    padding: 'var(--gap-fluid)',
     borderRadius: '8px',
+    margin: '1.25rem 0',
     border: '1px solid var(--border-color)',
     boxShadow: '0 4px 15px rgba(0,0,0,0.02)',
-    marginTop: '30px',
-    marginBottom: '30px',
     position: 'relative',
     overflow: 'hidden',
   },
   sectionHeader: {
     display: 'flex',
     alignItems: 'center',
-    gap: '15px',
-    marginBottom: '25px',
+    gap: '1rem',
+    marginBottom: '1.5rem',
     borderBottom: '1px solid var(--border-color)',
-    paddingBottom: '15px',
+    paddingBottom: '1rem',
   },
   iconBoxSaffron: {
     backgroundColor: 'var(--color-saffron)',
-    width: '45px', height: '45px',
+    width: '2.8125rem', height: '2.8125rem',
     borderRadius: '8px',
     display: 'flex', alignItems: 'center', justifyContent: 'center',
+    flexShrink: 0,
   },
   iconBoxNavy: {
     backgroundColor: 'var(--color-navy)',
-    width: '45px', height: '45px',
+    width: '2.8125rem', height: '2.8125rem',
     borderRadius: '8px',
     display: 'flex', alignItems: 'center', justifyContent: 'center',
+    flexShrink: 0,
   },
   iconBoxGreen: {
     backgroundColor: 'var(--color-green)',
-    width: '45px', height: '45px',
+    width: '2.8125rem', height: '2.8125rem',
     borderRadius: '8px',
     display: 'flex', alignItems: 'center', justifyContent: 'center',
+    flexShrink: 0,
   },
   sectionTitle: {
-    fontSize: '26px',
+    fontSize: 'clamp(1.375rem, 3vw, 1.625rem)',
     color: 'var(--color-navy)',
     fontWeight: '700',
   },
   text: {
     textAlign: 'justify',
-    fontSize: '16px',
+    fontSize: '1rem',
     color: 'var(--text-main)',
     lineHeight: '1.8',
-    marginBottom: '20px'
-  },
-  list: {
-    listStylePosition: 'inside',
-    paddingLeft: '10px',
-    marginBottom: '20px',
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '12px',
-  },
-  listItem: {
-    fontSize: '16px',
-    color: 'var(--text-main)',
-    lineHeight: '1.6',
-    paddingLeft: '5px',
   },
   whyList: {
     listStyle: 'none',
     padding: 0,
     margin: 0,
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '18px',
+    display: 'grid',
+    gridTemplateColumns: '1fr',
+    gap: '1.125rem',
   },
   whyItem: {
     display: 'flex',
     alignItems: 'center',
-    gap: '16px',
-    fontSize: '17px',
+    gap: '1rem',
+    fontSize: '1rem',
     fontWeight: '600',
     color: 'var(--color-navy)',
-    padding: '14px 20px',
+    padding: '1rem 1.25rem',
     backgroundColor: 'rgba(255,153,51,0.04)',
     border: '1px solid rgba(255,153,51,0.15)',
     borderLeft: '4px solid var(--color-saffron)',
     borderRadius: '6px',
-    transition: 'all 0.2s ease',
   },
   whyBullet: {
     color: 'var(--color-saffron)',
-    fontSize: '18px',
+    fontSize: '1.2rem',
     fontWeight: '900',
     flexShrink: 0,
   },
   categoryGrid: {
     display: 'grid',
     gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
-    gap: '15px',
-    marginTop: '20px',
+    gap: '1rem',
+    marginTop: '1.5rem',
   },
-  categoryBadge: {
-    backgroundColor: 'var(--bg-color)',
+  catGrid: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+    gap: 'var(--gap-fluid)',
+  },
+  catCard: {
+    backgroundColor: 'var(--color-white)',
     border: '1px solid var(--border-color)',
-    padding: '15px 20px',
-    borderRadius: '4px',
-    fontSize: '15px',
-    fontWeight: '600',
-    color: 'var(--color-navy)',
-    display: 'flex',
-    alignItems: 'center',
-    transition: 'all 0.2s ease',
-    cursor: 'default',
-    borderLeft: '4px solid var(--color-saffron)',
-  },
-  catList: {
+    borderRadius: '12px',
+    padding: '1rem 1.25rem',
+    textAlign: 'center',
+    boxShadow: '0 4px 15px rgba(0,0,0,0.04)',
     display: 'flex',
     flexDirection: 'column',
     gap: '16px',
   },
-  catItem: {
-    padding: '20px 24px',
-    borderRadius: '8px',
-    borderLeft: '4px solid var(--color-saffron)',
-    backgroundColor: 'rgba(255,153,51,0.03)',
-    border: '1px solid var(--border-color)',
-    borderLeftWidth: '4px',
-    borderLeftColor: 'var(--color-saffron)',
-    transition: 'box-shadow 0.2s ease',
-  },
-  catTop: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '12px',
-    marginBottom: '8px',
-  },
-  catIcon: {
-    fontSize: '22px',
-    lineHeight: 1,
-  },
-  catTitle: {
-    fontSize: '17px',
-    fontWeight: '700',
-    color: 'var(--color-navy)',
-  },
-  catDesc: {
-    fontSize: '14px',
-    color: 'var(--text-muted)',
-    lineHeight: '1.6',
-    margin: 0,
-    marginBottom: '5px',
-  },
-  globalSubList: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '4px',
-  },
-  whoGrid: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',
-    gap: '20px',
-    marginBottom: '30px',
-  },
-  whoCard: {
-    backgroundColor: 'var(--color-white)',
-    border: '1px solid var(--border-color)',
-    borderRadius: '12px',
-    padding: '24px 20px',
-    textAlign: 'center',
-    boxShadow: '0 4px 15px rgba(0,0,0,0.04)',
-    transition: 'transform 0.2s ease, box-shadow 0.2s ease',
-  },
-  whoIconWrap: {
-    width: '64px',
-    height: '64px',
+  catCardIconWrap: {
+    width: '4rem',
+    height: '4rem',
     borderRadius: '50%',
     background: 'linear-gradient(135deg, rgba(255,153,51,0.12), rgba(19,136,8,0.08))',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    margin: '0 auto 16px',
+    margin: '0 auto 1rem',
+    border: '2px solid rgba(255,153,51,0.2)',
+  },
+  catCardIcon: {
+    fontSize: '1.8rem',
+  },
+  catCardTitle: {
+    fontSize: '1rem',
+    fontWeight: '700',
+    color: 'var(--color-navy)',
+    marginBottom: '0.5rem',
+  },
+  catCardDesc: {
+    fontSize: '0.875rem',
+    color: 'var(--text-muted)',
+    lineHeight: '1.6',
+    margin: 0,
+  },
+  whoGrid: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+    gap: 'var(--gap-fluid)',
+    marginTop: '1.5rem',
+    marginBottom: '2rem',
+  },
+  whoCard: {
+    backgroundColor: 'var(--color-white)',
+    border: '1px solid var(--border-color)',
+    borderRadius: '12px',
+    padding: '1.5rem 1.25rem',
+    textAlign: 'center',
+    boxShadow: '0 4px 15px rgba(0,0,0,0.04)',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '16px',
+  },
+  whoIconWrap: {
+    width: '4rem',
+    height: '4rem',
+    borderRadius: '50%',
+    background: 'linear-gradient(135deg, rgba(255,153,51,0.12), rgba(19,136,8,0.08))',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    margin: '0 auto 1rem',
     border: '2px solid rgba(255,153,51,0.2)',
   },
   whoIcon: {
-    fontSize: '28px',
+    fontSize: '1.75rem',
   },
   whoTitle: {
-    fontSize: '16px',
+    fontSize: '1rem',
     fontWeight: '700',
     color: 'var(--color-navy)',
-    marginBottom: '8px',
+    marginBottom: '0.5rem',
   },
   whoDesc: {
-    fontSize: '13px',
+    fontSize: '0.875rem',
     color: 'var(--text-muted)',
     lineHeight: '1.6',
     margin: 0,
@@ -472,50 +436,10 @@ const styles = {
     backgroundColor: 'var(--color-navy-light)',
     borderLeft: '4px solid var(--color-navy)',
     borderRadius: '6px',
-    padding: '15px 20px',
-    fontSize: '14px',
+    padding: '1rem 1.25rem',
+    fontSize: '0.9rem',
     color: 'var(--color-navy)',
     lineHeight: '1.6',
-  },
-  /* ── Record Categories – own keys, same values as who* for now ── */
-  catGrid: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',
-    gap: '20px',
-    marginBottom: '30px',
-  },
-  catCard: {
-    backgroundColor: 'var(--color-white)',
-    borderWidth: '1px',
-    borderStyle: 'solid',
-    borderColor: 'var(--border-color)',
-    borderRadius: '12px',
-    padding: '24px 20px',
-    textAlign: 'center',
-    boxShadow: '0 4px 15px rgba(0,0,0,0.04)',
-    transition: 'transform 0.2s ease, box-shadow 0.2s ease',
-  },
-  catCardIconWrap: {
-    width: '64px',
-    height: '64px',
-    borderRadius: '50%',
-    background: 'linear-gradient(135deg, rgba(255,153,51,0.12), rgba(19,136,8,0.08))',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    margin: '0 auto 16px',
-    borderWidth: '2px',
-    borderStyle: 'solid',
-    borderColor: 'rgba(255,153,51,0.2)',
-  },
-  catCardIcon: {
-    fontSize: '28px',
-  },
-  catCardTitle: {
-    fontSize: '16px',
-    fontWeight: '700',
-    color: 'var(--color-navy)',
-    marginBottom: '8px',
   },
   catCardDesc: {
     fontSize: '13px',

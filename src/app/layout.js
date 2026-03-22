@@ -4,6 +4,7 @@ import TopUtilityBar from "../components/TopUtilityBar";
 import Header from "../components/Header";
 import NewsTicker from "../components/NewsTicker";
 import Footer from "../components/Footer";
+import WhatsAppFloat from "../components/WhatsAppFloat";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,21 +22,17 @@ export const viewport = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <head>
-        <style>{`
-          @keyframes marquee {
-            0% { transform: translateX(100%); }
-            100% { transform: translateX(-100%); }
-          }
-        `}</style>
-      </head>
+      <head />
       <body className={inter.className} suppressHydrationWarning={true}>
-        <TopUtilityBar />
-        <Header />
-        <NewsTicker />
-        <main style={{ minHeight: 'calc(100vh - 400px)' }}>
+        <div className="sticky-top-wrapper">
+          <TopUtilityBar />
+          <Header />
+          <NewsTicker />
+        </div>
+        <main style={{ minHeight: 'calc(100vh - 400px)', paddingTop: '210px' }}>
           {children}
         </main>
+        <WhatsAppFloat />
         <Footer />
       </body>
     </html>
