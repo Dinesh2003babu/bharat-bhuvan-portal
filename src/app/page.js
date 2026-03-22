@@ -308,7 +308,7 @@ const styles = {
   },
   hero: {
     position: 'relative',
-    padding: '60px 20px',
+    padding: '0.5rem 0.5rem',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
