@@ -1,6 +1,6 @@
 export default function TopUtilityBar() {
   return (
-    <div style={styles.utilityBar}>
+    <div style={styles.utilityBar} className="utility-bar">
       <div style={styles.container} className="utility-bar-container">
         <div style={styles.left} className="mobile-hide">
           <span>An ISO Certified Institution | An Official Record Affirming Entity</span>
@@ -26,13 +26,13 @@ const styles = {
   utilityBar: {
     backgroundColor: 'var(--color-saffron)',
     color: 'var(--color-white)',
-    fontSize: '12px',
-    padding: '0.25rem 0',
+    fontSize: '0.65rem',
+    padding: '2px 0',
   },
   container: {
-    maxWidth: '1200px',
+    maxWidth: '75rem',
     margin: '0 auto',
-    padding: '0 20px',
+    padding: '0 10px',
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -44,13 +44,13 @@ const styles = {
   right: {
     display: 'flex',
     alignItems: 'center',
-    gap: '8px',
+    gap: '0.5rem',
   },
   btn: {
     background: 'none',
     border: 'none',
     color: 'var(--color-white)',
-    fontSize: '12px',
+    fontSize: '0.65rem',
     fontWeight: '600',
     padding: '2px 4px',
   },
@@ -60,9 +60,9 @@ const styles = {
   langSelect: {
     background: 'transparent',
     color: 'var(--color-white)',
-    border: '1px solid rgba(255, 255, 255, 1)',
-    padding: '2px 4px',
-    fontSize: '12px',
+    border: '1px solid rgba(255, 255, 255, 0.8)',
+    padding: '1px 4px',
+    fontSize: '0.65rem',
     borderRadius: '2px',
     outline: 'none',
   },

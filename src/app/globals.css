@@ -369,9 +369,24 @@ button {
 
 
   /* Top Utility Bar */
+  .utility-bar {
+    padding: 2px 0 !important;
+  }
+
   .utility-bar-container {
     justify-content: center !important;
     text-align: center;
+    padding: 0 5px !important;
+    min-height: auto !important;
+  }
+
+  .utility-bar-container * {
+    font-size: 10px !important;
+  }
+
+  .utility-bar-container select {
+    padding: 1px 4px !important;
+    height: auto !important;
   }
 
   /* News Ticker */
