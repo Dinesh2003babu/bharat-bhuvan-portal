@@ -490,7 +490,7 @@ button {
   }
 
   .header-container p {
-    font-size: 8.5px !important;
+    font-size: 9px !important;
     white-space: nowrap !important;
     overflow: hidden !important;
     text-overflow: ellipsis !important;
@@ -547,18 +547,22 @@ button {
 
   .welcome-hero-title {
     font-size: 18px !important;
+    margin: 0 !important;
   }
 
   .main-hero-title {
     font-size: 28px !important;
+    margin: 0 !important;
   }
 
   .sub-hero-title {
     font-size: 18px !important;
+    margin: 0 !important;
   }
 
   .hero-subtitle-mobile {
     font-size: 14px !important;
+    margin-top: 10px !important;
     margin-bottom: 25px !important;
     padding: 0 10px !important;
   }

@@ -94,8 +94,8 @@ const styles = {
     gap: '0.75rem',
   },
   logoWrapper: {
-    width: 'clamp(50px, 8vw, 70px)',
-    height: 'clamp(50px, 8vw, 70px)',
+    width: 'clamp(40px, 8vw, 70px)',
+    height: 'clamp(40px, 8vw, 70px)',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
@@ -109,17 +109,19 @@ const styles = {
   titleArea: {
     display: 'flex',
     flexDirection: 'column',
+    paddingRight: '10px',
+    minWidth: 0,
   },
   englishTitle: {
-    fontSize: 'clamp(1rem, 2.5vw, 1.4rem)',
+    fontSize: 'clamp(0.85rem, 2.5vw, 1.4rem)',
     color: 'var(--color-navy)',
     fontWeight: '900',
-    letterSpacing: '0.5px',
+    letterSpacing: '0.0313rem',
     margin: 0,
     lineHeight: '1.2',
   },
   subtitle: {
-    fontSize: 'clamp(0.6rem, 1.2vw, 0.75rem)',
+    fontSize: 'clamp(0.55rem, 1.2vw, 0.75rem)',
     color: 'var(--color-green)',
     fontWeight: '600',
     letterSpacing: '0.5px',
