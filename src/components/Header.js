@@ -45,7 +45,7 @@ export default function Header() {
           aria-label="Toggle menu"
           className="mobile-menu-btn"
         >
-          {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
 
         {/* Mobile Menu Overlay */}
@@ -138,7 +138,7 @@ const styles = {
     border: 'none',
     color: 'var(--color-navy)',
     cursor: 'pointer',
-    padding: '5px',
+    padding: 0,
   },
   mobileOverlay: {
     position: 'fixed',
