@@ -27,7 +27,7 @@ const styles = {
     backgroundColor: 'var(--color-saffron)',
     color: 'var(--color-white)',
     fontSize: '12px',
-    padding: '4px 0',
+    padding: '0.25rem 0',
   },
   container: {
     maxWidth: '1200px',

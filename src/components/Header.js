@@ -99,6 +99,7 @@ const styles = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    flexShrink: 0,
   },
   logoImage: {
     width: '100%',
@@ -139,10 +140,10 @@ const styles = {
   },
   mobileOverlay: {
     position: 'fixed',
-    top: '110px', // Below the header height approx
+    top: '80px', // Adjusted for mobile header height
     left: 0,
     width: '100%',
-    height: 'calc(100vh - 110px)',
+    height: 'calc(100vh - 80px)',
     backgroundColor: 'rgba(0,0,0,0.5)',
     zIndex: 99,
   },

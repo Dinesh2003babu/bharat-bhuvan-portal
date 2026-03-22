@@ -55,11 +55,11 @@ export default function Home() {
           {/* Text Right */}
           <div style={styles.heroRight} className="hero-right">
             <h3 style={styles.welcomeheroTitle} className="hero-title">
-              <p style={styles.welcomeheroTitle}>WELCOME TO</p>
-              <p style={styles.heroTitle}>BHARAT BHUVAN</p>
-              <p style={styles.subheroTitle}>BOOK OF RECORDS</p>
+              <p style={styles.welcomeheroTitle} className="welcome-hero-title">WELCOME TO</p>
+              <p style={styles.heroTitle} className="main-hero-title">BHARAT BHUVAN</p>
+              <p style={styles.subheroTitle} className="sub-hero-title">BOOK OF RECORDS</p>
             </h3>
-            <p style={styles.heroSubtitle}>
+            <p style={styles.heroSubtitle} className="hero-subtitle-mobile">
               <b>A National Platform for Recognizing Indian Arts and Cultural Heritage</b>
             </p>
             <div style={styles.heroActions}>
