@@ -27,10 +27,25 @@
 }
 
 /* Fluid Typography Utilities */
-.fluid-h1 { font-size: clamp(2rem, 5vw + 1rem, 4rem); line-height: 1.1; }
-.fluid-h2 { font-size: clamp(1.5rem, 4vw + 1rem, 2.5rem); line-height: 1.2; }
-.fluid-h3 { font-size: clamp(1.25rem, 3vw + 1rem, 2rem); line-height: 1.3; }
-.fluid-p { font-size: clamp(0.9rem, 0.5vw + 0.8rem, 1.1rem); line-height: 1.6; }
+.fluid-h1 {
+  font-size: clamp(2rem, 5vw + 1rem, 4rem);
+  line-height: 1.1;
+}
+
+.fluid-h2 {
+  font-size: clamp(1.5rem, 4vw + 1rem, 2.5rem);
+  line-height: 1.2;
+}
+
+.fluid-h3 {
+  font-size: clamp(1.25rem, 3vw + 1rem, 2rem);
+  line-height: 1.3;
+}
+
+.fluid-p {
+  font-size: clamp(0.9rem, 0.5vw + 0.8rem, 1.1rem);
+  line-height: 1.6;
+}
 
 .container-fluid {
   width: var(--container-width);
@@ -41,7 +56,8 @@
 html,
 body {
   max-width: 100vw;
-  overflow-x: clip; /* clip is better for sticky than hidden in some browsers */
+  overflow-x: clip;
+  /* clip is better for sticky than hidden in some browsers */
 }
 
 body {
@@ -228,8 +244,13 @@ button {
 }
 
 @keyframes marquee {
-  0% { transform: translateX(100%); }
-  100% { transform: translateX(-100%); }
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
 }
 
 /* WhatsApp Floating Icon Styles */
@@ -277,8 +298,15 @@ button {
 }
 
 @keyframes whatsappPulse {
-  0% { transform: scale(1); opacity: 0.6; }
-  100% { transform: scale(1.8); opacity: 0; }
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
 }
 
 
@@ -287,7 +315,7 @@ button {
   .mobile-hide {
     display: none !important;
   }
-  
+
   .mobile-stack {
     flex-direction: column !important;
     align-items: center !important;
@@ -303,27 +331,39 @@ button {
 @media (max-width: 768px) {
   /* ── GLOBAL MOBILE SCALING OVERRIDES ── */
   /* Aggressively scale down elements that use hardcoded inline styles */
-  
+
   /* Headings handled by clamp() typography */
 
-  
+
   /* Form Inputs and Buttons */
-  input[style], select[style], textarea[style] {
+  input[style],
+  select[style],
+  textarea[style] {
     padding: 10px !important;
     font-size: 14px !important;
   }
-  input[style], select[style] {
+
+  input[style],
+  select[style] {
     height: 40px !important;
   }
+
   button[style] {
     padding: 12px 20px !important;
     font-size: 14px !important;
   }
-  
+
   /* Icons (SVG) */
-  svg[width="24"] { width: 20px !important; height: 20px !important; }
-  svg[width="32"] { width: 24px !important; height: 24px !important; }
-  
+  svg[width="24"] {
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+  svg[width="32"] {
+    width: 24px !important;
+    height: 24px !important;
+  }
+
   /* Spacing Reductions */
   /* Handled by fluid-padding and fluid-gap tokens */
 
@@ -338,7 +378,7 @@ button {
   .ticker-date {
     display: none !important;
   }
-  
+
   .ticker-label {
     padding: 0 10px !important;
     font-size: 10px !important;
@@ -363,7 +403,7 @@ button {
   .form-container {
     padding: 0 10px !important;
   }
-  
+
   .form-header-title {
     font-size: 20px !important;
   }
@@ -376,8 +416,8 @@ button {
     flex-direction: column !important;
     gap: 20px !important;
   }
-  
-  .layout-res > div {
+
+  .layout-res>div {
     flex: 1 1 100% !important;
     width: 100% !important;
     max-width: 100% !important;
@@ -393,7 +433,8 @@ button {
   }
 
   .sidebar-hide-mobile {
-    order: 2; /* Move sidebar below form on mobile */
+    order: 2;
+    /* Move sidebar below form on mobile */
     max-width: 100% !important;
   }
 
@@ -401,7 +442,7 @@ button {
   .about-title-res {
     font-size: 28px !important;
   }
-  
+
   .about-card-res {
     padding: 25px 20px !important;
   }
@@ -437,22 +478,22 @@ button {
   .logo-section {
     flex: 1 !important;
     gap: 10px !important;
-    min-width: 0 !important; /* Allow shrinking */
+    min-width: 0 !important;
+    /* Allow shrinking */
   }
 
   .header-container h1 {
-    font-size: 14px !important;
-    white-space: normal !important; /* Allow wrapping to help if logo is there */
-    overflow: visible !important;
-    text-overflow: clip !important;
-    line-height: 1.1 !important;
+    font-size: 13px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
   }
 
   .header-container p {
-    font-size: 9px !important;
-    white-space: normal !important;
-    line-height: 1.2 !important;
-    margin-top: 2px !important;
+    font-size: 8.5px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
   }
 
   .mobile-menu-btn {
@@ -573,7 +614,7 @@ button {
   }
 
   /* Force description to center if inline styles interfere */
-  .upcoming-content p, 
+  .upcoming-content p,
   .upcoming-content h3,
   .upcoming-content div {
     text-align: center !important;
@@ -597,8 +638,13 @@ button {
 
 /* ANIMATIONS */
 @keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-100%); }
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
 }
 
 @keyframes fadeInScale {
@@ -606,6 +652,7 @@ button {
     opacity: 0;
     transform: scale(0.95);
   }
+
   to {
     opacity: 1;
     transform: scale(1);
