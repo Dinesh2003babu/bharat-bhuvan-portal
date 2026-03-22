@@ -477,23 +477,30 @@ button {
 
   .logo-section {
     flex: 1 !important;
-    gap: 10px !important;
+    gap: 6px !important;
     min-width: 0 !important;
     /* Allow shrinking */
   }
 
+  .header-container {
+    flex-wrap: nowrap !important;
+    justify-content: space-between !important;
+    padding: 10px 8px !important;
+    gap: 8px !important;
+  }
+
   .header-container h1 {
-    font-size: 13px !important;
+    font-size: 11px !important;
     white-space: nowrap !important;
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
   }
 
   .header-container p {
-    font-size: 9px !important;
+    font-size: 8px !important;
     white-space: nowrap !important;
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
   }
 
   .mobile-menu-btn {
