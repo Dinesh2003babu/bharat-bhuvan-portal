@@ -13,12 +13,7 @@ export default function UpcomingPage() {
           {/* <h1 style={styles.heroTitle}>Sarvam Shabdam</h1> */}
 
           <div style={styles.heroSubtitleWrap}>
-            {/* <p style={styles.heroItalic}>Everything is Sound. Everything Dances.</p> */}
-            <p style={styles.heroSubText}>
-              <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-              {/* The Pulse of Expression<br /> */}
-              {/* A Record-Breaking Bharatanatyam Show */}
-            </p>
+            <div style={styles.heroSpacer}></div>
           </div>
 
           <div style={styles.heroInfoRow}>
@@ -143,15 +138,16 @@ const styles = {
   },
   heroSection: {
     position: 'relative',
-    height: '600px', // Increased height slightly
+    height: 'clamp(400px, 80vh, 650px)', // Fluid height
     backgroundImage: 'url("/S1.webp")',
     backgroundSize: 'cover',
-    backgroundPosition: 'center',
+    backgroundPosition: 'center top', // Focus on top where title is
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     color: '#fff',
     textAlign: 'center',
+    overflow: 'hidden',
   },
   heroOverlay: {
     position: 'absolute',
@@ -177,6 +173,9 @@ const styles = {
   },
   heroSubtitleWrap: {
     marginBottom: '20px',
+  },
+  heroSpacer: {
+    height: 'clamp(150px, 30vh, 300px)', // Responsive spacer to avoid overlapping image text
   },
   heroItalic: {
     fontSize: '20px',
