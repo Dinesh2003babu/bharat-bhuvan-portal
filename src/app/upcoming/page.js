@@ -7,13 +7,38 @@ export default function UpcomingPage() {
   return (
     <div style={styles.page}>
       {/* 1. Hero Section for Sarvam Shabdam */}
-      <section className="upcoming-hero">
+      <section style={styles.heroSection} className="upcoming-hero">
         <div style={styles.heroOverlay}></div>
         <div style={styles.heroContent} className="upcoming-hero-content">
+          {/* <h1 style={styles.heroTitle}>Sarvam Shabdam</h1> */}
+
           <div style={styles.heroSubtitleWrap}>
+            {/* <p style={styles.heroItalic}>Everything is Sound. Everything Dances.</p> */}
             <p style={styles.heroSubText}>
-              {/* Content hidden or moved to background image */}
+              <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+              {/* The Pulse of Expression<br /> */}
+              {/* A Record-Breaking Bharatanatyam Show */}
             </p>
+          </div>
+
+          <div style={styles.heroInfoRow}>
+            <span>July 4, 2026</span>
+            <span style={styles.divider}>|</span>
+            <span>Thanjavur</span>
+            <span style={styles.divider}>|</span>
+            <span>3 PM – 7 PM</span>
+          </div>
+
+          <div style={styles.heroActions}>
+            <Link href="/apply">
+              <button style={styles.joinBtn} className="btn-join-hover">Join Now</button>
+            </Link>
+            <button style={styles.exploreBtn} className="btn-explore-hover" onClick={() => {
+              const el = document.getElementById('concept');
+              if (el) el.scrollIntoView({ behavior: 'smooth' });
+            }}>
+              Explore Concept
+            </button>
           </div>
         </div>
       </section>

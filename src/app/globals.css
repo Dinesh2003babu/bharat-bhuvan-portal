@@ -705,8 +705,9 @@ button {
   .upcoming-hero {
     min-height: auto !important;
     height: 0 !important;
-    padding-top: 140% !important; /* Adjust aspect ratio for mobile to show full banner */
-    background-size: contain !important;
+    padding-top: 140% !important; /* Adjust aspect ratio for mobile banner */
+    background-image: url('/Upcoming_Mobile_view.webp') !important;
+    background-size: cover !important;
     background-position: center top !important;
   }
 
@@ -718,5 +719,8 @@ button {
     width: 90% !important;
     padding: 0 !important;
     text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
   }
 }
