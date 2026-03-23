@@ -144,7 +144,7 @@ const styles = {
   heroSection: {
     position: 'relative',
     height: '600px', // Increased height slightly
-    backgroundImage: 'url("/S1.png")',
+    backgroundImage: 'url("/S1.webp")',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     display: 'flex',
