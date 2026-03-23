@@ -7,33 +7,13 @@ export default function UpcomingPage() {
   return (
     <div style={styles.page}>
       {/* 1. Hero Section for Sarvam Shabdam */}
-      <section style={styles.heroSection}>
+      <section className="upcoming-hero">
         <div style={styles.heroOverlay}></div>
-        <div style={styles.heroContent}>
-          {/* <h1 style={styles.heroTitle}>Sarvam Shabdam</h1> */}
-
+        <div style={styles.heroContent} className="upcoming-hero-content">
           <div style={styles.heroSubtitleWrap}>
-            <div style={styles.heroSpacer}></div>
-          </div>
-
-          <div style={styles.heroInfoRow}>
-            <span>July 4, 2026</span>
-            <span style={styles.divider}>|</span>
-            <span>Thanjavur</span>
-            <span style={styles.divider}>|</span>
-            <span>3 PM – 7 PM</span>
-          </div>
-
-          <div style={styles.heroActions}>
-            <Link href="/apply">
-              <button style={styles.joinBtn} className="btn-join-hover">Join Now</button>
-            </Link>
-            <button style={styles.exploreBtn} className="btn-explore-hover" onClick={() => {
-              const el = document.getElementById('concept');
-              if (el) el.scrollIntoView({ behavior: 'smooth' });
-            }}>
-              Explore Concept
-            </button>
+            <p style={styles.heroSubText}>
+              {/* Content hidden or moved to background image */}
+            </p>
           </div>
         </div>
       </section>
@@ -138,16 +118,15 @@ const styles = {
   },
   heroSection: {
     position: 'relative',
-    height: 'clamp(400px, 80vh, 650px)', // Fluid height
+    height: '37.5rem', // Increased height slightly
     backgroundImage: 'url("/S1.webp")',
     backgroundSize: 'cover',
-    backgroundPosition: 'center top', // Focus on top where title is
+    backgroundPosition: 'center',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     color: '#fff',
     textAlign: 'center',
-    overflow: 'hidden',
   },
   heroOverlay: {
     position: 'absolute',
@@ -161,30 +140,27 @@ const styles = {
   heroContent: {
     position: 'relative',
     zIndex: 2,
-    maxWidth: '800px',
-    padding: '0 20px',
+    maxWidth: '50rem',
+    padding: '0 1.25rem',
   },
   heroTitle: {
-    fontSize: '56px',
+    fontSize: '3.5rem',
     fontWeight: '900',
     color: 'var(--color-saffron)',
-    marginBottom: '20px',
+    marginBottom: '1.25rem',
     textShadow: '0 2px 10px rgba(0,0,0,0.3)',
   },
   heroSubtitleWrap: {
-    marginBottom: '20px',
-  },
-  heroSpacer: {
-    height: 'clamp(150px, 30vh, 300px)', // Responsive spacer to avoid overlapping image text
+    marginBottom: '1.25rem',
   },
   heroItalic: {
-    fontSize: '20px',
+    fontSize: '1.25rem',
     fontStyle: 'italic',
     color: 'rgba(255,255,255,0.9)',
-    marginBottom: '10px',
+    marginBottom: '0.625rem',
   },
   heroSubText: {
-    fontSize: '18px',
+    fontSize: '1.125rem',
     fontWeight: '600',
     letterSpacing: '1px',
     lineHeight: '1.5',
@@ -194,16 +170,16 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    gap: '15px',
-    fontSize: '18px',
+    gap: '0.9375rem',
+    fontSize: '1.125rem',
     fontWeight: '700',
-    marginBottom: '20px',
+    marginBottom: '1.25rem',
     backgroundColor: 'rgba(255,255,255,0.1)',
-    padding: '10px 20px',
-    borderRadius: '50px',
-    backdropFilter: 'blur(5px)',
+    padding: '0.625rem 1.25rem',
+    borderRadius: '3.125rem',
+    backdropFilter: 'blur(0.3125rem)',
     width: 'fit-content',
-    margin: '0 auto 40px',
+    margin: '0 auto 2.5rem',
   },
   divider: {
     color: 'var(--color-saffron)',
@@ -212,26 +188,26 @@ const styles = {
   heroActions: {
     display: 'flex',
     justifyContent: 'center',
-    gap: '20px',
+    gap: '1.25rem',
   },
   joinBtn: {
     backgroundColor: 'var(--color-saffron)',
     color: '#fff',
     border: 'none',
-    padding: '12px 30px',
-    borderRadius: '4px',
-    fontSize: '16px',
+    padding: '0.75rem 1.875rem',
+    borderRadius: '0.25rem',
+    fontSize: '1rem',
     fontWeight: '700',
     cursor: 'pointer',
-    boxShadow: '0 4px 15px rgba(255,153,51,0.3)',
+    boxShadow: '0 0.25rem 0.9375rem rgba(255,153,51,0.3)',
   },
   exploreBtn: {
     backgroundColor: 'transparent',
     color: '#fff',
-    border: '2px solid #fff',
-    padding: '10px 28px',
-    borderRadius: '4px',
-    fontSize: '16px',
+    border: '0.125rem solid #fff',
+    padding: '0.625rem 1.75rem',
+    borderRadius: '0.25rem',
+    fontSize: '1rem',
     fontWeight: '700',
     cursor: 'pointer',
     transition: 'all 0.2s ease',
@@ -242,68 +218,68 @@ const styles = {
     borderBottom: '1px solid var(--border-color)',
   },
   detailsHeading: {
-    fontSize: '32px',
+    fontSize: '2rem',
     fontWeight: '800',
     color: 'var(--color-navy)',
     textAlign: 'center',
-    marginBottom: '50px',
+    marginBottom: '3.125rem',
     position: 'relative',
   },
   detailsGrid: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-    gap: '30px',
-    maxWidth: '1200px',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(18.75rem, 1fr))',
+    gap: '1.875rem',
+    maxWidth: '75rem',
     margin: '0 auto',
   },
   detailCard: {
     backgroundColor: '#fff',
-    padding: '40px 30px',
+    padding: '2.5rem 1.875rem',
     textAlign: 'center',
-    borderRadius: '12px',
-    boxShadow: '0 10px 30px rgba(0,0,0,0.05)',
+    borderRadius: '0.75rem',
+    boxShadow: '0 0.625rem 1.875rem rgba(0,0,0,0.05)',
     transition: 'transform 0.3s ease',
   },
   detailIconWrap: {
-    width: '70px',
-    height: '70px',
+    width: '4.375rem',
+    height: '4.375rem',
     borderRadius: '50%',
     backgroundColor: '#f8f9fa',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    margin: '0 auto 25px',
+    margin: '0 auto 1.5625rem',
   },
   detailTitle: {
-    fontSize: '22px',
+    fontSize: '1.375rem',
     fontWeight: '800',
     color: 'var(--color-navy)',
-    marginBottom: '15px',
+    marginBottom: '1rem',
   },
   detailText: {
-    fontSize: '18px',
+    fontSize: '1rem',
     fontWeight: '700',
     color: 'var(--text-main)',
-    margin: '5px 0',
+    margin: '0.3125rem 0',
   },
   detailSubText: {
-    fontSize: '16px',
+    fontSize: '1rem',
     color: 'var(--text-light)',
-    margin: '5px 0',
+    margin: '0.3125rem 0',
   },
   container: {
     maxWidth: '1000px',
     margin: '0 auto',
-    padding: '0 20px'
+    padding: '0 1.25rem'
   },
   sectionHeading: {
-    fontSize: '32px',
+    fontSize: '2rem',
     fontWeight: '800',
     color: 'var(--color-navy)',
-    marginBottom: '30px',
+    marginBottom: '1.875rem',
     textAlign: 'center',
     position: 'relative',
-    paddingBottom: '15px',
+    paddingBottom: '0.9375rem',
   },
   aboutSection: {
     padding: '1.5rem 0',
@@ -314,58 +290,58 @@ const styles = {
     maxWidth: '800px',
     margin: '0 auto',
     backgroundColor: 'var(--color-saffron-light)',
-    padding: '40px',
-    borderRadius: '12px',
-    boxShadow: '0 4px 20px rgba(0,0,0,0.05)',
-    borderLeft: '5px solid var(--color-saffron)',
+    padding: '2.5rem',
+    borderRadius: '0.75rem',
+    boxShadow: '0 0.25rem 1.25rem rgba(0,0,0,0.05)',
+    borderLeft: '0.3125rem solid var(--color-saffron)',
   },
   aboutText: {
-    fontSize: '18px',
+    fontSize: '1rem',
     color: 'var(--text-main)',
     lineHeight: '1.8',
-    marginBottom: '20px',
+    marginBottom: '1.25rem',
     textAlign: 'justify',
   },
   visionSection: {
     padding: '1.5rem 0',
   },
   visionContent: {
-    maxWidth: '800px',
+    maxWidth: '50rem',
     margin: '0 auto',
     backgroundColor: 'var(--color-navy-light)',
-    padding: '40px',
-    borderRadius: '12px',
-    borderLeft: '5px solid var(--color-navy)',
+    padding: '2.5rem',
+    borderRadius: '0.75rem',
+    borderLeft: '0.3125rem solid var(--color-navy)',
   },
   highlightText: {
-    fontSize: '22px',
+    fontSize: '1.375rem',
     fontWeight: '700',
     color: 'var(--color-navy)',
     fontStyle: 'italic',
     textAlign: 'center',
-    marginTop: '20px',
+    marginTop: '1.25rem',
   },
   mattersSection: {
     padding: '1.5rem 0',
   },
   mattersContent: {
-    maxWidth: '800px',
+    maxWidth: '50rem',
     margin: '0 auto',
     backgroundColor: 'var(--color-green-light)',
-    padding: '40px',
-    borderRadius: '12px',
-    borderLeft: '5px solid var(--color-green)',
+    padding: '2.5rem',
+    borderRadius: '0.75rem',
+    borderLeft: '0.3125rem solid var(--color-green)',
   },
   quoteCard: {
-    marginTop: '30px',
-    padding: '30px',
+    marginTop: '1.875rem',
+    padding: '1.875rem',
     backgroundColor: 'var(--color-white)',
-    borderRadius: '8px',
-    boxShadow: '0 4px 10px rgba(0,0,0,0.03)',
+    borderRadius: '0.5rem',
+    boxShadow: '0 0.25rem 0.625rem rgba(0,0,0,0.03)',
     textAlign: 'center',
   },
   quoteText: {
-    fontSize: '24px',
+    fontSize: '1.5rem',
     fontFamily: 'Merriweather, serif',
     fontWeight: '700',
     color: 'var(--color-saffron)',
@@ -374,10 +350,10 @@ const styles = {
   },
   card: {
     backgroundColor: '#fff',
-    padding: '30px',
-    borderRadius: '12px',
+    padding: '1.875rem',
+    borderRadius: '0.5rem',
     border: '1px solid var(--border-color)',
-    boxShadow: '0 4px 15px rgba(0,0,0,0.05)',
+    boxShadow: '0 0.25rem 0.9375rem rgba(0,0,0,0.05)',
     position: 'relative',
     overflow: 'hidden',
   },
@@ -387,22 +363,22 @@ const styles = {
     right: 0,
     backgroundColor: 'var(--color-saffron)',
     color: '#fff',
-    padding: '8px 20px',
-    fontSize: '12px',
+    padding: '0.5rem 1.25rem',
+    fontSize: '0.75rem',
     fontWeight: 'bold',
-    borderBottomLeftRadius: '12px'
+    borderBottomLeftRadius: '0.75rem'
   },
   cardTitle: {
-    fontSize: '22px',
+    fontSize: '1.375rem',
     color: 'var(--color-navy)',
-    marginBottom: '15px',
-    marginTop: '10px',
+    marginBottom: '0.9375rem',
+    marginTop: '0.625rem',
     fontWeight: '800'
   },
   cardText: {
-    fontSize: '15px',
+    fontSize: '1rem',
     color: 'var(--text-main)',
     lineHeight: '1.7',
-    marginBottom: '10px'
+    marginBottom: '0.625rem'
   }
 };

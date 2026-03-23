@@ -687,3 +687,36 @@ button {
     transform: scale(1);
   }
 }
+/* Upcoming Page Hero Custom Styling */
+.upcoming-hero {
+  width: 100%;
+  min-height: 37.5rem;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background-image: url('/S1.webp') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  position: relative !important;
+}
+
+@media (max-width: 768px) {
+  .upcoming-hero {
+    min-height: auto !important;
+    height: 0 !important;
+    padding-top: 140% !important; /* Adjust aspect ratio for mobile to show full banner */
+    background-size: contain !important;
+    background-position: center top !important;
+  }
+
+  .upcoming-hero-content {
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    width: 90% !important;
+    padding: 0 !important;
+    text-align: center !important;
+  }
+}
