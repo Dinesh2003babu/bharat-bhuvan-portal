@@ -687,6 +687,7 @@ button {
     transform: scale(1);
   }
 }
+
 /* Upcoming Page Hero Custom Styling */
 .upcoming-hero {
   width: 100%;
@@ -705,7 +706,8 @@ button {
   .upcoming-hero {
     min-height: auto !important;
     height: 0 !important;
-    padding-top: 140% !important; /* Adjust aspect ratio for mobile banner */
+    padding-top: 140% !important;
+    /* Adjust aspect ratio for mobile banner */
     background-image: url('/Upcoming_Mobile_view.webp') !important;
     background-size: cover !important;
     background-position: center top !important;
