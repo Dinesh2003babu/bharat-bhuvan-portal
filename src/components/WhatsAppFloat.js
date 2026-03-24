@@ -1,7 +1,7 @@
 "use client";
 
 export default function WhatsAppFloat() {
-  const whatsappNumber = "7603839116";
+  const whatsappNumber = "7604809797";
   const message = "Hello! I am interested in applying for a record at Bharat Bhuvan Book of Records.";
 
   const handleWhatsAppClick = () => {

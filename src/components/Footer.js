@@ -41,7 +41,7 @@ export default function Footer() {
             <h3 style={styles.heading} className="footer-heading">Contact</h3>
             <p style={styles.text}>
               <strong>Email:</strong> bbrecords.india@gmail.com<br />
-              <strong>Phone:</strong> +91 76038 39116<br />
+              <strong>Phone:</strong> +91 76048 09797<br />
             </p>
           </div>
         </div>

@@ -45,7 +45,7 @@ export default function ContactPage() {
 
   const handleGeneralWhatsApp = () => {
     const message = encodeURIComponent("Hello, I would like to know more about Bharath Bhuvan Book of Records.");
-    window.open(`https://wa.me/917603839116?text=${message}`, "_blank");
+    window.open(`https://wa.me/917604809797?text=${message}`, "_blank");
   };
 
   return (
@@ -72,7 +72,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <p style={{ ...styles.contactLabel, color: 'var(--color-saffron)' }}>Phone Number</p>
-                  <p style={styles.contactValue}>+91 76038 39116</p>
+                  <p style={styles.contactValue}>+91 76048 09797</p>
                 </div>
               </div>
 
@@ -82,7 +82,7 @@ export default function ContactPage() {
                 </div>
                 <div onClick={handleGeneralWhatsApp} style={{ cursor: 'pointer', flex: 1, minWidth: 0 }}>
                   <p style={{ ...styles.contactLabel, color: 'var(--color-green)' }}>WhatsApp</p>
-                  <p style={styles.contactValue}>+91 76038 39116</p>
+                  <p style={styles.contactValue}>+91 76048 09797</p>
                 </div>
               </div>
 
