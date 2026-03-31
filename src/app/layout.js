@@ -1,6 +1,5 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-import TopUtilityBar from "../components/TopUtilityBar";
 import Header from "../components/Header";
 import NewsTicker from "../components/NewsTicker";
 import Footer from "../components/Footer";
@@ -25,7 +24,6 @@ export default function RootLayout({ children }) {
       <head />
       <body className={inter.className} suppressHydrationWarning={true}>
         <div className="sticky-top-wrapper">
-          <TopUtilityBar />
           <Header />
           <NewsTicker />
         </div>
